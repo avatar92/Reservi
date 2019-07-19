@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom'
+import './navBar.css'
 
 class NavBar extends Component {
     constructor(props) {
@@ -27,40 +28,40 @@ class NavBar extends Component {
                     <span className='reservi1'>Reservi.TN</span>
                         <a className="fa fa-times closebtn" onClick={this.closeNav}></a>
                         <div className="overlay-content">
-                            <a href="#">About us</a>
-                            <a href="#">Contact us</a>
+                            <Link to='/'><a>About us</a></Link>
+                            <a>Contact us</a>
                             <hr/>
-                            <a href="#">Connection</a>
+                            <Link to='/connection'><a>Connection</a></Link>
                             <hr/>
-                            <a href="#" className="disabled">Navigation</a>
-                            <a href="#" className="space">Salle de sports</a>
-                            <a href="#">Salle des Fétes</a>
-                            <a href="#">Salle d'ésthétique</a>
-                            <a href="#">Restaurant</a>
-                            <a href="#">Fast Food</a>
+                            <a className="disabled">Navigation</a>
+                            <Link to='/salle_de_sports'><a className="space">Salle de sports</a></Link>
+                            <Link to='/salle_des_Fétes'><a>Salle des Fétes</a></Link>
+                            <Link to='/salle_ésthétique'><a>Salle d'ésthétique</a></Link>
+                            <Link to='/'><a>Restaurant</a></Link>
+                            <Link to='/'><a>Fast Food</a></Link>
                         </div>
                     </div>
                     <ul className="navLinks">
                         <li>  
                             <div className="dropdown">
-                                <a href="#" className="dropdownLink">Navigation</a>
+                                <a className="dropdownLink">Navigation</a>
                                 <div className="dropdown-content">
-                                    <a href="#">Salle de sports</a>
-                                    <a href="#">Salle des Fétes</a>
-                                    <a href="#">Salle d'ésthétique</a>
-                                    <a href="#">Restaurant</a>
-                                    <a href="#">Fast Food</a>
+                                    <Link to='/salle_de_sports'><a>Salle de sports</a></Link>
+                                    <Link to='/salle_des_Fétes'><a>Salle des Fétes</a></Link>
+                                    <Link to='/salle_ésthétique'><a>Salle d'ésthétique</a></Link>
+                                    <Link to='/'><a>Restaurant</a></Link>
+                                    <Link to='/'><a>Fast Food</a></Link>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="#" className="specialcolor">About Us</a>
+                            <Link to="/" className="specialcolor">About Us</Link>
                         </li>
                         <li>
-                            <a href="#" className="specialcolor">Contact Us</a>
+                            <Link to='/' className="specialcolor">Contact Us</Link>
                         </li>
                         <li>
-                            <a href="#" className="specialcolor">Connexion</a>
+                            <Link to='/' className="specialcolor">Connexion</Link>
                         </li>
                         
                     </ul>

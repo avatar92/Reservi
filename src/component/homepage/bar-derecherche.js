@@ -1,6 +1,5 @@
 import React from 'react';
 import './bar-derecherche.css';
-
 function BarRecherche() {
     return (
         <div className="search-section">
