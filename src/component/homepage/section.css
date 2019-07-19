@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+.main-div{
+    position: relative;
+    margin: 70px 0 0 0; 
+    max-width: 1016.5px;
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    justify-content: baseline;   
+}
+.photo-container{
+    height: 300px;
+    overflow: hidden; 
+    border-radius: 50%; 
+}
+.description{
+    
+    width: 0;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 0 0 1em;
+    padding: 10px; 
+    transition: 1s;
+    color: white; 
+}
+.description h1 {
+    color: white;
+    text-align: center;  
+}
+.photo-container img{
+    transition: transform .5s ease;
+}
+.photo-container:hover img {
+    transform: scale(1.2);
+}
+.photo-container:hover  + .description{
+    width:40%;
+    background-color: rgba(0,179,155, 1);
+    border-radius: 25px;  
+}

@@ -1,0 +1,67 @@
+.cardSectionMain
+{
+    text-align: center; 
+    max-width: 1016.5px;
+    margin-top:80px; 
+    /* border: 1px solid black */
+}
+/* .cardsection
+{
+    
+    border: 1px solid red; 
+} */
+.samewidthAndHeight
+{
+    width: 560px; 
+    height: 400px;
+}
+.bg{
+    /* position: relative;
+    background-color: #00b39b;  
+    top:-150px;
+    right:23%;  
+    z-index: -1; */
+}
+.image
+{
+    box-shadow:
+    #00b39b
+    60px -60px;
+}
+.image2
+{
+    box-shadow:
+    #3d83df
+    -60px -60px;
+}
+.bouton
+{
+    background-color: #00b39b; 
+    border: 1px solid #00b39b; 
+    border-radius: 2px; 
+    color: white;
+    float: right;
+    margin-top: 30px;   
+}
+
+.bouton2
+{
+    background-color: #3d83df; 
+    border: 1px solid #3d83df; 
+    border-radius: 2px; 
+    color: white;
+    float: right;
+    margin-top: 30px; 
+}
+.secondRow
+{
+    margin-top:80px;
+}
+.SportsTitle
+{
+    color: #3d83df; 
+}
+.ThirdRow
+{
+    margin-top:80px;
+}

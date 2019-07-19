@@ -1,0 +1,17 @@
+body
+{
+  font-family: didot-w01-italic, serif;
+  font-weight: 400; 
+  color: #747474; 
+}
+a{
+  text-decoration: none; 
+  color: #747474;
+}
+ul{
+  list-style: none; 
+}
+h1{
+  font-size: 2.125rem; 
+  color: #00b39b; 
+}

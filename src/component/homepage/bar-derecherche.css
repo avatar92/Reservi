@@ -1,0 +1,628 @@
+.search-section{
+    position: relative;
+  }
+  .wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .slideshow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  .slideshow--hero {
+    z-index: 3;
+    left: 0;
+    top: 50%;
+    height: 85%;
+    transform: translateY(-50%) skewY(-10deg);
+    transform-origin: center;
+    overflow: hidden;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+  }
+  .slideshow--hero .slides {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 100vw;
+    height: 100vh;
+    animation: 11s slideshow-hero-mobile -3s infinite;
+  }
+  .slideshow--hero .slide1 {
+    background-image: url("https://www.marnay70.com/document_infos_diverses/1415977993Salle_des_fetes.jpg");
+    animation: 20s slides-set-1 -0.1s infinite;
+  }
+  .slideshow--hero .slide2 {
+    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/0f/6a/71/14/salle-de-musculation.jpg");
+    animation: 20s slides-set-2 -0.1s infinite;
+  }
+  .slideshow--hero .slide3 {
+    background-image: url("https://www.femme-ukraine.com/wp-content/uploads/2018/09/belle-femme-ukrainienne.jpg");
+    animation: 20s slides-set-3 -0.1s infinite;
+  }
+  @media (min-width: 600px) {
+    .slideshow--hero {
+      left: 50%;
+      top: 0;
+      width: 67%;
+      height: 100%;
+      transform: translateX(-50%) skewX(-10deg);
+    }
+    .slideshow--hero .slides {
+      top: 0;
+      left: -25%;
+      height: 100%;
+      animation: 11s slideshow-hero -3s infinite;
+    }
+  }
+  .slideshow--contrast {
+    z-index: 1;
+    width: 100%;
+    height: 50%;
+    transform: none;
+  }
+  .slideshow--contrast--before {
+    left: 0;
+  }
+  .slideshow--contrast--before .slides {
+    width: 100vw;
+  }
+  .slideshow--contrast--after {
+    z-index: 2;
+    left: auto;
+    right: 0;
+  }
+  .slideshow--contrast--after .slides {
+    width: 100vw;
+    left: auto;
+    right: 0;
+  }
+  .slideshow--contrast .slides {
+    animation: 14s slideshow-contrast -5s infinite;
+  }
+  .slideshow--contrast .slide1 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://www.marnay70.com/document_infos_diverses/1415977993Salle_des_fetes.jpg");
+    animation: 20s slides-set-1 -0.2s infinite;
+  }
+  .slideshow--contrast .slide2 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://media-cdn.tripadvisor.com/media/photo-s/0f/6a/71/14/salle-de-musculation.jpg");
+    animation: 20s slides-set-2 -0.2s infinite;
+  }
+  .slideshow--contrast .slide3 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("");
+    animation: 20s slides-set-3 -0.2s infinite;
+  }
+  .slideshow--contrast--after {
+    top: auto;
+    bottom: 0;
+  }
+  .slideshow--contrast--after .slides {
+    animation: 13s slideshow-contrast -13s infinite;
+  }
+  .slideshow--contrast--after .slide {
+    background-position: right;
+  }
+  .slideshow--contrast--after .slide1 {
+    animation: 20s slides-set-1 infinite;
+  }
+  .slideshow--contrast--after .slide2 {
+    animation: 20s slides-set-2 infinite;
+  }
+  .slideshow--contrast--after .slide3 {
+    animation: 20s slides-set-3 infinite;
+  }
+  @media (min-width: 600px) {
+    .slideshow--contrast {
+      width: 50%;
+      height: 100%;
+    }
+    .slideshow--contrast--after {
+      top: 0;
+      bottom: auto;
+    }
+    .slideshow--contrast--after .slides {
+      width: 50vw;
+    }
+  }
+  
+  .slides,
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  @keyframes slideshow-hero-mobile {
+    0% {
+      transform: scale(1) skewY(10deg);
+    }
+    50% {
+      transform: scale(1.05) skewY(10deg);
+    }
+    100% {
+      transform: scale(1) skewY(10deg);
+    }
+  }
+  @keyframes slideshow-hero {
+    0% {
+      transform: scale(1) skewX(10deg);
+    }
+    50% {
+      transform: scale(1.05) skewX(10deg);
+    }
+    100% {
+      transform: scale(1) skewX(10deg);
+    }
+  }
+  @keyframes slideshow-contrast {
+    0% {
+      transform: scale(1.05);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+  @keyframes slides-set-1 {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    31% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    34% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    97% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes slides-set-2 {
+    0% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    31% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    34% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    64% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    67% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+  @keyframes slides-set-3 {
+    0% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    64% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    67% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    97% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+  .search-inner-section {
+    width: 374px;
+    /* border: 1px solid black;   */
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 900;
+  }
+  /* -------------------------------------------------------------------------------------------- */
+  .r-text-field{
+    --uiTextFieldPlaceholderColor: var(--textFieldPlaceholderColor);
+  
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+  }
+  
+  .r-text-field::-webkit-input-placeholder{
+    color: var(--uiTextFieldPlaceholderColor);
+  }
+  
+  .r-text-field::-moz-placeholder{
+    opacity: 1;
+    color: var(--uiTextFieldPlaceholderColor);
+  }
+  
+  .r-text-field:invalid{
+    outline: none;
+    box-shadow: none;
+  }
+  
+  /*
+  * The r-button component
+  */
+  
+  /*
+  The component will reset button browser styles
+  */
+  
+  .r-button{
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    
+    font-family: inherit;
+    font-size: inherit;  
+  }
+  
+  /* Remove the inner border and padding in Firefox. */
+  
+  .r-button::-moz-focus-inner,
+  .r-button[type="button"]::-moz-focus-inner,
+  .r-button[type="reset"]::-moz-focus-inner,
+  .r-button[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  
+  /*
+  * The a-field component
+  */
+  
+  /*
+   1. The --aFieldHeight option defines an input height. And this option is needed for calculations of a hint final position 
+   2. The --aFieldHintFinalCoordinate option defines calculations of the final Y-axis coordinate
+   3. The —aFieldPaddingLeft option defines left indent for a hint and query text
+  */
+  
+  .a-field{
+    --uiaFieldHeight: var(--aFieldHeight);
+    --uiaFieldHintFinalCoordinate: var(--aFieldHintFinalCoordinate, var(--uiaFieldHeight));
+    --uiaFieldPaddingLeft: var(--aFieldPaddingLeft);   
+  
+    position: relative;
+    padding-top: calc(var(--uiaFieldHintFinalCoordinate) - var(--uiaFieldHeight)); /* 1, 2 */
+  }
+  
+  .a-field__input{
+    box-sizing: border-box;
+    height: var(--uiaFieldHeight); /* 1 */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: var(--uiaFieldPaddingLeft); /* 3 */
+  }
+  
+  .a-field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .a-field__input::-moz-placeholder{
+    opacity: 0;
+  }
+  
+  .a-field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .a-field__input:focus::-moz-placeholder{
+    opacity: 1;
+  }
+  
+  .a-field__label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiaFieldHeight);	/* 1 */
+  
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .a-field__label{
+    position: absolute;
+    left: var(--uiaFieldPaddingLeft); /* 3 */
+    bottom: calc(50% - .5em);
+    line-height: 1;
+    pointer-events: none;
+  }
+  
+  /* 
+    I needed to create an animation onle Chromium broswers because:
+    1. Firefox doesn't support a placeholder animation
+    2. I couldn't make an correct animation at Edge
+  */
+  
+  @supports (-webkit-appearance: none){
+    
+    .a-field__label{
+      transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+      will-change: bottom, opacity;
+    }
+  }
+  
+  /* If a user had inserted a text of query a hint will be hidden */
+  
+  .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+    opacity: 0;
+    bottom: 85%;
+  }
+  
+  /* If the focal point is a field a hint will be displayed */
+  
+  .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--uiaFieldHintFinalCoordinate); /* 2 */
+  }
+  
+  /*
+  * the search component
+  */
+  
+  .search{
+    --searchFieldHeight: 50px;
+    --searchButtonSize: var(--searchFieldHeight);
+    --textFieldPlaceholderColor: #fff;
+  
+    --aFieldHeight: var(--searchFieldHeight);
+    /* The 10px value has been calculated for this demo and you can change it */
+    --aFieldHintFinalCoordinate: calc(var(--searchFieldHeight) + 10px);
+    --aFieldPaddingLeft: 30px;
+  
+    color: #fff;
+    position: relative;
+  }
+  
+  /* 
+   1. I needed to set the currentColor value for correct displaying a border on iOS devices
+  */
+  
+  .search__input{
+    width: 30vw; 
+    border-width: 2.5px;
+    border-color: currentColor; /* 1 */
+  
+    border-radius: 25px;
+    background-color: transparent;
+    
+    font-size: 16px;
+    color: currentColor;  
+  }
+  
+  .search__input:focus{
+    outline: none;
+  }
+  
+  .search__hint{
+    font-size: 16px;
+  }
+  
+  .search__button{
+    color: currentColor;
+  }
+  
+  .search__button:focus{
+    outline: none;
+  }
+  
+  .search__clear{
+    width: 1em;
+    height: 1em;
+    font-size: var(--searchButtonSize);
+  
+    position: absolute;
+    bottom: 0;
+    display: none;
+  }
+  
+  /* If a user starts typing a clearing button will be displayed */
+  
+  .search__input:not(:placeholder-shown) ~ .search__clear{
+    display: block;
+  }
+  
+  /* If the focal point is a clearing button the hint will be displayed */
+  
+  .search__clear:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--aFieldHintFinalCoordinate);
+  }
+  
+  .search__clear-label{
+    position: absolute;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
+  
+  .search__icon{
+    fill: currentColor;
+    display: block;
+  
+    box-sizing: border-box;
+    width: 1.5em;
+    height: 1.5em;
+    padding: .25em;
+  
+    position: absolute;
+    top: calc(50% - .75em);
+    left: calc(50% - .75em);
+  }
+  
+  .search__button:focus .search__icon{
+    box-shadow: 0 0 0 3px currentColor;
+  }
+  
+  .search__icon-clear{
+    font-size: 18px;
+  }
+  
+  @media (max-width: 640px){
+    
+    .search__input{
+      padding-right: 50px;
+      width: 100%; 
+  
+    }
+    
+    .search__clear{
+      right: 10px;
+    }  
+    
+    .search__submit{
+      display: block;
+      width: 100%;
+      padding: 12px 15px;
+  
+      background-color: #fff;
+      /* text-transform: uppercase; */
+      color: #5f27cd;
+      border-radius: 25px;  
+      margin-top: 25px;
+    }
+   
+    .search__submit:focus{
+      box-shadow: 0 0 0 3px currentColor;
+      color: #422380;
+    }
+    
+    .search__icon-search{
+      display: none;
+    }
+  }
+  @media (min-width: 641px){
+  
+    .search__input{
+      padding-right: 115px;
+    }
+    
+    .search__clear{
+      right: var(--searchButtonSize);
+    }
+  
+    .search__submit{
+      width: 1em;
+      height: 1em;
+      font-size: var(--searchButtonSize);
+  
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+    }
+  
+    .search__submit-label{
+      position: absolute;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+    }
+  
+    .search__icon-search{
+      font-size: 22px;
+    }  
+  }
+  /* --------------------------------------------------------------------------------------------------- */
+  .search-bar{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    z-index: 9000;
+    border: 1px solid red;
+    width: 50%;
+  }
+  .search-bar-content{
+    position: relative;
+    margin: 1em;
+    border: 1px solid green;
+  
+  }
+  .search-bar-input{
+    border: 3px solid white;
+    border-radius: 25px;
+    width: 50%;
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    margin: 1em;
+  }
+  .search-bar-input:focus .label-description{
+  }
+  .label-description{
+    position: absolute;
+    top:0;
+    left: 30px;
+    width: 100%;
+    border: 1px solid yellow;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+    padding-left: 30px;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    padding-left: 30px;
+  
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    padding-left: 30px;
+  
+  }
