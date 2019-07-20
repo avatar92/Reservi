@@ -8,7 +8,7 @@ class Footer extends Component {
     }
     render() { 
         return (
-            <div>
+            <div id='footerContainer'>
                 <footer className="footer-distributed">
 
                     <div className="footer-left">
@@ -73,7 +73,7 @@ class Footer extends Component {
                 </footer>
                 
             </div>
-          );
+        );
     }
 }
  

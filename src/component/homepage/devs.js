@@ -8,7 +8,7 @@ class Devs extends Component {
     }
     render() {
         return (
-            <div className='container devSection'>
+            <div className='container devSection' id='devsContainer'>
                 <div className='row'>        
                     <div className="dev col-4">
                         <div className="description">

@@ -16,6 +16,12 @@ class NavBar extends Component {
     closeNav=()=> {
         document.getElementById("myNav").style.height = "0%";
     }
+    scrollToContacts=()=>{
+        document.getElementById('devsContainer').scrollIntoView(); 
+    }
+    scrollToFooter=()=>{
+        document.getElementById('footerContainer').scrollIntoView(); 
+    }
     render() { 
         return ( 
             <div className="barredenavgation">
@@ -55,10 +61,10 @@ class NavBar extends Component {
                             </div>
                         </li>
                         <li>
-                            <Link to="/" className="specialcolor">About Us</Link>
+                            <Link to="/" className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
                         </li>
                         <li>
-                            <Link to='/' className="specialcolor">Contact Us</Link>
+                            <Link to='/' className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
                         </li>
                         <li>
                             <Link to='/' className="specialcolor">Connexion</Link>
