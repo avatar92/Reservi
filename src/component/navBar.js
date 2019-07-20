@@ -22,35 +22,35 @@ class NavBar extends Component {
             <div className="header">
                     <span className='reservi'>Reservi.TN</span>
                     <div  className="toggleIcon">
-                        <a className="fa fa-bars toggle" onClick={this.openNav} aria-hidden="true"></a>
+                        <i className="fa fa-bars toggle" onClick={this.openNav} aria-hidden="true"></i>
                     </div>
                     <div id="myNav" className="overlay">
                     <span className='reservi1'>Reservi.TN</span>
-                        <a className="fa fa-times closebtn" onClick={this.closeNav}></a>
+                        <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
-                            <Link to='/'><a>About us</a></Link>
-                            <a>Contact us</a>
+                            <Link to='/'>About us</Link>
+                            <Link className='colorWhite'>Contact us</Link>
                             <hr/>
-                            <Link to='/connection'><a>Connection</a></Link>
+                            <Link to='/connection'>Connection</Link>
                             <hr/>
-                            <a className="disabled">Navigation</a>
-                            <Link to='/salle_de_sports'><a className="space">Salle de sports</a></Link>
-                            <Link to='/salle_des_Fétes'><a>Salle des Fétes</a></Link>
-                            <Link to='/salle_ésthétique'><a>Salle d'ésthétique</a></Link>
-                            <Link to='/'><a>Restaurant</a></Link>
-                            <Link to='/'><a>Fast Food</a></Link>
+                            <Link className="disabled">Navigation</Link>
+                            <Link to='/salle_de_sports' className="space">Salle de sports</Link>
+                            <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
+                            <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
+                            <Link to='/'>Restaurant</Link>
+                            <Link to='/'>Fast Food</Link>
                         </div>
                     </div>
                     <ul className="navLinks">
                         <li>  
                             <div className="dropdown">
-                                <a className="dropdownLink">Navigation</a>
+                                <span className="dropdownLink">Navigation</span>
                                 <div className="dropdown-content">
-                                    <Link to='/salle_de_sports'><a>Salle de sports</a></Link>
-                                    <Link to='/salle_des_Fétes'><a>Salle des Fétes</a></Link>
-                                    <Link to='/salle_ésthétique'><a>Salle d'ésthétique</a></Link>
-                                    <Link to='/'><a>Restaurant</a></Link>
-                                    <Link to='/'><a>Fast Food</a></Link>
+                                    <Link to='/salle_de_sports'>Salle de sports</Link>
+                                    <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
+                                    <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
+                                    <Link to='/'>Restaurant</Link>
+                                    <Link to='/'>Fast Food</Link>
                                 </div>
                             </div>
                         </li>

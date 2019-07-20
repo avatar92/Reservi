@@ -43,7 +43,7 @@ class Footer extends Component {
 
                         <div>
                             <i className="fa fa-envelope"></i>
-                            <p><a href="#">FullStackJS7@gomycode.com</a></p>
+                            <p><a href="/">FullStackJS7@gomycode.com</a></p>
                         </div>
 
                     </div>
@@ -58,9 +58,9 @@ class Footer extends Component {
 
                         <div className="footer-icons">
 
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-github"></i></a>
+                            <a href="/"><i class="fa fa-facebook"></i></a>
+                            <a href="/"><i class="fa fa-linkedin"></i></a>
+                            <a href="/"><i class="fa fa-github"></i></a>
 
                         </div>
 

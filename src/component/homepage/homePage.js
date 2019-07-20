@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../navBar.js'
-import IntroductionSection from './introductionSection.js'
+// import IntroductionSection from './introductionSection.js'
 import CardSection from './cardsection'
 import Footer from '../footer.js'
 import Devs from './devs.js'

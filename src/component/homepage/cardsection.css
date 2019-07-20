@@ -10,9 +10,13 @@
     
     border: 1px solid red; 
 } */
+.titleColor
+{
+    color: #00b39b; 
+}
 .samewidthAndHeight
 {
-    width: 560px; 
+    width: 80%; 
     height: 400px;
 }
 .bg{
@@ -65,3 +69,28 @@
 {
     margin-top:80px;
 }
+@media screen and (min-width: 767.5px) {
+    .dispabledlgScreen {
+      display:none;
+    }
+  }
+  @media screen and (max-width: 767.5px) {
+    .dispabledsmallScreen {
+      display:none;
+    }
+    .image{
+        box-shadow: none; 
+        margin-top: 20px; 
+        width: 100%; 
+    }
+    .image2{
+        box-shadow: none; 
+        margin-top: 20px;
+        width: 100%;  
+    }
+    .title
+    {
+      font-size: 5vw; 
+    }
+  }
+  
