@@ -4,6 +4,7 @@ import IntroductionSection from './introductionSection.js'
 import CardSection from './cardsection'
 import Footer from '../footer.js'
 import Devs from './devs.js'
+import Introduction from './introduction.js'
 
 class HomePage extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class HomePage extends Component {
         return ( 
             <div>
                 <NavBar/>
-                <IntroductionSection/>
+                <Introduction/>
                 <CardSection/>
                 <Devs/>
                 <Footer/>
