@@ -23,6 +23,7 @@ class NavBar extends Component {
         document.getElementById('footerContainer').scrollIntoView(); 
     }
     render() { 
+        console.log(window.location.href.slice(21))
         return ( 
             <div className="barredenavgation">
             <div className="header">
@@ -34,8 +35,8 @@ class NavBar extends Component {
                     <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
-                            <Link to='/'>About us</Link>
-                            <Link className='colorWhite'>Contact us</Link>
+                            <Link to={window.location.href.slice(21)} onClick={this.scrollToContacts}>About us</Link>
+                            <Link className='colorWhite' to={window.location.href.slice(21)} onClick={this.scrollToFooter}>Contact us</Link>
                             <hr/>
                             <Link to='/connection'>Connection</Link>
                             <hr/>
@@ -61,10 +62,10 @@ class NavBar extends Component {
                             </div>
                         </li>
                         <li>
-                            <Link to="/" className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
+                            <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
                         </li>
                         <li>
-                            <Link to='/' className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
+                            <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
                         </li>
                         <li>
                             <Link to='/' className="specialcolor">Connexion</Link>
