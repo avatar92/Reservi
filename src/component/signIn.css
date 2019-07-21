@@ -1,0 +1,29 @@
+.specialcolor-btn
+{
+    background: #00b39b;
+    padding: 1px 15px;
+    border: 2px solid #00b39b;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    -webkit-transition: 0.5s all;
+            transition: 0.5s all;
+    outline: none !important; 
+}
+.specialcolor-btn:hover,
+.specialcolor-btn:focus,
+.specialcolor-btn:active {
+    background: #fff;
+    color: #808080; 
+  }
+  .modal-h4
+  {
+      width: 100%;
+      color:#3d83df;
+  }
+.modal-a
+{
+    color:#3d83df;
+    background-color: red;
+}

@@ -41,7 +41,7 @@ class Introduction extends Component {
                                     <input type="text" className="form-control" placeholder="Password" required="required" />
                                 </div>
                                 <div className="form-group text-center">
-                                    <button type="submit" className="btn btn-blue btn-block">Start Now</button>
+                                    <button type="submit" className="btn btn-style btn-block">Start Now</button>
                                 </div>
                             </form>
                         </div>

@@ -1,44 +1,44 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './navBar.css'
-
+import SignIn from './signIn'
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
 
         }
     }
-    openNav=()=> {
+    openNav = () => {
         document.getElementById("myNav").style.height = "100%";
-      }
-      
-    closeNav=()=> {
+    }
+
+    closeNav = () => {
         document.getElementById("myNav").style.height = "0%";
     }
-    scrollToContacts=()=>{
-        document.getElementById('devsContainer').scrollIntoView(); 
+    scrollToContacts = () => {
+        document.getElementById('devsContainer').scrollIntoView();
     }
-    scrollToFooter=()=>{
-        document.getElementById('footerContainer').scrollIntoView(); 
+    scrollToFooter = () => {
+        document.getElementById('footerContainer').scrollIntoView();
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <div className="barredenavgation">
-            <div className="header">
+                <div className="header">
                     <span className='reservi'>Reservi.TN</span>
-                    <div  className="toggleIcon">
+                    <div className="toggleIcon">
                         <i className="fa fa-bars toggle" onClick={this.openNav} aria-hidden="true"></i>
                     </div>
                     <div id="myNav" className="overlay">
-                    <span className='reservi1'>Reservi.TN</span>
+                        <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
                             <Link to='/'>About us</Link>
                             <Link className='colorWhite'>Contact us</Link>
-                            <hr/>
-                            <Link to='/connection'>Connection</Link>
-                            <hr/>
+                            <hr />
+                            <SignIn />
+                            <hr />
                             <Link className="disabled">Navigation</Link>
                             <Link to='/salle_de_sports' className="space">Salle de sports</Link>
                             <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
@@ -48,7 +48,7 @@ class NavBar extends Component {
                         </div>
                     </div>
                     <ul className="navLinks">
-                        <li>  
+                        <li>
                             <div className="dropdown">
                                 <span className="dropdownLink">Navigation</span>
                                 <div className="dropdown-content">
@@ -67,13 +67,13 @@ class NavBar extends Component {
                             <Link to='/' className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
                         </li>
                         <li>
-                            <Link to='/' className="specialcolor">Connexion</Link>
+                            <SignIn />
                         </li>
-                        
+
                     </ul>
                 </div>
-            </div> 
+            </div>
         );
     }
-} 
+}
 export default NavBar;
