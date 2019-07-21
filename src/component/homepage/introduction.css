@@ -29,7 +29,6 @@ h1 {
     -webkit-transition: 0.5s all;
             transition: 0.5s all;
     box-shadow: 0px 0px 60px 0px rgba(61, 131, 223, 0.6);
-  
     /* box-shadow: 0px 0px 60px 0px rgba(68, 197, 238, 0.6); */
     outline: none !important; 
   }
@@ -49,6 +48,11 @@ h1 {
     background-size: cover;
     background-repeat: no-repeat; 
   }
+  #home .caption {
+    margin-bottom: 10px;
+    height: 120px;
+   }
+    
  
   #home .signup-form {
     background-color: #fff;
@@ -62,7 +66,7 @@ h1 {
     box-shadow: none !important; 
   }
   #home .signup-form input:focus {
-    border-color: #3d83df;; 
+    border-color: #3d83df;
   }
   #home .signup-form .form-control {
     font-size: 16px;
@@ -73,4 +77,17 @@ h1 {
   }
   .same-line{
     display: inline;
+  }
+  @media (max-width: 320px){
+    #home .caption {
+      height: 150px;
+     }
+     h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 35px;
+    color: white;
+   }
+      
   }

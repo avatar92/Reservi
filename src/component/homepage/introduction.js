@@ -14,17 +14,17 @@ class Introduction extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 caption">
-                            <h1>Welcome To
-                            <Typing hideCursor loop speed={150} className='same-line' >
-                                <span> Reservi.tn</span>
-                                <Typing.Delay ms={2000} />
-                                <Typing.Backspace count={10} />
+                            <Typing hideCursor loop speed={100} className='same-line' >
+                            <h1>Welcome To Reservi.tn</h1>
+                                <Typing.Delay ms={2500} />
+                                <Typing.Backspace count={21} />
+                                <Typing.Delay ms={100} />
                                 <Typing.Reset delay={50} />
                             </Typing>
-                            </h1>
+                            
                         </div>
                         {/* Sign Up */}
-                        <div className="col-md-5 col-md-offset-1">
+                        <div className="col-md-5 offset-md-1">
                             <form className="signup-form">
                                 <h2 className="text-center">Signup Now</h2>
                                 <hr />
@@ -51,8 +51,5 @@ class Introduction extends Component {
 
         );
     }
-
 }
-
-
 export default Introduction;
