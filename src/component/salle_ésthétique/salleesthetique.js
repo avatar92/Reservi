@@ -3,6 +3,7 @@ import NavBar from '../navBar.js'
 import Footer from '../footer.js'
 import Devs from '../homepage/devs.js'
 import SalleList from './salleList.js'
+import SearchSection from './searchSection.js';
 
 class SalleEsthetique extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class SalleEsthetique extends Component {
         return ( 
             <div>
                 <NavBar/>
+                <SearchSection/>
                 <SalleList/>
                 <Devs/>
                 <Footer/>

@@ -2,18 +2,12 @@
 {
     margin: 30px auto;  
 }
-.dev
-{
-    /* border: 1px solid;  */
-}
-
 .devimage
 {
     width: 100%; 
     height:100%;
     border-radius: 50%;
     color: white; 
-    /* border: 1px solid red; */
     position: relative;  
     padding: 20%; 
 }
