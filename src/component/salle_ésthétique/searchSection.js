@@ -61,7 +61,6 @@ class SearchSection extends Component {
                     </button>
                     
                 </form>
-                <button type='submit' onClick={()=>this.props.search(this.state.input)}>click me</button>
             </div>
         </div>
     )
