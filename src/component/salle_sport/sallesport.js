@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NavBar from '../navBar';
 import Footer from '../footer';
 import TopSection from './topsection';
+import SalleList from './salle_sport_list'
 import './sallesport.css'
 class SalleSport extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class SalleSport extends Component {
 
             <NavBar/>
             <TopSection/>
+            <SalleList/>
             <Footer/>
 
         </div>
