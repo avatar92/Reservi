@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import './navBar.css'
+import { Link } from 'react-router-dom';
+import './navBar.css';
 import SignIn from './signIn'
 class NavBar extends Component {
     constructor(props) {
@@ -22,8 +22,9 @@ class NavBar extends Component {
     scrollToFooter = () => {
         document.getElementById('footerContainer').scrollIntoView();
     }
-    render() {
-        return (
+    render() { 
+        console.log(window.location.href.slice(21))
+        return ( 
             <div className="barredenavgation">
                 <div className="header">
                     <span className='reservi'>Reservi.TN</span>
@@ -34,11 +35,11 @@ class NavBar extends Component {
                         <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
-                            <Link to='/'>About us</Link>
-                            <Link className='colorWhite'>Contact us</Link>
-                            <hr />
+                            <Link to={window.location.href.slice(21)} onClick={this.scrollToContacts}>About us</Link>
+                            <Link className='colorWhite' to={window.location.href.slice(21)} onClick={this.scrollToFooter}>Contact us</Link>
+                            <hr/>
                             <SignIn />
-                            <hr />
+                            <hr/>
                             <Link className="disabled">Navigation</Link>
                             <Link to='/salle_de_sports' className="space">Salle de sports</Link>
                             <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
@@ -61,10 +62,10 @@ class NavBar extends Component {
                             </div>
                         </li>
                         <li>
-                            <Link to="/" className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
+                            <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
                         </li>
                         <li>
-                            <Link to='/' className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
+                            <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
                         </li>
                         <li>
                             <SignIn />
