@@ -1,0 +1,49 @@
+.adminProfile
+{
+    filter: grayscale(100%);
+    border-radius: 50%; 
+    height: 50px; 
+}
+.adminNavgationContainer
+{
+    border: 1px solid gray; 
+    padding: 0;
+    padding: 5px 5px; 
+    background-color: #00b39b;
+    color:white;
+}
+.adminnavigationMenu
+{
+    display: flex;
+    align-items: baseline; 
+    justify-content: space-between;
+    /* border: 1px solid yellow; */
+    padding: 0;
+    margin: 0; 
+}
+.navbarRight
+{
+    display: flex;
+    align-items: baseline; 
+    /* border: 1px solid red;  */
+    width: 30%;
+    justify-content: space-around;
+}
+.navigationLinks 
+{
+    padding: 0px; 
+    margin: 0;
+    /* border: 1px solid; */
+    width:20%;
+    display: flex; 
+    justify-content: space-around;
+}
+.admin
+{
+    width: 80%;
+    padding: 0px;
+    display: flex; 
+    align-items: baseline;
+    justify-content: space-around; 
+}
+

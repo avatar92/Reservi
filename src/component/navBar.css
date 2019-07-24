@@ -142,7 +142,7 @@ position: fixed;
 z-index: 1;
 top: 0;
 left: 0;
-background-color: rgba(0,179,155, 1);
+background-color: #00b39b;
 overflow-y: hidden;
 transition: 0.5s;
 /* opacity: 0.2; */
