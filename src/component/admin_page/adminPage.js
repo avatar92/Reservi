@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AdminSideNav from './AdminSideNavBar.js'
 import AdminNavBar from './AdminNavBar.js'
-
+import DashboardContent from './dashboardContent.js'
 
 
 class AdminPage extends Component {
@@ -26,6 +26,7 @@ class AdminPage extends Component {
                 <AdminSideNav/>
                 <div id='main'>
                     <AdminNavBar openClose={(x)=>this.openCloseSideNav(x)}/>
+                    <DashboardContent/>
                 </div>
             </div>
         );
