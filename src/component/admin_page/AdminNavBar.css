@@ -3,6 +3,7 @@
     filter: grayscale(100%);
     border-radius: 50%; 
     height: 50px; 
+    cursor: pointer;
 }
 .adminNavgationContainer
 {
@@ -11,6 +12,7 @@
     padding: 5px 5px; 
     background-color: #00b39b;
     color:white;
+    
 }
 .adminnavigationMenu
 {
@@ -46,4 +48,11 @@
     align-items: baseline;
     justify-content: space-around; 
 }
-
+.admintoggle,.logOut,.notifcationAdmin
+{
+    cursor: pointer;
+}
+.admintoggle:hover,.logOut:hover,.notifcationAdmin:hover
+{
+    color: #e2ebf1;
+}
