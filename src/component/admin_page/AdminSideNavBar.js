@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import './AdminSideNavBar.css'
-import AdminNavBar from './AdminNavBar.js'
 class AdminSideNav extends Component {
     constructor(props) {
         super(props);

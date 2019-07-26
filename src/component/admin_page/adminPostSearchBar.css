@@ -1,0 +1,16 @@
+.searchBox {
+    width: 50%;
+    margin: 50px auto;
+}
+.bgColor
+{
+    background-color:#00b39b
+}
+.searchColor
+{
+    color: white; 
+}
+.bgColor:hover .searchColor
+{
+    color: #e2ebf1;
+} 
