@@ -1,0 +1,55 @@
+.dashboardContainer h1
+{
+    color:#00b39b;
+} 
+.static{
+    /* border:1px solid #00b39b; */
+    padding: 5px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.Visitorcard ,.UserCard,.Stars,.SalleNumber
+{   
+    color: white;
+    margin-top: 20px; 
+    width: 250px; 
+    height: 200px;
+    border-radius: 15px; 
+}
+.Visitorcard
+{
+    background-color: #00b39b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.UserCard
+{
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Stars
+{
+    background-color: darkorchid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.SalleNumber
+{
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.svg
+{
+    font-size: 50px;
+}

@@ -1,7 +1,21 @@
 .SalleItemContainer
 {
     margin-top: 100px;
-    border: 1px solid black; 
+    
     max-width: 1016.5px; 
-    height: 500px; 
+}
+
+/*----------------------------------------------Pages -----------------------------------------------*/
+
+.PaginationNumber{
+  list-style: none;
+  margin-right: 10px;
+  padding: 5px;
+}
+.PagesNumbers{
+  
+  display: flex;
+  justify-content: flex-end;
+  
+
 }

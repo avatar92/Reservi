@@ -1,0 +1,53 @@
+.sidenav 
+{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #333333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+#main 
+{
+    transition: margin-left .5s;
+}
+.sideNavLink
+{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+.sideNavLink:hover
+{
+    text-decoration: none;
+    color: #00b39b;
+    background-color: #646363;
+
+}
+.flexinner
+{
+    text-align: center;
+    width: 50%;
+    margin: 10px 0;
+}
+.adminPage
+{
+    /* border:1px solid greenyellow; */
+    position: absolute;
+    width: 250px; 
+    height: 60px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    font-size: 30px;
+    background-color: #646363;
+    color: white;
+}

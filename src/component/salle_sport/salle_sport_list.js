@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SalleItem from './salleItem.js'
-import './salleList.css'
+import SalleItem from './salle_sport_item'
+import './sallesport.css'
 import {connect} from 'react-redux'
 
 class SalleList extends Component {
@@ -17,28 +17,31 @@ class SalleList extends Component {
         });
       }
     render() {
-            console.log('myDataState:',this.state.data,'\n','myProps',this.props.salleEsthetiqueReducer)
+            // console.log('myDataState:',this.state.data,'\n','myProps',this.props.salleEsthetiqueReducer)
             const {currentPage,dataDisplayedPerPage}=this.state; 
             const indexOfLastData=currentPage*dataDisplayedPerPage; 
             const indexOfFirstData=indexOfLastData-dataDisplayedPerPage;
-            const currentDatas=this.props.salleEsthetiqueReducer.slice(indexOfFirstData,indexOfLastData); 
+            const currentDatas=this.props.salleSportReducer.slice(indexOfFirstData,indexOfLastData); 
             const renderData=currentDatas.map(el=><div key={el._id} className='col-lg-4 col-md-4 col-sm-6'>                    
             <SalleItem  salleName={el.salleName} img={el.img} location={el.location}/>
             </div>)
             const pageNumbers = [];
-            for (let i = 1; i <= Math.ceil(this.props.salleEsthetiqueReducer.length / dataDisplayedPerPage); i++) {
+            for (let i = 1; i <= Math.ceil(this.props.salleSportReducer.length / dataDisplayedPerPage); i++) {
               pageNumbers.push(i);
             }
     
             const renderPageNumbers = pageNumbers.map(number => {
               return (
+                
                 <li className='PaginationNumber'
                   key={number}
                   id={number}
-                  onClick={this.handleClick}
-                >
+                  onClick={this.handleClick}>
+                
                   {number}
                 </li>
+              
+
               );
             }); 
             return ( 
@@ -57,7 +60,7 @@ const mapStateToProps=(state)=>
 
 {
     return {
-        salleEsthetiqueReducer:state.salleEsthetiqueReducer
+        salleSportReducer:state.salleSportReducer
     }
 }  
 export default connect(mapStateToProps,null)(SalleList);

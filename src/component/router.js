@@ -4,6 +4,9 @@ import HomePage from './homepage/homePage.js'
 import SalleEsthetique from './salle_ésthétique/salleesthetique.js';
 import SalleFete from './salleFetes/salle-fete-item'
 import NewSalle from './salleFetes/newSalle.js'
+import SalleSport from './salle_sport/sallesport';
+import AdminPage from './admin_page/adminPage'
+
 
 class Router extends Component {
     constructor(props) {
@@ -19,6 +22,8 @@ class Router extends Component {
             <Route exact path='/newSalle' component={NewSalle}/>
 
 
+            <Route exact path='/salle_de_sports' component = {SalleSport}/>
+            <Route exact path='/admin' component={AdminPage}/>
         </div>
         );
     }
