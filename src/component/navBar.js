@@ -54,7 +54,7 @@ class NavBar extends Component {
                                 <span className="dropdownLink">Navigation</span>
                                 <div className="dropdown-content">
                                     <Link to='/salle_de_sports'>Salle de sports</Link>
-                                    <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
+                                    <Link to='/salle_fete'>Salle des Fétes</Link>
                                     <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
                                     <Link to='/'>Restaurant</Link>
                                     <Link to='/'>Fast Food</Link>

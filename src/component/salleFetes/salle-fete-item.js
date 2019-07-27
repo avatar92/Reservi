@@ -7,7 +7,7 @@ let disabledDates = [
     new Date(2018, 7, 7),
     new Date(2019, 7, 7),
 ];
-class SalleFete extends Component {
+class SalleFete2 extends Component {
     constructor(props) {
         super(props);
         this.state = {date: ''}
@@ -91,4 +91,4 @@ class SalleFete extends Component {
     }
 }
 
-export default SalleFete;
+export default SalleFete2;

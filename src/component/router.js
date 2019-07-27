@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom'
-import HomePage from './homepage/homePage.js'
+import {Route} from 'react-router-dom';
+import HomePage from './homepage/homePage.js';
 import SalleEsthetique from './salle_ésthétique/salleesthetique.js';
-import SalleFete from './salleFetes/salle-fete-item'
-import NewSalle from './salleFetes/newSalle.js'
+import SalleFete from './salleFetes/salle-fete.js';
+import NewSalle from './salleFetes/newSalle.js';
 import SalleSport from './salle_sport/sallesport';
-import AdminPage from './admin_page/adminPage'
-
+import AdminPage from './admin_page/adminPage';
+import HostPage from './host_page/host';
 
 class Router extends Component {
     constructor(props) {
@@ -18,12 +18,15 @@ class Router extends Component {
         <div>    
             <Route exact path='/' component={HomePage} />
             <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>
-            <Route exact path='/asma' component={SalleFete}/>
+
+            <Route exact path='/salle_fete' component={SalleFete}/>
             <Route exact path='/newSalle' component={NewSalle}/>
+            <Route exact path='/hostPage' component={HostPage}/>
 
 
             <Route exact path='/salle_de_sports' component = {SalleSport}/>
             <Route exact path='/admin' component={AdminPage}/>
+
         </div>
         );
     }

@@ -1,0 +1,100 @@
+.hostNavBar{
+    background-color: #00b39b;
+    height: 50px;
+}
+.hostNavBar-reservi{
+    font-size:24px; 
+    font-weight: 900; 
+    color:#fff;
+    text-align: center;
+    width: 20%;
+}
+.hostNavBar-search{
+    width: 60%;
+}
+.hostNavBar-msg-profil{
+    width: 20%;
+}
+
+.hostNavBar-btn-search:hover{
+   color: #00b39b;
+}
+.host-image{
+    width:35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.hostNavBar-message{
+    color:#fff;
+}
+.hostNavBar-message:hover{
+    color:grey;
+}
+.hostNavBar-msg-profil-search{
+  display:none;
+  color: #fff;
+}
+.hostNavBar-reservi-forMobile{
+    width: 30%;
+    font-size:20px; 
+    font-weight: 900; 
+    color:#fff;
+    text-align: center;
+}
+.hostNavBar-search-forMobile{
+    width:60%;
+
+}
+.hostNavBar-msg-profil-search-formobile{
+    color:#fff;
+    text-align: center;
+}
+
+.hostNavBar-sideBar{
+    display: none;
+    position: absolute;
+    top:45px;
+    right: 0;
+    width: 300px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2) !important;
+}
+.host-image-div:hover .hostNavBar-sideBar{
+    display: block !important;
+}
+.hostNavBar-user-information{
+    background-color: rgb(50,74,94);
+    color: #fff;
+    padding: 10px;
+}.hostNavBar-tasks{
+    padding: 10px;
+    color:rgb(50,74,94);
+}
+.hostNavBar-link:hover{
+    text-decoration: none;
+    color:#3d83df;
+}
+
+@media screen and (max-width: 600px) {
+    .hostNavBar-msg-profil-search{
+        display:block;
+      }
+      .hostNavBar-reservi{
+        width: 50%;
+    }
+    .hostNavBar-search{
+        display:none;
+        width: 0%;
+    }
+    .hostNavBar-msg-profil{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 350px) {
+    .hostNavBar-reservi-forMobile{
+        width: 30%;
+        font-size:18px; 
+        font-weight: 800; 
+        color:#fff;
+        text-align: center;
+    }
+}
