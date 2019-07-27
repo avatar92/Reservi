@@ -11,6 +11,7 @@ class SalleList extends Component {
             dataDisplayedPerPage:9
         }
     }
+    
     handleClick=(event)=> {
         this.setState({
           currentPage: Number(event.target.id)
@@ -39,6 +40,7 @@ class SalleList extends Component {
                   onClick={this.handleClick}>
                 
                   {number}
+                
                 </li>
               
 
@@ -50,7 +52,7 @@ class SalleList extends Component {
                     {renderData}
                 </div>
                 <div className="PagesNumbers">
-                    {renderPageNumbers}
+                  {renderPageNumbers}
                 </div>
             </div>
         );
