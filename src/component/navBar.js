@@ -27,11 +27,11 @@ class NavBar extends Component {
         return ( 
             <div className="barredenavgation">
             <div className="header">
-                    <span className='reservi'>Reservi.TN</span>
+                    <Link to='/admin' className='reservi'>Reservi.TN</Link>
                     <div  className="toggleIcon">
                         <i className="fa fa-bars toggle" onClick={this.openNav} aria-hidden="true"></i>
                     </div>
-                    <div id="myNav" className="overlay">
+                    <div id="myNav" className="overlay">    
                     <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">

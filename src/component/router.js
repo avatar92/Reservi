@@ -6,6 +6,7 @@ import SalleSport from './salle_sport/sallesport';
 import AdminPage from './admin_page/adminDashboardPage'
 import AdmintPostPage from './admin_page/adminPostsPage.js'
 import AdminAddSallePage from './admin_page/adminAddSallePage.js'
+import 
 
 
 class Router extends Component {
@@ -19,6 +20,7 @@ class Router extends Component {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>
             <Route exact path='/salle_de_sports' component = {SalleSport}/>
+            <Route exact path='/salle_des_fetes' component = {SalleSport}/>
             <Route exact path='/admin' component={AdminPage}/>
             <Route exact path='/admin/post' component={AdmintPostPage}/>
             <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>

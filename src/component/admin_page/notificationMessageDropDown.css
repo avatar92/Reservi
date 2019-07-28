@@ -1,0 +1,118 @@
+.box1 
+{
+    position:absolute;
+    top:22px;
+    right: 500px;
+    transform:translate(-50%,-50%);
+    z-index: 10; 
+}
+.notifications1 
+{
+    background:#fff;
+    border-radius:30px;
+    box-sizing:border-box;
+    text-align:center;
+}
+.notifications1 
+{
+    /* border: 2px solid black;  */
+    width:300px;
+    height:60px;
+    margin-top: 258px;
+    text-align:left;
+    padding:0 15px;
+    background:#e2ebf1;
+    transform:translateY(-100%);
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    position: relative;
+    left: 350px;
+}
+.notifications1 .fa 
+{
+    color:#fff;
+    line-height:60px;
+    font-size:30px;
+}
+.notifications1 .userlike 
+{
+    color:#cecece;
+    line-height:60px;
+    font-size:30px;
+}
+.notifications1 .num 
+{
+    position:absolute;
+    top:0;
+    right:-5px;
+    width:25px;
+    height:25px;
+    /* border-radius:50%; */
+    background:#e2ebf1;
+    color:#fff;
+    line-height:25px;
+    font-family:sans-serif;
+    text-align:center;
+}
+.notifications1 .num 
+{
+    position:relative;
+    background:transparent;
+    color:#fff;
+    font-size:24px;
+    top:-4px;
+}
+.scrollbar 
+{   
+    /* border: 2px solid black;  */
+    position:absolute;
+    left:0;
+    top:50px;
+    margin:0;
+    width:100%;
+    background:#fff;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    padding:20px;
+    box-sizing:border-box;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:0px; 
+    display:none;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll; 
+}
+.notifications1 ul 
+{
+    display:block;
+}
+.scrollbar  li 
+{
+    list-style:none;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    padding:8px 0;
+}
+.scrollbar  li:last-child 
+{
+    border-bottom:none;
+}
+
+.scrollbar  li:hover .text 
+{
+    font-weight:bold;
+    color:#00b39b;
+}
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #00b39b;
+}
+@media screen and (max-width:767.5px)
+{
+    .box1
+    {
+        top:90px;
+        right: 60%;
+    }
+}

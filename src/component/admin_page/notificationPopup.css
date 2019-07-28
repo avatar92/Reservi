@@ -1,0 +1,21 @@
+.PopupContainer
+{
+    background-color: red; 
+    width: 15px;
+    text-align: center;
+    padding: 1px;
+    border-radius: 2px; 
+    position: absolute; 
+    z-index: 20;
+    top: 5px;
+    color: white; 
+    right: 327px; 
+    font-size: 10px;
+}
+@media screen and (max-width:767.5px){
+    .PopupContainer
+    {
+        top: 65px;
+        right: 35px;  
+    }
+}

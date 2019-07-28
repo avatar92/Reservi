@@ -14,3 +14,9 @@
 {
     color: #e2ebf1;
 } 
+@media screen and (max-width:767.5px){
+    .searchBox
+    {
+        margin-top: 150px;
+    }
+}
