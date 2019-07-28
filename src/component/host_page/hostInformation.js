@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import HostNavBar from './hostNavBar2';
 import './hostInformation.css';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class HostInformation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fullName: this.props.user[0].userInformation.fullName,
-            userName: this.props.user[0].userInformation.userName,
-            email: this.props.user[0].userInformation.email,
-            password: this.props.user[0].userInformation.password,
+            fullName: this.props.user[0].fullName,
+            userName: this.props.user[0].userName,
+            email: this.props.user[0].email,
+            password: this.props.user[0].password,
             newPassword: '',
             confirmNewPassword: ''
         }
@@ -22,7 +21,7 @@ class HostInformation extends Component {
             <div>
                 <HostNavBar />
                 <div className=' personal-information'>
-                
+
                     <form>
                         <div className='row'>
                             <div className='col-md-4'>
@@ -78,13 +77,13 @@ class HostInformation extends Component {
 
                         </div>
                         <div className='d-flex justify-content-center mt-5'>
-                            <button className='btn personal-information-btn' type='submit'
+                            <div className='btn personal-information-btn' type='submit'
                                 onClick={() => {
-                                    this.props.editInformation(this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
+                                    this.props.editInformation(this.props.user[0]._id, this.props.user[0].password, this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
                                 }}
                             >
                                 Submit
-                            </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -94,21 +93,53 @@ class HostInformation extends Component {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        editInformation: (fullName, userName, email, password, newPassword, confirmNewPassword) => {
-            dispatch({
-                type: 'EDIT_PERSONAL_INFORMATION',
-                value: {
-                    fullName,
-                    userName,
-                    email,
-                    password,
-                    newPassword,
-                    confirmNewPassword
+        editInformation: (id, defaultPass, fullName, userName, email, password, newPassword, confirmNewPassword) => {
+            if (newPassword === '' && confirmNewPassword === '') {
+                if (password === defaultPass) {
+
+                    dispatch({
+                        type: 'EDIT_PERSONAL_INFORMATION',
+                        value: {
+                            id,
+                            fullName,
+                            email,
+                            userName,
+                            password,
+                        }
+                    })
+                } else {
+                    alert('Mot de passe incorrect')
                 }
-            })
+            }
+            else if (newPassword !== '' && confirmNewPassword !== '') {
+                if (password === defaultPass) {
+                    if (newPassword === confirmNewPassword) {
+                        dispatch({
+                            type: 'EDIT_PERSONAL_INFORMATION',
+                            value: {
+                                id,
+                                fullName,
+                                email,
+                                userName,
+                                newPassword,
+                            }
+                        })
+                    } else {
+                        alert("veuillez bien confirmer votre nouveau mot de passe")
+                    }
+                } else {
+                    alert('Mot de passe incorrect')
+                }
+            } else if (newPassword === '' && confirmNewPassword !== '') {
+                alert('veuillez entrer votre nouveau mot de passe avant de le confirmer')
+
+            } else if (newPassword !== '' && confirmNewPassword === '') {
+                alert('veuillez confirmer votre nouveau mot de passe')
+            }
         }
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         user: state.hostReducer
