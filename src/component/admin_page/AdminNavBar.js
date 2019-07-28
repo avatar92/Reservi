@@ -5,6 +5,7 @@ import NotificationDropDown from './notifcationdropdown.js'
 import NotificationMessageDropDown from './notificationMessagedropdown.js'
 import NotificationMessagePopup from './notificationMessagePopup.js'
 import NotificationPopup from './notificationPopup.js'
+import {connect} from 'react-redux'
 class AdminNavBar extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +13,9 @@ class AdminNavBar extends Component {
             isOpen:false ,
             isSideopen:true, 
             isNotificationOpen:false,
-            isNotificationMessageOpen:false 
+            isNotificationMessageOpen:false,  
+            previousMessage:0,
+            totalMessage:this.props.messageReducer.length
         }
     }
     openSideNav=()=>{
@@ -40,12 +43,14 @@ class AdminNavBar extends Component {
                 <div className="adminNavgationContainer_lessthen768 container-fluid">
                     <div className="adminnavigationMenu_lessthen768">
                             <span className='adminTogler ' onClick={()=>{this.setState({isSideopen:!this.state.isSideopen})
-                                                                        this.openSideNav()}} >
+                                                                        this.openSideNav()}}>
                                 <i className="fa fa-bars admintoggle"aria-hidden="true"></i>
                             </span>
                             <div className='navbarRight_less768'>
                                 <div className="navigationLinks_less768">
-                                        <i class="fa fa-paper-plane notifcationAdmin" onClick={this.openMessageNotification}></i>
+                                        <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{this.setState({previousMessage:this.state.totalMessage})
+                                                                                                this.openMessageNotification()
+                                                                                                }}></i>
                                         <i class="fa fa-bell notifcationAdmin" onClick={this.openNotification}></i>
                                 </div>
                             </div>
@@ -69,7 +74,9 @@ class AdminNavBar extends Component {
                             </span>
                             <div className='navbarRight '>
                             <div className="navigationLinks ">
-                                    <i class="fa fa-paper-plane notifcationAdmin" onClick={this.openMessageNotification}></i>
+                                    <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{this.setState({previousMessage:this.state.totalMessage})
+                                                                                                this.openMessageNotification()
+                                                                                                }}></i>
                                     <i class="fa fa-bell notifcationAdmin" onClick={this.openNotification}></i>
                             </div>
                             <div className='admin'>                                
@@ -84,12 +91,17 @@ class AdminNavBar extends Component {
                 {/* NotificationMessageDropDown*/}
                 <NotificationMessageDropDown isNotificationMessageOpen={this.state.isNotificationMessageOpen}/>
                 {/* NotificationMessagePopup*/}
-                <NotificationMessagePopup/>
+                <NotificationMessagePopup totalmessage={this.state.totalMessage} previousMessage={this.state.previousMessage}/>
                 {/* NotificationPopup*/}
-                <NotificationPopup/>
+                <NotificationPopup />
             </div>
         );
     }
 }
- 
-export default AdminNavBar;
+const mapStateToProps=(state)=>{
+    return{
+        messageReducer:state.messageReducer
+    }
+}
+
+export default connect(mapStateToProps,null)(AdminNavBar);

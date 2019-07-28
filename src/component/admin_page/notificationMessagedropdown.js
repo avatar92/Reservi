@@ -14,7 +14,7 @@ class NotificationMessageDropDown extends Component {
                         <span>
                             <i className="fa fa-paper-plane" id="shownonclickevent"/>
                             <span className="num"> Message : </span>
-                            <span className="num">4</span>
+                            <span className="num">{this.props.messageReducer.length}</span>
                         </span>
                         <ul  className='scrollbar' id='style-1'>
                         <div className='force-overflow'>    

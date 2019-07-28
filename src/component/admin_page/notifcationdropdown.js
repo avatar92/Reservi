@@ -19,16 +19,16 @@ class NotificationDropDown extends Component {
                         </span>
                         <ul className='scrollbar' id='style-1'>
                         <li className="icon">
-                            <span className="text">Someone Like Your Post</span>
+                            <span className="text">Someone put 5 star</span>
                         </li>
                         <li className="icon">
-                            <span className="text">Someone Like Your Photo</span>
+                            <span className="text">Someone put 1 star</span>
                         </li>
                         <li className="icon">
-                            <span className="text">Someone Dislike Your Post</span>
+                            <span className="text">Someone put 4 star</span>
                         </li>
                         <li className="icon">
-                            <span className="text">Someone Comment on Your Post</span>
+                            <span className="text">Someone put 5 star</span>
                         </li>
                         </ul>
                     </div>
