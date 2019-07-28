@@ -82,6 +82,8 @@ const salleFeteReducer = (state = allSalle, action) => {
                     return (el.name.toLocaleLowerCase().indexOf(action.searchTerm) > -1 || el.ville.toLocaleLowerCase().indexOf(action.searchTerm) > -1)
                 }
             });
+            case ('ADD_NEW_SALLE_FETE'):
+                
         default:
             return state;
     }

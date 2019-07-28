@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import HostNavBar from './hostNavBar2';
 import './hostInformation.css';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 class HostInformation extends Component {
     constructor(props) {
         super(props);
@@ -14,26 +16,18 @@ class HostInformation extends Component {
             confirmNewPassword: ''
         }
     }
-    skander = (e) => {
-        var err = []
-        const asma = (this.state.confirmNewPassword !== '' && this.state.newPassword) === '' ? err.push('enter your new password') :
-            (
-                this.state.confirmNewPassword === '' && this.state.newPassword !== '' ? err.push('confirm your new password') : true
-            )
-        //    this.state.confirmNewPassword === '' || this.state.newPassword === '' ? this.skander : this.props.editInformation(this.state.fullName,this.state.userName,this.state.email,this.state.password,this.state.newPassword,this.state.confirmNewPassword)
-
-    }
     render() {
         console.log('message', this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
         return (
             <div>
                 <HostNavBar />
                 <div className=' personal-information'>
+                
                     <form>
                         <div className='row'>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>Full name</b>
+                                    <b>Nom complet</b>
                                 </div>
                                 <input className='personal-information-input' type='text' required value={this.state.fullName} onChange={(e) => {
                                     this.setState({ fullName: e.target.value })
@@ -41,7 +35,7 @@ class HostInformation extends Component {
                             </div>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>User name</b>
+                                    <b>Nom d'utilisateur</b>
                                 </div>
                                 <input className='personal-information-input' type='text' required value={this.state.userName} onChange={(e) => {
                                     this.setState({ userName: e.target.value })
@@ -49,7 +43,7 @@ class HostInformation extends Component {
                             </div>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>Address email</b>
+                                    <b>Adresse email</b>
                                 </div>
                                 <input className='personal-information-input' type='email' required value={this.state.email} onChange={(e) => {
                                     this.setState({ email: e.target.value })
@@ -59,7 +53,7 @@ class HostInformation extends Component {
                         <div className='row mt-3'>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>Actual password</b>
+                                    <b>Mot de passe actuel</b>
                                 </div>
                                 <input className='personal-information-input' type='text' required onChange={(e) => {
                                     this.setState({ password: e.target.value })
@@ -67,7 +61,7 @@ class HostInformation extends Component {
                             </div>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>New password</b>
+                                    <b>Nouveau mot de passe</b>
                                 </div>
                                 <input className='personal-information-input' type='text' onChange={(e) => {
                                     this.setState({ newPassword: e.target.value })
@@ -75,7 +69,7 @@ class HostInformation extends Component {
                             </div>
                             <div className='col-md-4'>
                                 <div>
-                                    <b>Confirm new password</b>
+                                    <b>Confirmez nouveau mot de passe</b>
                                 </div>
                                 <input className='personal-information-input' type='text' onChange={(e) => {
                                     this.setState({ confirmNewPassword: e.target.value })
@@ -85,7 +79,7 @@ class HostInformation extends Component {
                         </div>
                         <div className='d-flex justify-content-center mt-5'>
                             <button className='btn personal-information-btn' type='submit'
-                                onClick={(e) => {
+                                onClick={() => {
                                     this.props.editInformation(this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
                                 }}
                             >

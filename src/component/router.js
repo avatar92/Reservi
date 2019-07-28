@@ -22,7 +22,7 @@ class Router extends Component {
             <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>
 
             <Route exact path='/salle_fete' component={SalleFete}/>
-            <Route exact path='/hostPage' component={HostPage}/>
+            <Route exact path='/host_page' component={HostPage}/>
             <Route exact path='/profile' component={HostInformation}/>
 
             <Route exact path='/new_Salle' component={NewHostSalle}/>

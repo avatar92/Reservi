@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './hostNavBar2.css'
+import './hostNavBar2.css';
+import { connect } from 'react-redux';
+
 class HostNavBar extends Component {
     constructor(props) {
         super(props);
@@ -65,11 +67,9 @@ class HostNavBar extends Component {
                                 <div className="hostNavBar-sideBar">
                                     <div className="hostNavBar-user-information">
                                         <div >
-                                            <div className="user-corner-card-title"><b>SKANDER ELOUADI , Id:
-                                    65549</b>
+                                            <div><b>{this.props.user[0].userInformation.fullName}, Id: {this.props.user[0].userInformation._id}</b>
                                             </div>
-                                            <div className="user-corner-card-subtitle">skanderelouadi58@gmail.com</div>
-                                            <div className="user-corner-card-subtitle">58 881 053</div>
+                                            <div>{this.props.user[0].userInformation.email}</div>
                                         </div>
                                     </div>
                                     <div className="hostNavBar-tasks">
@@ -85,6 +85,11 @@ class HostNavBar extends Component {
                                             <div> <i class="fas fa-shopping-basket mr-2"></i>Mes salles </div>
 
                                         </Link>
+                                        <Link className='hostNavBar-link' to={'/host_page'}>
+                                            <div><i class="fas fa-home mr-2"></i>Accueil</div>
+
+                                        </Link>
+                                        
                                         <Link className='hostNavBar-link' to={'/logout'}>
                                             <div><i class="fas fa-sign-out-alt mr-2"></i>Déconnexion</div>
                                         </Link>
@@ -100,4 +105,9 @@ class HostNavBar extends Component {
         );
     }
 }
-export default HostNavBar;
+const mapStateToProps = (state) => {
+    return {
+        user: state.hostReducer
+    }
+}
+export default connect(mapStateToProps, null)(HostNavBar);

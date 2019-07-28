@@ -3,6 +3,7 @@
     margin-top: 100px;
     margin-right: 50px;
     margin-left: 50px;
+    margin-bottom: 100px;
     font-size: 2vw;
     font-weight: 700;
 }
@@ -54,14 +55,16 @@ textarea::placeholder{
     width: 50%;
     margin: 0 auto;
 }
-.newsalle-host-btn{
+.newsalle-host-submit-btn{
+    display: flex;
+    justify-content: center;
     margin:0 auto;
     color:#fff;
     border-color:#00b39b;
     background-color: #00b39b; 
-    width: 15%;
     font-size: 20px;
     font-weight: 700;
+    width: 15%;
 }
 .offre-title{
     text-align: center;
@@ -70,7 +73,12 @@ textarea::placeholder{
     padding: 40px;
     border:3px dashed #757575;
 }
-
+.newsalle-host-offre-container{
+    border: 1px solid #757575;
+}
+.newsalle-host-submit-div{
+    margin-top: 70px;
+}
 @media screen and (max-width: 500px) {
     .newsalle-host{
    

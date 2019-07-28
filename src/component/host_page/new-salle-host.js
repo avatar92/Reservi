@@ -1,37 +1,49 @@
 import React, { Component } from 'react';
 import HostNavBar from './hostNavBar2.js';
-import './new-salle-host.css'
+import './new-salle-host.css';
+import Footer from '../footer.js';
+import {connect} from 'react-redux';
 class NewHostSalle extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showSalleFete: false,
-            showSalleSportEsthetique:false,
-            category:'',
+            showSalleSportEsthetique: false,
+            category: '',
             titre: '',
             description: '',
             adresse: '',
             ville: '',
+            listImage:null,
             telFixe: '',
             telMobile: '',
             capacite: '',
-            prixSalle: ''
+            prixSalle: '',
+            nbrOffreSupp: 0,
+            nomOffre: '',
+            prixOffre: '',
+            descriptionOffre: ''
         }
     }
-    handleCategory(e){
-        this.setState({category:e.target.value})
-        if(e.target.value !== 'Catégorie'){
-            if(e.target.value === 'Salle des fêtes'){
-                this.setState({showSalleFete:true})
-                this.setState({showSalleSportEsthetique:false})
-
-            }else{
-                this.setState({showSalleFete:false})
-                this.setState({showSalleSportEsthetique:true})
-
-            }
+    handleCategory(e) {
+        this.setState({ category: e.target.value })
+        if (e.target.value === 'Salle des fêtes') {
+            this.setState({ showSalleFete: true })
+            this.setState({ showSalleSportEsthetique: false })
+        } else {
+            this.setState({ showSalleFete: false })
+            this.setState({ showSalleSportEsthetique: true })
         }
-        
+    }
+    imageHandler = (e) => {
+        this.setState({listImage:e.target.files})
+    }
+    imageUploadHandler = () => {
+        const fd = new FormData()
+        fd.append('imagefile',this.state.listImage,this.state.listImage.name)
+        console.log(fd)
+
+        // axios.post('lien',fd)
     }
     render() {
         console.log(this.state.ville)
@@ -44,7 +56,7 @@ class NewHostSalle extends Component {
                     </div>
                     <div>
                         <select className="form-control newsalle-host-dropdown" onChange={(e) => this.handleCategory(e)}>
-                            <option>Catégorie</option>
+                            <option hidden>Catégorie</option>
                             <option>Salle des fêtes</option>
                             <option>Salle de sport</option>
                             <option>Salle d'esthétique</option>
@@ -70,8 +82,8 @@ class NewHostSalle extends Component {
                         </div>
                         <div className="newsalle-host-section newsalle-host-space" >
                             <div>Ville*</div>
-                            <select className="form-control newsalle-host-dropdown" id="ville" onChange={(e) => { this.setState({ ville: e.target.value }) }}>
-                                <option>Gouvernorat</option>
+                            <select className="form-control newsalle-host-dropdown" id="ville" required onChange={(e) => { this.setState({ ville: e.target.value }) }}>
+                                <option hidden>Gouvernorat</option>
                                 <option>Ariana</option>
                                 <option>Béja</option>
                                 <option>Ben Arous</option>
@@ -100,7 +112,7 @@ class NewHostSalle extends Component {
                         </div>
                         <div className='newsalle-host-space'>
                             <div>Image</div>
-                            <input className="input-border-style" type="file" accept="image/*" multiple />
+                            <input className="input-border-style" type="file" accept="image/*" multiple required onChange={this.imageHandler}/>
                         </div>
                         <div className='row newsalle-host-space'>
                             <div className='col-sm-6'>
@@ -123,14 +135,14 @@ class NewHostSalle extends Component {
                                     <div>
                                         Capacité
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Capacité" required onChange={(e) => { this.setState({ capacite: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Capacité"  onChange={(e) => { this.setState({ capacite: e.target.value }) }} />
 
                                 </div>
                                 <div className='col-sm-6'>
                                     <div>
                                         Prix salle
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix" required onChange={(e) => { this.setState({ prix: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Prix"  onChange={(e) => { this.setState({ prix: e.target.value }) }} />
 
                                 </div>
                             </div>
@@ -140,38 +152,116 @@ class NewHostSalle extends Component {
                                 <div className="col-sm-6">
                                     <div>
                                         Nom offre
-                                    </div>
-                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" required onChange={(e) => { this.setState({ nomOffre: e.target.value }) }} />
-
+                                </div>
+                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" onChange={(e) => { this.setState({ nomOffre: e.target.value }) }} />
                                 </div>
                                 <div className="col-sm-6">
                                     <div>
                                         Prix offre
-                                    </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" required onChange={(e) => { this.setState({ prixOffre: e.target.value }) }} />
-
+                                </div>
+                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" onChange={(e) => { this.setState({ prixOffre: e.target.value }) }} />
                                 </div>
                             </div>
                             <div>
                                 <div>Description d'offre</div>
                                 <textarea className="textarea-border-style" placeholder="Description d'offre" onChange={(e) => { this.setState({ descriptionOffre: e.target.value }) }}></textarea>
                             </div>
-
                         </div>
 
-                        <div style={{ marginTop: '15px' }}>
-                            <button className='btn newsalle-host-btn' type='submit'>
+                        <div className='newsalle-host-submit-div'>
+                            <button className='btn newsalle-host-submit-btn' type='submit'
+                             onClick={() => this.createSalle(
+                                this.props.user[0].userInformation._id,
+                                this.state.category,
+                                this.state.titre,
+                                this.state.description,
+                                this.state.adresse,
+                                this.state.ville,
+                                this.state.listImage,
+                                this.state.telFixe,
+                                this.state.telMobile,
+                                this.state.capacite,
+                                this.state.prixSalle,
+                                this.state.nomOffre,
+                                this.state.prixOffre,
+                                this.state.descriptionOffre
+
+                                )}>
                                 Ajouter
                             </button>
                         </div>
-
-
                     </form>
 
                 </div>
+                <Footer/>
             </div>
         );
     }
 }
-
-export default NewHostSalle;
+const mapStateToProps = (state) => {
+    return{
+        user:state.hostReducer
+    }
+}
+const mapDispatchToProps =dispatch => {
+    return{
+        createSalle: (idUser,category,titre,description,adresse,ville,image,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
+            if(category=== 'Salle des fêtes'){
+                dispatch({
+                    type:'ADD_NEW_SALLE_FETE',
+                    value: {
+                        idUser,
+                        category,
+                        titre,
+                        description,
+                        adresse,
+                        ville,
+                        image,
+                        telFix,
+                        telMobile,
+                        capacite,
+                        prixSalle,
+                    }
+                })
+            }
+            else if(category === "Salle de sport"){
+                dispatch({
+                    type:'ADD_NEW_SALLE_SPORT',
+                    value: {
+                        idUser,
+                        category,
+                        titre,
+                        description,
+                        adresse,
+                        ville,
+                        image,
+                        telFix,
+                        telMobile,
+                        nomOffre,
+                        prixOffre,
+                        descriptionOffre
+                    }
+                })
+            }else if(category==="Salle d'esthétique"){
+                dispatch({
+                    type:'ADD_NEW_SALLE_ESTHETIQUE',
+                    value: {
+                        idUser,
+                        category,
+                        titre,
+                        description,
+                        adresse,
+                        ville,
+                        image,
+                        telFix,
+                        telMobile,
+                        nomOffre,
+                        prixOffre,
+                        descriptionOffre
+                    }
+                })
+            }
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(NewHostSalle);
