@@ -36,7 +36,8 @@ class HostPost extends Component {
             const indexOfLastData=currentPage*dataDisplayedPerPage; 
             const indexOfFirstData=indexOfLastData-dataDisplayedPerPage;
             const adminTab=this.props.salleEsthetiqueReducer.concat(this.props.salleSportReducer)
-            const adminSearchTab=adminTab.filter(el=>this.props.searchValue.trim()===''?true:el.salleName===this.props.searchValue||el.location===this.props.searchValue?el:'')
+            const adminTab1=adminTab.concat(this.props.salleFeteReducer)
+            const adminSearchTab=adminTab1.filter(el=>this.props.searchValue.trim()===''?true:el.salleName===this.props.searchValue||el.location===this.props.searchValue?el:'')
             const currentDatas=adminSearchTab.slice(indexOfFirstData,indexOfLastData); 
             const renderData=currentDatas.map(el=><div key={el._id} className='col-lg-4 col-md-4 col-sm-6'>                    
                 <HostPostCard  salleName={el.salleName} img={el.img} location={el.location} _id={el._id}/>
@@ -83,7 +84,8 @@ const mapStateToProps=(state)=>
 {
     return {
         salleEsthetiqueReducer:state.salleEsthetiqueReducer,
-        salleSportReducer:state.salleSportReducer
+        salleSportReducer:state.salleSportReducer,
+        salleFeteReducer:state.salleFeteReducer
     }
 }
 

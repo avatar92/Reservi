@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './dashboardContent.css'
+import {connect} from 'react-redux'
 class DashboardContent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-
+            totalItem:this.props.salleEsthetiqueReducer.concat(this.props.salleSportReducer.concat(this.props.salleFeteReducer)).length
         }
     }
     render() { 
@@ -41,7 +42,7 @@ class DashboardContent extends Component {
                             <p className='svg'>
                                <i class="fa fa-plus-square"></i>
                             </p>
-                            <h2>3000</h2>
+                            <h2>{this.state.totalItem}</h2>
                         </div>
                     </div>
                 </div>
@@ -49,5 +50,11 @@ class DashboardContent extends Component {
         );
     }
 }
- 
-export default DashboardContent;
+const mapStateToProps=(state)=>{
+    return {
+        salleEsthetiqueReducer:state.salleEsthetiqueReducer,
+        salleSportReducer:state.salleSportReducer,
+        salleFeteReducer:state.salleFeteReducer
+    }
+} 
+export default connect(mapStateToProps,null)(DashboardContent);

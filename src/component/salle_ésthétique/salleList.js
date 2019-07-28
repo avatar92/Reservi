@@ -42,7 +42,7 @@ class SalleList extends Component {
             const indexOfFirstData=indexOfLastData-dataDisplayedPerPage;
             const currentDatas=this.props.salleEsthetiqueReducer.slice(indexOfFirstData,indexOfLastData); 
             const renderData=currentDatas.map(el=><div key={el._id} className='col-lg-4 col-md-4 col-sm-6'>                    
-            <SalleItem  salleName={el.salleName} img={el.img} location={el.location}/>
+            <SalleItem _id={el._id} salleName={el.salleName} img={el.img} location={el.location}/>
             </div>)
             const pageNumbers = [];
             for (let i = 1; i <= Math.ceil(this.props.salleEsthetiqueReducer.length / dataDisplayedPerPage); i++) {
