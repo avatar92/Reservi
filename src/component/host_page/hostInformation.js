@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HostNavBar from './hostNavBar';
+import HostNavBar from './hostNavBar2';
 import './hostInformation.css';
 import { connect } from 'react-redux'
 class HostInformation extends Component {
@@ -84,13 +84,13 @@ class HostInformation extends Component {
 
                         </div>
                         <div className='d-flex justify-content-center mt-5'>
-                            <div className='btn personal-information-btn' type='submit'
+                            <button className='btn personal-information-btn' type='submit'
                                 onClick={(e) => {
                                     this.props.editInformation(this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
                                 }}
                             >
                                 Submit
-                            </div>
+                            </button>
                         </div>
                     </form>
                 </div>

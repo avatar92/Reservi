@@ -4,13 +4,15 @@ import AdminNavBar from './AdminNavBar.js'
 import HostPost from './hostPost.js'
 import AdminPostSearchBar from './adminPostSearchBar.js'
 class AdminPostPage extends Component {
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
         this.state = { 
             adminSearch:''
         }
     }
-    openCloseSideNav=(x)=> {
+    openCloseSideNav=(x)=> 
+    {
         if (x===false)
         {
             document.getElementById("Sidenav").style.width = "250px";
@@ -21,7 +23,8 @@ class AdminPostPage extends Component {
             document.getElementById("main").style.marginLeft= "0";
         }
     }
-    render() { 
+    render() 
+    { 
         return ( 
             <div>
                 <AdminSideNav/>

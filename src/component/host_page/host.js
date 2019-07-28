@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import HostNavBar from './hostNavBar';
-import Typing from 'react-typing-animation';
+import HostNavBar from './hostNavBar2';
 import Footer from '../footer.js';
 
 class HostPage extends Component {

@@ -65,7 +65,7 @@
     border-radius: 50%;
 }
 .hostNavBar-message{
-    color:#fff;
+    color:#00b39b;
 }
 .hostNavBar-message:hover{
     color:grey;
@@ -107,7 +107,8 @@
     background-color: rgb(50,74,94);
     color: #fff;
     padding: 10px;
-}.hostNavBar-tasks{
+}
+.hostNavBar-tasks{
     padding: 10px;
     color:rgb(50,74,94);
     background-color: #fff;

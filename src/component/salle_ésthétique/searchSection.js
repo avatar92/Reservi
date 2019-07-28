@@ -11,8 +11,8 @@ class SearchSection extends Component {
     render() {
         console.log(this.state.input)
     return (
-        <div className="search-section">
-            <div className="wrapper">
+        <div className="search-section ">
+            <div className="wrapper container-fluid">
                 <div className="slideshows">
                     <div className="slideshow slideshow--hero">
                         <div className="slides">

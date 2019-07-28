@@ -8,10 +8,10 @@
 .adminNavgationContainer
 {
     /* border: 1px solid gray;  */
-    padding: 0;
-    padding: 5px 5px; 
+    padding: 5px 5px 5px 5px ; 
     background-color: #00b39b;
     color:white;
+    
     
 }
 .adminnavigationMenu
@@ -22,6 +22,7 @@
     /* border: 1px solid yellow; */
     padding: 0;
     margin: 0; 
+    
 }
 .navbarRight
 {
@@ -55,4 +56,79 @@
 .admintoggle:hover,.logOut:hover,.notifcationAdmin:hover
 {
     color: #e2ebf1;
+}
+/*******Responsive adminNav*********************/
+.admin_page
+{
+    text-align: center; 
+    font-size: 41px; 
+    background-color: #646363;
+    color: white;
+    position: fixed;
+    z-index: 7;
+    top: 0;
+    width: 100%;
+}
+.adminnavigationMenu_lessthen768
+{
+    display: flex; 
+    align-items: baseline;
+    /* margin-top: 10px; */
+    font-size: 25px; 
+    padding: 10px;
+    justify-content: space-between; 
+    /* border: 1px solid;  */
+}
+.navbarRight_less768
+{
+    /* border: 1px solid;  */
+    width: 150px;
+    
+}
+.navigationLinks_less768
+{
+    display: flex; 
+    justify-content: space-around; 
+}
+.adminNavgationContainer_lessthen768
+{
+    /* border: 1px solid gray;  */
+    padding: 5px 5px 5px 5px ; 
+    background-color: #00b39b;
+    color:white;
+    position: fixed;
+    z-index: 6;
+    top: 61px
+}
+@media screen and (min-width: 767.5px){
+    .admin_page{
+        display: none; 
+    }
+    .adminnavigationMenu_lessthen768
+    {
+        display: none; 
+    }
+    .adminNavgationContainer_lessthen768
+    {
+        display: none; 
+    }
+}
+@media screen and (max-width: 767.5px){
+    .adminnavigationMenu{
+        display: none; 
+    }
+}
+/************************SideNavLink**************************************/
+.sideNavigationLink
+{
+    text-align: center;
+    position: fixed;
+    /* border: 1px solid black;  */
+    z-index: 6;
+    min-height: 100vh;
+    top: 128px;
+    width: 0;  
+    background-color: #333333;
+    transition: 0.5s;
+    overflow: hidden;
 }

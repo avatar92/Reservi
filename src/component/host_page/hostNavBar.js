@@ -58,7 +58,7 @@ class HostNavBar extends Component {
                                         <div> <i className="fas fa-user mr-2"></i>Mon profil </div>
 
                                     </Link>
-                                    <Link className='hostNavBar-link' to={'/newSalle'}>
+                                    <Link className='hostNavBar-link' to={'/new_Salle'}>
                                         <div> <i class="fas fa-folder-plus  mr-2"></i>Ajouter salle </div>
 
                                     </Link>

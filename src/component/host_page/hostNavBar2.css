@@ -1,0 +1,45 @@
+.hostNavBar-message{
+    color:#00b39b;
+}
+.hostNavBar-message:hover{
+    color:grey;
+}
+.host-image-div{
+    z-index: 10;
+
+}
+.host-image-div:hover .hostNavBar-sideBar{
+    display: block !important;
+}
+.host-image{
+    width:35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.hostNavBar-sideBar{
+    display: none;
+    position: absolute;
+    top:45px;
+    right: 0;
+    width: 300px;
+    box-shadow: 0 5px 10px 0 #d3cfc9;
+
+    /* box-shadow: 0 0 6px rgba(0,0,0,0.2) !important; */
+}
+.host-image-div:hover .hostNavBar-sideBar{
+    display: block !important;
+}
+.hostNavBar-user-information{
+    background-color: rgb(50,74,94);
+    color: #fff;
+    padding: 10px;
+}
+.hostNavBar-tasks{
+    padding: 10px;
+    color:rgb(50,74,94);
+    background-color: #fff;
+}
+.hostNavBar-link:hover{
+    text-decoration: none;
+    color:#3d83df;
+}

@@ -3,14 +3,13 @@ import {Route} from 'react-router-dom';
 import HomePage from './homepage/homePage.js';
 import SalleEsthetique from './salle_ésthétique/salleesthetique.js';
 import SalleFete from './salleFetes/salle-fete.js';
-import NewSalle from './salleFetes/newSalle.js';
 import SalleSport from './salle_sport/sallesport';
 import AdminPage from './admin_page/adminDashboardPage'
 import AdmintPostPage from './admin_page/adminPostsPage.js'
 import AdminAddSallePage from './admin_page/adminAddSallePage.js'
 import HostPage from './host_page/host.js'
-import HostInformation from './host_page/hostInformation'
-
+import HostInformation from './host_page/hostInformation.js'
+import NewHostSalle from './host_page/new-salle-host.js'
 class Router extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +25,7 @@ class Router extends Component {
             <Route exact path='/hostPage' component={HostPage}/>
             <Route exact path='/profile' component={HostInformation}/>
 
-            <Route exact path='/newSalle' component={NewSalle}/>
+            <Route exact path='/new_Salle' component={NewHostSalle}/>
 
 
             <Route exact path='/salle_de_sports' component = {SalleSport}/>
@@ -34,6 +33,9 @@ class Router extends Component {
 
             <Route exact path='/admin/post' component={AdmintPostPage}/>
             <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
+            <Route exact path='/admin/post' component={AdmintPostPage}/>
+            <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
+
         </div>
         );
     }

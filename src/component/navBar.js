@@ -26,13 +26,13 @@ class NavBar extends Component {
         console.log(window.location.href.slice(21))
         return ( 
             <div className="barredenavgation">
-                <div className="header">
-                    <span className='reservi'>Reservi.TN</span>
-                    <div className="toggleIcon">
+            <div className="header">
+                    <Link to='/admin' className='reservi'>Reservi.TN</Link>
+                    <div  className="toggleIcon">
                         <i className="fa fa-bars toggle" onClick={this.openNav} aria-hidden="true"></i>
                     </div>
-                    <div id="myNav" className="overlay">
-                        <span className='reservi1'>Reservi.TN</span>
+                    <div id="myNav" className="overlay">    
+                    <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
                             <Link to={window.location.href.slice(21)} onClick={this.scrollToContacts}>About us</Link>

@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
-import './footer.css';
+import './footer.css'
+import {connect} from 'react-redux'
 class Footer extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            emailInput:'',
+            messageInput:''
+        }
+    }
+    handleemailchange=(e)=>{
+        this.setState({emailInput:e.target.value})
+    }
+    handlemessagechange=(e)=>{
+        this.setState({messageInput:e.target.value})
     }
     render() { 
         return (
@@ -19,10 +29,14 @@ class Footer extends Component {
 
                         <form className="contact-us">
                             <p>Email:</p>
-                            <input type="email" placeholder="Enter email" className="email-input"></input><br></br>
+                            <input type="email" placeholder="Enter email" id='emailInput' className="email-input" onChange={this.handleemailchange}></input><br></br>
                             <p>Message</p>
-                            <textarea type="text" placeholder="Message" className="message-input"></textarea><br></br>
-                            <button type="submit">Send</button>
+                            <textarea type="text" placeholder="Message" id='messageInput' className="message-input" onChange={this.handlemessagechange}></textarea><br></br>
+                            <button type="submit"  onClick={(e)=>{this.props.sendmessage(this.state.emailInput,this.state.messageInput)
+                                                                document.getElementById('emailInput').value=''
+                                                                document.getElementById('messageInput').value=''
+                                                                alert('your message is sent we will reply soon')
+                                                                e.preventDefault()}}>Send</button>
                         </form>
 
                         
@@ -70,10 +84,22 @@ class Footer extends Component {
                          <p>Copyright &copy; 2019</p>
                     </div>
                 </footer>
-                
             </div>
         );
     }
 }
- 
-export default Footer;
+const mapDispatchToProps=dispatch=>{
+    return{ 
+        sendmessage: (x,y) => {
+            dispatch({
+                type: 'SEND_MESSAGE',
+                newmessage:{
+                    email:x,
+                    message:y,
+                    _id:Math.random()
+                }
+            })
+        }
+    }
+} 
+export default connect(null,mapDispatchToProps)(Footer);

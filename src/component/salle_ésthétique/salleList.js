@@ -16,6 +16,24 @@ class SalleList extends Component {
           currentPage: Number(event.target.id)
         });
       }
+      addPageNumber=()=>{
+        if (this.state.currentPage<=this.totalPage)
+        {this.setState({
+            currentPage:this.state.currentPage+1
+        })}
+    }
+    losePageNumber=()=>{
+        if (this.state.currentPage>=2)
+        {this.setState({
+            currentPage:this.state.currentPage-1
+        })}
+    }    
+    changePage=(x)=> {
+        this.setState({
+          currentPage: x+1,
+        }); 
+        // document.getElementsByClassName("PaginationNumberadmin")[x].style.backgroundColor = "red";
+    }
     render() {
             console.log('myDataState:',this.state.data,'\n','myProps',this.props.salleEsthetiqueReducer)
             const {currentPage,dataDisplayedPerPage}=this.state; 
@@ -30,25 +48,34 @@ class SalleList extends Component {
               pageNumbers.push(i);
             }
     
-            const renderPageNumbers = pageNumbers.map(number => {
-              return (
-                <li className='PaginationNumber'
-                  key={number}
-                  id={number}
-                  onClick={this.handleClick}
-                >
-                  {number}
-                </li>
-              );
-            }); 
+            const renderPageNumbers = pageNumbers.map((number,index) =><div>
+                {this.state.currentPage===index+1?<span 
+                    style={{"background-color":"#00b39b"}}
+                    className='PaginationNumberadmin'
+                    key={index}
+                    onClick={()=>this.changePage(index)}>
+                    {number}
+                </span>:
+                <span className='PaginationNumberadmin'
+                key={index}
+                onClick={()=>this.changePage(index)}>
+                {number}
+                </span>
+                }</div>
+            ); 
             return ( 
             <div className='container SalleItemContainer'>
+                <div className='row'>
+                    <div className="AdminPagesNumbers col-12">
+                        <span onClick={()=>this.losePageNumber()}>&laquo;</span>
+                            {renderPageNumbers}
+                        <span onClick={()=>this.addPageNumber()}>&raquo;</span>
+                    </div>
+                </div>
                 <div className='row' >
                     {renderData}
                 </div>
-                <div className="PagesNumbers">
-                    {renderPageNumbers}
-                </div>
+                
             </div>
         );
     }

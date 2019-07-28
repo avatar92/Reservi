@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AdminSideNav from './AdminSideNavBar.js'
 import AdminNavBar from './AdminNavBar.js'
 import DashboardContent from './dashboardContent.js'
-
+// import {Link} from 'react-router-dom'
 
 class AdminPage extends Component {
     constructor(props) {
@@ -20,13 +20,14 @@ class AdminPage extends Component {
             document.getElementById("main").style.marginLeft= "0";
         }
     }
-    render() { 
+    render() {
         return ( 
             <div>
                 <AdminSideNav/>
                 <div id='main'>
                     <AdminNavBar openClose={(x)=>this.openCloseSideNav(x)}/>
                     <DashboardContent/>
+                    {/* <Link to='/' >click me</Link> */}
                 </div>
             </div>
         );
