@@ -16,8 +16,7 @@ class SallePlus extends Component {
             <div>
                 <NavBar/>
                 
-                <div className="salle_imgs">
-                
+                <div className="salle_name">
                 </div>
                 
                 
@@ -28,5 +27,11 @@ class SallePlus extends Component {
     }
 }
 
+const mapStateToProps=(state)=>{
+    return{
+        salleSportReducer:state.salleSportReducer
+}
+}
+
  
-export default SallePlus;
+export default connect(mapStateToProps)(SallePlus);
