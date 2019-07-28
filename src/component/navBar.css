@@ -96,9 +96,7 @@ width: 60%;
 justify-content: space-between;   
 list-style-type: none;
 } 
-.navLinks li{ 
-/*border: 1px solid yellow;  */
-}
+
 .specialcolor
 {
 color:#00b39b; 
@@ -107,6 +105,8 @@ color:#00b39b;
 {
 color:#00b39b; 
 }
+
+
 /****************toggle ICon**********************************************/
 .toggleIcon
 {

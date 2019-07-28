@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import './navBar.css'
-
+import { Link } from 'react-router-dom';
+import './navBar.css';
+import SignIn from './signIn'
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
 
         }
     }
-    openNav=()=> {
+    openNav = () => {
         document.getElementById("myNav").style.height = "100%";
-      }
-      
-    closeNav=()=> {
+    }
+
+    closeNav = () => {
         document.getElementById("myNav").style.height = "0%";
     }
-    scrollToContacts=()=>{
-        document.getElementById('devsContainer').scrollIntoView(); 
+    scrollToContacts = () => {
+        document.getElementById('devsContainer').scrollIntoView();
     }
-    scrollToFooter=()=>{
-        document.getElementById('footerContainer').scrollIntoView(); 
+    scrollToFooter = () => {
+        document.getElementById('footerContainer').scrollIntoView();
     }
     render() { 
         console.log(window.location.href.slice(21))
@@ -38,7 +38,7 @@ class NavBar extends Component {
                             <Link to={window.location.href.slice(21)} onClick={this.scrollToContacts}>About us</Link>
                             <Link className='colorWhite' to={window.location.href.slice(21)} onClick={this.scrollToFooter}>Contact us</Link>
                             <hr/>
-                            <Link to='/connection'>Connection</Link>
+                            <SignIn />
                             <hr/>
                             <Link className="disabled">Navigation</Link>
                             <Link to='/salle_de_sports' className="space">Salle de sports</Link>
@@ -49,12 +49,12 @@ class NavBar extends Component {
                         </div>
                     </div>
                     <ul className="navLinks">
-                        <li>  
+                        <li>
                             <div className="dropdown">
                                 <span className="dropdownLink">Navigation</span>
                                 <div className="dropdown-content">
                                     <Link to='/salle_de_sports'>Salle de sports</Link>
-                                    <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
+                                    <Link to='/salle_fete'>Salle des Fétes</Link>
                                     <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
                                     <Link to='/'>Restaurant</Link>
                                     <Link to='/'>Fast Food</Link>
@@ -68,13 +68,13 @@ class NavBar extends Component {
                             <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>
                         </li>
                         <li>
-                            <Link to='/' className="specialcolor">Connexion</Link>
+                            <SignIn />
                         </li>
-                        
+
                     </ul>
                 </div>
-            </div> 
+            </div>
         );
     }
-} 
+}
 export default NavBar;

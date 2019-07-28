@@ -1,0 +1,29 @@
+
+  .slideshow--hero .slide2000 {
+    background-image: url("https://www.mariageatoutprix.com/wp-content/uploads/2017/12/21371017_10155668758908209_5378024520950570999_n.jpg");
+    animation: 20s slides-set-1 -0.1s infinite;
+  }
+  .slideshow--hero .slide2001 {
+    background-image: url("https://www.mariageatoutprix.com/wp-content/uploads/2017/02/37388366_1650690525054481_1918727865839386624_o.jpg");
+    animation: 20s slides-set-2 -0.1s infinite;
+  }
+  .slideshow--hero .slide2002 {
+    background-image: url("https://www.mariageatoutprix.com/wp-content/uploads/2018/04/couverture-Venizia.png");
+    animation: 20s slides-set-3 -0.1s infinite;
+  }
+
+  
+  
+  .slideshow--contrast .slide2000 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://www.mariageatoutprix.com/wp-content/uploads/2017/12/21371017_10155668758908209_5378024520950570999_n.jpg");
+    animation: 20s slides-set-1 -0.2s infinite;
+  }
+  .slideshow--contrast .slide2001 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://www.mariageatoutprix.com/wp-content/uploads/2017/02/37388366_1650690525054481_1918727865839386624_o.jpg");
+    animation: 20s slides-set-2 -0.2s infinite;
+  }
+  .slideshow--contrast .slide2002 {
+    background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://www.mariageatoutprix.com/wp-content/uploads/2018/04/couverture-Venizia.png");
+    animation: 20s slides-set-3 -0.2s infinite;
+  }
+  
