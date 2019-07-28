@@ -169,15 +169,20 @@ class NewHostSalle extends Component {
                         </div>
 
                         <div className='newsalle-host-submit-div'>
-                            <button className='btn newsalle-host-submit-btn' type='submit'
-                             onClick={() => this.createSalle(
+                            <button className='btn newsalle-host-submit-btn' 
+                             onClick={(event) =>
+                                { 
+                                this.createSalle(
                                 this.props.user[0].userInformation._id,
                                 this.state.category,
                                 this.state.titre,
                                 this.state.description,
                                 this.state.adresse,
                                 this.state.ville,
-                                this.state.listImage,
+                                this.state.listImage[0],
+                                this.state.listImage[1],
+                                this.state.listImage[2],
+                                this.state.listImage[3],
                                 this.state.telFixe,
                                 this.state.telMobile,
                                 this.state.capacite,
@@ -185,8 +190,10 @@ class NewHostSalle extends Component {
                                 this.state.nomOffre,
                                 this.state.prixOffre,
                                 this.state.descriptionOffre
-
-                                )}>
+                                )
+                                event.preventDefault()    
+                            }
+                                }>
                                 Ajouter
                             </button>
                         </div>
@@ -205,22 +212,27 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps =dispatch => {
     return{
-        createSalle: (idUser,category,titre,description,adresse,ville,image,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
+        createSalle: (idUser,category,titre,description,adresse,ville,image0,image1,image2,image3,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
             if(category=== 'Salle des fêtes'){
                 dispatch({
                     type:'ADD_NEW_SALLE_FETE',
                     value: {
-                        idUser,
-                        category,
+                        _id:Math.random(),
+                        image0,
+                        image1,
+                        image2,
+                        image3,
                         titre,
+                        ville,
+                        idUser,
                         description,
                         adresse,
-                        ville,
-                        image,
                         telFix,
                         telMobile,
                         capacite,
                         prixSalle,
+                        category,
+                        
                     }
                 })
             }
@@ -228,36 +240,38 @@ const mapDispatchToProps =dispatch => {
                 dispatch({
                     type:'ADD_NEW_SALLE_SPORT',
                     value: {
-                        idUser,
-                        category,
+                        _id:Math.random(),
+                        image0,
+                        image1,
+                        image2,
+                        image3,
                         titre,
+                        ville,
+                        idUser,
                         description,
                         adresse,
-                        ville,
-                        image,
                         telFix,
                         telMobile,
-                        nomOffre,
-                        prixOffre,
-                        descriptionOffre
+                        offre:{nomOffre,prixOffre,descriptionOffre}
                     }
                 })
             }else if(category==="Salle d'esthétique"){
                 dispatch({
                     type:'ADD_NEW_SALLE_ESTHETIQUE',
                     value: {
-                        idUser,
-                        category,
+                        _id:Math.random(),
+                        image0,
+                        image1,
+                        image2,
+                        image3,
                         titre,
+                        ville,
+                        idUser,
                         description,
                         adresse,
-                        ville,
-                        image,
                         telFix,
                         telMobile,
-                        nomOffre,
-                        prixOffre,
-                        descriptionOffre
+                        offre:{nomOffre,prixOffre,descriptionOffre}
                     }
                 })
             }

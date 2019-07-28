@@ -11,6 +11,7 @@ import HostPage from './host_page/host';
 import SallePage from './salle_page/sallePage.js'
 import HostInformation from './host_page/hostInformation.js'
 import NewHostSalle from './host_page/new-salle-host.js'
+
 class Router extends Component {
     constructor(props) {
         super(props);
