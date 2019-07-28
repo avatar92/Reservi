@@ -1,0 +1,13 @@
+.personal-information{
+    margin: 100px;
+    /* border: 1px solid red; */
+}
+.personal-information-btn{
+    color:#fff;
+    border-color:#00b39b;
+    background-color: #00b39b; 
+    width: 150px;
+}
+.personal-information-input{
+    width:100%;
+}

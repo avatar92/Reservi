@@ -25,9 +25,9 @@ class SalleItem extends Component {
             <div className="card__info-hover">
             </div>
             <div className="card__img"></div>
-                <a href="#" className="card_link">
+                <span className="card_link">
                 <div className="card__img--hover"><Link to='/salle_de_sports/:_id'><img className="card-img-top" src={this.props.img} alt="salle"/></Link></div>
-                </a>
+                </span>
             <div className="card__info">
                 <span className="card__category"><i className="fa fa-map-marker" aria-hidden="true"></i> {this.props.location}</span>
                 <h3 className="card__title">{this.props.salleName}</h3>

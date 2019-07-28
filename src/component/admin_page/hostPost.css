@@ -1,0 +1,44 @@
+.hostContainer
+{
+    border: 1px solid black; 
+}
+.btnColor
+{
+    background-color: #00b39b; 
+    color: white; 
+    float: right; 
+}
+.btnColor:hover{
+    color: #e2ebf1; 
+}
+.AdminPagesNumbers {
+    display: flex;
+    /* border: 1px solid;  */
+    justify-content: center;  
+}
+  
+.AdminPagesNumbers span 
+{
+color: black;
+float: left;
+padding: 8px 16px;
+cursor: pointer;
+border-radius: 5px;
+}
+
+.AdminPagesNumbers span.active 
+{
+background-color: #4CAF50;
+color: white;
+border-radius: 5px;
+}
+
+.AdminPagesNumbers span:hover:not(.active) {
+background-color: #ddd;
+border-radius: 5px;
+}
+.paginationDiv
+{
+    display: flex; 
+    justify-content: center; 
+}

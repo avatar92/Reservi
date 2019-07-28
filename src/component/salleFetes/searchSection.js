@@ -67,7 +67,7 @@ class SearchSection extends Component {
     )
 }
 }
-const mapDispatchToProps = dispatch=>{
+const mapDispatchToProps = dispatch => {
     return {
         searchSalleFete: (searchTerm) => {
             dispatch({

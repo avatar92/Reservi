@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navBar.css';
-import SignIn from './signIn'
+import SignIn from './signIn.js'
 class NavBar extends Component {
     constructor(props) {
         super(props);
