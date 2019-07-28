@@ -12,7 +12,7 @@ class SalleItem extends Component {
                 <div className="card__info-hover">
                 </div>
                 <div className="card__img"></div>
-                <a href="#" className="card_link">
+                <a href="/" className="card_link">
                     <div className="card__img--hover"><Link to='/salle/:_id'><img className="card-img-top" src={this.props.img} alt="salle" /></Link></div>
                 </a>
                 <div className="card__info">

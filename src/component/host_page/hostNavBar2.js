@@ -33,7 +33,7 @@ class HostNavBar extends Component {
                         <div className="overlay-content">
                             <Link className='colorWhite' to={window.location.href.slice(21)} onClick={this.scrollToFooter}>Contact us</Link>
                             <hr />
-                            <Link className="disabled">Navigation</Link>
+                            <div className="disabled">Navigation</div>
                             <Link to='/salle_de_sports' className="space">Salle de sports</Link>
                             <Link to='/salle_des_Fétes'>Salle des Fétes</Link>
                             <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
@@ -63,13 +63,13 @@ class HostNavBar extends Component {
                         </li>
                         <li>
                             <div className='host-image-div'>
-                                <img className='host-image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/1024px-Crystal_Clear_kdm_user_female.svg.png' />
+                                <img className='host-image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/1024px-Crystal_Clear_kdm_user_female.svg.png' alt='user' />
                                 <div className="hostNavBar-sideBar">
                                     <div className="hostNavBar-user-information">
                                         <div >
-                                            <div><b>{this.props.user[0].userInformation.fullName}, Id: {this.props.user[0].userInformation._id}</b>
+                                            <div><b>{this.props.user[0].fullName}, Id: {this.props.user[0]._id}</b>
                                             </div>
-                                            <div>{this.props.user[0].userInformation.email}</div>
+                                            <div>{this.props.user[0].email}</div>
                                         </div>
                                     </div>
                                     <div className="hostNavBar-tasks">
@@ -78,20 +78,20 @@ class HostNavBar extends Component {
 
                                         </Link>
                                         <Link className='hostNavBar-link' to={'/new_Salle'}>
-                                            <div> <i class="fas fa-folder-plus  mr-2"></i>Ajouter salle </div>
+                                            <div> <i className="fas fa-folder-plus  mr-2"></i>Ajouter salle </div>
 
                                         </Link>
                                         <Link className='hostNavBar-link' to={'/mesSalles'}>
-                                            <div> <i class="fas fa-shopping-basket mr-2"></i>Mes salles </div>
+                                            <div> <i className="fas fa-shopping-basket mr-2"></i>Mes salles </div>
 
                                         </Link>
                                         <Link className='hostNavBar-link' to={'/host_page'}>
-                                            <div><i class="fas fa-home mr-2"></i>Accueil</div>
+                                            <div><i className="fas fa-home mr-2"></i>Accueil</div>
 
                                         </Link>
                                         
                                         <Link className='hostNavBar-link' to={'/logout'}>
-                                            <div><i class="fas fa-sign-out-alt mr-2"></i>Déconnexion</div>
+                                            <div><i className="fas fa-sign-out-alt mr-2"></i>Déconnexion</div>
                                         </Link>
                                     </div>
                                 </div>
