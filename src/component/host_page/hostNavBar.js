@@ -17,7 +17,7 @@ class HostNavBar extends Component {
     render() {
         return (
             <nav>
-                <div className='align-items-center hostNavBar' style={this.state.showMyComponent ? { display: 'none' } : {display: 'flex'}  }>
+                <div className='align-items-center hostNavBar' style={this.state.showMyComponent ? { display: 'none' } : { display: 'flex' }}>
                     <div className='hostNavBar-reservi'>
                         <span>Reservi.TN</span>
                     </div>
@@ -27,8 +27,19 @@ class HostNavBar extends Component {
                             <button className="btn btn-outline-light my-2 my-sm-0 hostNavBar-btn-search" type="submit"><i className="fas fa-search"></i></button>
                         </form>
                     </div>
-                    <div className='d-flex justify-content-center align-items-center hostNavBar-msg-profil'>
-                        <Link to={'/messages'} className=" hostNavBar-message  mr-3"><i className="fas fa-envelope fa-2x"></i></Link>
+
+                    <div className='d-flex align-items-center hostNavBar-msg-profil'>
+                        <div className="hostNavBar-dropdown mr-3">
+                            <span className="hostNavBar-dropdownLink"><i class="fas fa-globe fa-2x"></i></span>
+                            <div className="hostNavBar-dropdown-content">
+                                <Link to='/salle_de_sports'>Salle de sports</Link>
+                                <Link to='/salle_fete'>Salle des Fétes</Link>
+                                <Link to='/salle_ésthétique'>Salle d'ésthétique</Link>
+                                <Link to='/'>Restaurant</Link>
+                                <Link to='/'>Fast Food</Link>
+                            </div>
+                        </div>
+                        <Link to={'/messages'} className=" hostNavBar-message mr-3"><i className="fas fa-envelope fa-2x"></i></Link>
                         <span className="hostNavBar-msg-profil-search mr-3" onClick={this.searchForMobile}><i className="fas fa-search"></i></span>
                         <div className='host-image-div'>
                             <img className='host-image' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/1024px-Crystal_Clear_kdm_user_female.svg.png' />
@@ -47,12 +58,12 @@ class HostNavBar extends Component {
                                         <div> <i className="fas fa-user mr-2"></i>Mon profil </div>
 
                                     </Link>
-                                    <Link className='hostNavBar-link' to={'/newSalle'}>
-                                        <div> <i className="fas fa-user mr-2"></i>Ajouter salle </div>
+                                    <Link className='hostNavBar-link' to={'/new_Salle'}>
+                                        <div> <i class="fas fa-folder-plus  mr-2"></i>Ajouter salle </div>
 
                                     </Link>
                                     <Link className='hostNavBar-link' to={'/mesSalles'}>
-                                        <div> <i class="fas fa-folder-open mr-2"></i> Mes salles </div>
+                                        <div> <i class="fas fa-shopping-basket mr-2"></i>Mes salles </div>
 
                                     </Link>
                                     <Link className='hostNavBar-link' to={'/logout'}>
@@ -63,8 +74,8 @@ class HostNavBar extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='align-items-center hostNavBar' style={this.state.showMyComponent ? {display: 'flex'} : {display: 'none'}  }>
-                <div className='hostNavBar-reservi-forMobile'>
+                <div className='align-items-center hostNavBar' style={this.state.showMyComponent ? { display: 'flex' } : { display: 'none' }}>
+                    <div className='hostNavBar-reservi-forMobile'>
                         <span>Reservi.TN</span>
                     </div>
                     <div className='hostNavBar-search-forMobile'>

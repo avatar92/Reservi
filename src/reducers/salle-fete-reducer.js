@@ -120,6 +120,8 @@ const salleFeteReducer = (state = allSalle, action) => {
             });
         case "REMOVE_SALLE_FETE": 
             return state.filter(el=>el._id!==action._id)
+            case ('ADD_NEW_SALLE_FETE'):
+                
         default:
             return state;
     }

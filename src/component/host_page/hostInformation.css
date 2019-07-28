@@ -1,0 +1,15 @@
+.personal-information{
+    margin-top: 200px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+.personal-information-btn{
+    color:#fff;
+    border-color:#00b39b;
+    background-color: #00b39b; 
+    width: 150px;
+}
+.personal-information-input{
+    width:100%;
+}

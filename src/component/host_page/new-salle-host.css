@@ -1,0 +1,87 @@
+
+.newsalle-host{
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 100px;
+    font-size: 2vw;
+    font-weight: 700;
+}
+.newsalle-host-space{
+    margin-top: 3%;
+}
+.newsalle-host-title{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.newsalle-host-section{
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #757575;
+    padding-bottom:15px; 
+}
+.input-border-style{
+    border-style: none none solid none;
+    width: 100%;
+    border-color: #757575;
+    border-width:1px;
+    /* background-color: #f8f8fd; */
+    outline-color: transparent;
+    font-size: 18px;
+
+}
+.input-border-style::placeholder {
+    color:#757575;
+    /* font-size: 1.5vw; */
+    
+    }
+.textarea-border-style{
+    border-style: none none solid none;
+    width: 100%;
+    border-color: #757575;
+    border-width:1px;
+    /* background-color: #f8f8fd; */
+    font-size: 18px;
+    height:100px;
+
+}
+textarea:focus { 
+    outline: 2px solid rgba(0,179,155,0.3);
+ }
+textarea::placeholder{
+    color:#757575;
+ }
+.newsalle-host-dropdown{
+    width: 50%;
+    margin: 0 auto;
+}
+.newsalle-host-submit-btn{
+    display: flex;
+    justify-content: center;
+    margin:0 auto;
+    color:#fff;
+    border-color:#00b39b;
+    background-color: #00b39b; 
+    font-size: 20px;
+    font-weight: 700;
+    width: 15%;
+}
+.offre-title{
+    text-align: center;
+}
+.newsalle-host-sport-esthetique {
+    padding: 40px;
+    border:3px dashed #757575;
+}
+.newsalle-host-offre-container{
+    border: 1px solid #757575;
+}
+.newsalle-host-submit-div{
+    margin-top: 70px;
+}
+@media screen and (max-width: 500px) {
+    .newsalle-host{
+   
+        font-size: 4vw;
+    }
+}
