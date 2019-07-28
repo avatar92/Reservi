@@ -16,13 +16,13 @@ class HostPostCard extends Component {
                 </div>
                 <div className="card__img"></div>
                     <span className="card_link">
-                        <div className="card__img--hover"><Link to='/salle_ésthétique/:_id'><img className="card-img-top" src={this.props.img} alt="salle"/></Link></div>
+                        <div className="card__img--hover"><Link to='/salle/:_id'><img className="card-img-top" src={this.props.img} alt="salle"/></Link></div>
                     </span>
                 <div className="card__info cardbehindRm">
                     <span className="card__category"><i className="fa fa-map-marker" aria-hidden="true"></i> {this.props.location}</span>
                     <h3 className="card__title">{this.props.salleName}</h3>
                     <span className="card__by">
-                        <Link to ='/salle_ésthétique/:_id' className="card__author" title="author">Plus de detailles</Link>
+                        <Link to ='/salle/:_id' className="card__author" title="author">Plus de detailles</Link>
                     </span>
                 </div>
             </article>
@@ -40,7 +40,11 @@ const mapDispatchToProps = dispatch=>{
                 type: 'REMOVE_SALLE_SPORT',
                 _id
             })
-        },
+            dispatch({
+                type: 'REMOVE_SALLE_FETE',
+                _id
+            })
+        },  
     }
 }
  

@@ -10,6 +10,8 @@ import AdminAddSallePage from './admin_page/adminAddSallePage.js'
 import HostPage from './host_page/host.js'
 import HostInformation from './host_page/hostInformation.js'
 import NewHostSalle from './host_page/new-salle-host.js'
+import SallePage from './salle_page/sallePage.js'
+
 class Router extends Component {
     constructor(props) {
         super(props);
@@ -18,8 +20,7 @@ class Router extends Component {
     render() { 
         return ( 
         <div>    
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>
+            
 
             <Route exact path='/salle_fete' component={SalleFete}/>
             <Route exact path='/host_page' component={HostPage}/>
@@ -27,7 +28,8 @@ class Router extends Component {
 
             <Route exact path='/new_Salle' component={NewHostSalle}/>
 
-
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>
             <Route exact path='/salle_de_sports' component = {SalleSport}/>
             <Route exact path='/admin' component={AdminPage}/>
 
@@ -35,6 +37,7 @@ class Router extends Component {
             <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
             <Route exact path='/admin/post' component={AdmintPostPage}/>
             <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
+            <Route exact path='/salle/:_id' render={(props)=><SallePage _id={props.match.params._id}/>}/>
 
         </div>
         );

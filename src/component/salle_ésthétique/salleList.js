@@ -10,6 +10,7 @@ class SalleList extends Component {
             currentPage:1, 
             dataDisplayedPerPage:9
         }
+        this.totalPage=1;
     }
     handleClick=(event)=> {
         this.setState({
@@ -17,7 +18,7 @@ class SalleList extends Component {
         });
       }
       addPageNumber=()=>{
-        if (this.state.currentPage<=this.totalPage)
+        if (this.state.currentPage<this.totalPage)
         {this.setState({
             currentPage:this.state.currentPage+1
         })}
@@ -41,13 +42,13 @@ class SalleList extends Component {
             const indexOfFirstData=indexOfLastData-dataDisplayedPerPage;
             const currentDatas=this.props.salleEsthetiqueReducer.slice(indexOfFirstData,indexOfLastData); 
             const renderData=currentDatas.map(el=><div key={el._id} className='col-lg-4 col-md-4 col-sm-6'>                    
-            <SalleItem  salleName={el.salleName} img={el.img} location={el.location}/>
+            <SalleItem _id={el._id} salleName={el.salleName} img={el.img} location={el.location}/>
             </div>)
             const pageNumbers = [];
             for (let i = 1; i <= Math.ceil(this.props.salleEsthetiqueReducer.length / dataDisplayedPerPage); i++) {
               pageNumbers.push(i);
             }
-    
+            this.totalPage=pageNumbers.length
             const renderPageNumbers = pageNumbers.map((number,index) =><div>
                 {this.state.currentPage===index+1?<span 
                     style={{"background-color":"#00b39b"}}
