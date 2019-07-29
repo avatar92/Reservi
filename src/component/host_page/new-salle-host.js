@@ -3,6 +3,7 @@ import HostNavBar from './hostNavBar2.js';
 import './new-salle-host.css';
 import Footer from '../footer.js';
 import { connect } from 'react-redux';
+
 class NewHostSalle extends Component {
     constructor(props) {
         super(props);
@@ -52,7 +53,11 @@ class NewHostSalle extends Component {
     }
 
     render() {
-        console.log('myProps', this.props)
+        const allHostSalle = this.props.salleFete.concat(this.props.salleSport, this.props.salleEsthetique)
+        console.log( 'idddddddddddd',Number(this.props._id))
+        const modifiedElm = allHostSalle.filter(el => el._id === Number(this.props._id) )
+        console.log(modifiedElm)
+       
         return (
             <div className="newsalle-host-main">
                 <HostNavBar />
@@ -61,10 +66,11 @@ class NewHostSalle extends Component {
                         Ajouter un nouveau contenu
                     </div>
                     <div>
+                        {/* {(this.props._id && this.modifiedElm.category ==='Salle des fêtes') ? 'selected': ''} */}
                         <select className="form-control newsalle-host-dropdown" onChange={(e) => this.handleCategory(e)}>
                             <option hidden>Catégorie</option>
                             <option>Salle des fêtes</option>
-                            <option>Salle de sport</option>
+                            <option >Salle de sport</option>
                             <option>Salle d'esthétique</option>
                         </select>
                     </div>
@@ -72,19 +78,19 @@ class NewHostSalle extends Component {
                         <div className='newsalle-host-space'>
                             <div>Titre*</div>
                             <div>
-                                <input className="input-border-style" type="text" placeholder="Titre" required onChange={(e) => { this.setState({ titre: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Titre" required onChange={(e) => { this.setState({ titre: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].salleName : ''} />
                             </div>
                         </div>
 
                         <div className='newsalle-host-space'>
                             <div>Description*</div>
                             <div>
-                                <textarea className="textarea-border-style" placeholder="Description" required onChange={(e) => { this.setState({ description: e.target.value }) }}></textarea>
+                                <textarea className="textarea-border-style" placeholder="Description" required onChange={(e) => { this.setState({ description: e.target.value }) }}>{this.props._id ? modifiedElm[0].description : ''}</textarea>
                             </div>
                         </div>
                         <div className='newsalle-host-space'>
                             <div>Adresse*</div>
-                            <input className="input-border-style" type="text" placeholder="Adresse" required onChange={(e) => { this.setState({ adresse: e.target.value }) }} />
+                            <input className="input-border-style" type="text" placeholder="Adresse" required onChange={(e) => { this.setState({ adresse: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].adresse : ''} />
                         </div>
                         <div className="newsalle-host-section newsalle-host-space" >
                             <div>Ville*</div>
@@ -122,7 +128,7 @@ class NewHostSalle extends Component {
                             <div className='4photo '>
                                 <div>
                                     <input type="file" id='imagetoupload' style={{ "display": "none" }} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage} />
-                                    <label for="imagetoupload" style={{ "borderStyle": "none none solid none",borderWidth:'1px', "width": "100%",fontSize:'18px' }}>Click me to upload image</label>
+                                    <label for="imagetoupload" style={{ "borderStyle": "none none solid none", borderWidth: '1px', "width": "100%", fontSize: '18px' }}>Click me to upload image</label>
                                     <canvas id="imageCanvas" className='canvasNotshown'></canvas>
                                 </div>
                             </div>
@@ -134,14 +140,14 @@ class NewHostSalle extends Component {
                                 <div>
                                     Téléphone Fixe*
                                 </div>
-                                <input className="input-border-style" type="text" placeholder="Fixe" required onChange={(e) => { this.setState({ telFix: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Fixe" required onChange={(e) => { this.setState({ telFix: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].telfix : ''} />
 
                             </div>
                             <div className='col-sm-6'>
                                 <div>
                                     Téléphone mobile*
                                 </div>
-                                <input className="input-border-style" type="text" placeholder="Mobile" required onChange={(e) => { this.setState({ telMobile: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Mobile" required onChange={(e) => { this.setState({ telMobile: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].telmobile : ''} />
                             </div>
                         </div>
                         <div className='newsalle-host-salleFete newsalle-host-space' style={this.state.showSalleFete ? { display: 'block' } : { display: 'none' }}>
@@ -150,15 +156,14 @@ class NewHostSalle extends Component {
                                     <div>
                                         Capacité
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Capacité" onChange={(e) => { this.setState({ capacite: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Capacité" onChange={(e) => { this.setState({ capacite: e.target.value }) }} defaultValue={(this.props._id && modifiedElm[0].category === 'Salle des fêtes') ? modifiedElm[0].capacite : ''} />
 
                                 </div>
                                 <div className='col-sm-6'>
                                     <div>
                                         Prix salle
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix" onChange={(e) => { this.setState({ prixSalle: e.target.value }) }} />
-
+                                    <input className="input-border-style" type="text" placeholder="Prix" onChange={(e) => { this.setState({ prixSalle: e.target.value }) }} defaultValue={(this.props._id && modifiedElm[0].category === 'Salle des fêtes') ? modifiedElm[0].prixSalle : ''} />
                                 </div>
                             </div>
                         </div>
@@ -168,18 +173,24 @@ class NewHostSalle extends Component {
                                     <div>
                                         Nom offre
                                 </div>
-                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" onChange={(e) => { this.setState({ nomOffre: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" onChange={(e) => { this.setState({ nomOffre: e.target.value }) }}
+                                        defaultValue={(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.nomOffre : ''} />
                                 </div>
                                 <div className="col-sm-6">
                                     <div>
                                         Prix offre
                                 </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" onChange={(e) => { this.setState({ prixOffre: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" onChange={(e) => { this.setState({ prixOffre: e.target.value }) }}
+                                        defaultValue={(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.prixOffre : ''}
+                                    />
                                 </div>
                             </div>
                             <div>
                                 <div>Description d'offre</div>
-                                <textarea className="textarea-border-style" placeholder="Description d'offre" onChange={(e) => { this.setState({ descriptionOffre: e.target.value }) }}></textarea>
+                                <textarea className="textarea-border-style" placeholder="Description d'offre" onChange={(e) => { this.setState({ descriptionOffre: e.target.value }) }}
+                                >
+                                    {(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.descriptionOffre : ''}
+                                </textarea>
                             </div>
                         </div>
 
@@ -220,7 +231,10 @@ class NewHostSalle extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        user: state.hostReducer
+        user: state.hostReducer,
+        salleFete: state.salleFeteReducer,
+        salleSport: state.salleSportReducer,
+        salleEsthetique: state.salleEsthetiqueReducer
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -290,4 +304,5 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(NewHostSalle);

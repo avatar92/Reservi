@@ -30,6 +30,7 @@ class Router extends Component {
             <Route exact path='/profile' component={HostInformation}/>
             <Route exact path='/new_Salle' component={NewHostSalle}/>
             <Route exact path='/mes_salles' component={HostSalleList}/>
+            <Route exact path='/modify_salle/:_id' render={(props)=><NewHostSalle _id={props.match.params._id}/>}/>
 
 
             <Route exact path='/' component={HomePage} />
