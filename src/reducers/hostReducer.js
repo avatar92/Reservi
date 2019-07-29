@@ -12,4 +12,4 @@ const hostReducer = (state = informationPersonelle, action) => {
             return state;
     }
 }
-export default hostReducer
+export default hostReducer;

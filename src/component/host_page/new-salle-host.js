@@ -46,7 +46,7 @@ class NewHostSalle extends Component {
         // axios.post('lien',fd)
     }
     render() {
-        console.log(this.state.ville)
+        console.log('myProps',this.props)
         return (
             <div className="newsalle-host-main">
                 <HostNavBar />
@@ -172,8 +172,8 @@ class NewHostSalle extends Component {
                             <button className='btn newsalle-host-submit-btn' 
                              onClick={(event) =>
                                 { 
-                                this.createSalle(
-                                this.props.user[0].userInformation._id,
+                                this.props.createSalle(
+                                this.props.user[0]._id,
                                 this.state.category,
                                 this.state.titre,
                                 this.state.description,
@@ -192,7 +192,7 @@ class NewHostSalle extends Component {
                                 this.state.descriptionOffre
                                 )
                                 event.preventDefault()    
-                            }
+                                }
                                 }>
                                 Ajouter
                             </button>

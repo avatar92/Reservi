@@ -33,10 +33,9 @@ class Router extends Component {
             <Route exact path='/salle_de_sports' component = {SalleSport}/>
             <Route exact path='/admin' component={AdminPage}/>
 
-            <Route exact path='/admin/post' component={AdmintPostPage}/>
+            
             <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
             <Route exact path='/admin/post' component={AdmintPostPage}/>
-            <Route exact path='/admin/add_salle' component={AdminAddSallePage}/>
             <Route exact path='/salle/:_id' render={(props)=><SallePage _id={props.match.params._id}/>}/>
 
         </div>
