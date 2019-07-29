@@ -17,6 +17,8 @@ class SallePlus extends Component {
                 <NavBar/>
                 
                 <div className="salle_name">
+                <span>{this.props.salleSportReducer.filter(el =>el.id===this.props.id)[0].salleName}</span>
+                
                 </div>
                 
                 
