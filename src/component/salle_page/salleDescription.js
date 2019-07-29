@@ -17,7 +17,6 @@ class SalleDescription extends Component {
         return ( 
             <div className="salle-fete-image-container">
                     <h1 style={{ color: '#00b39b', textAlign: 'center' }}>{this.el[0].salleName}</h1>
-
                     <div className="salle-fete-container">
                         <div className="salle-fete-box">
                             <img src={this.el[0].img}  alt='salleimage 1'/>
@@ -31,18 +30,16 @@ class SalleDescription extends Component {
                         <div className="salle-fete-box">
                             <img src={this.el[0].img3} alt='salleimage 4'/>
                         </div>
-                    </div>
-                
+                    </div>                
                 <div className='container SalleDescription'>
                     <div>
                         <h3 style={{ color: '#3d83df' }}>Description</h3>
                         <p>
                             {this.el[0].description}
-
                         </p>
-                        <p><b>Capacité: </b>{this.el[0].capacity}</p>
-                        <p><b>Prix: </b>{this.el[0].price}</p>
-                        <p><b>Ville: </b>{this.el[0].location}</p>
+                        <p><b>Capacité: </b>{this.el[0].description}</p>
+                        <p><b>Prix: </b>{this.el[0].prix}</p>
+                        <p><b>Ville: </b>{this.el[0].telfix}</p>
                     </div>
                 </div>
                 </div>
