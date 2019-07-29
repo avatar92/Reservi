@@ -226,7 +226,7 @@ const salleFeteReducer = (state = allSalle, action) => {
                 }
             });
         case ('ADD_NEW_SALLE_FETE'):
-            return [...state, action.value];
+            return [...state, action.value],console.log("newsalle de fete",state);
 
         case "REMOVE_SALLE_FETE":
             return state.filter(el => el._id !== action._id)

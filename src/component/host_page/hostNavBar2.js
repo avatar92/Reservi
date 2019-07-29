@@ -81,7 +81,7 @@ class HostNavBar extends Component {
                                             <div> <i className="fas fa-folder-plus  mr-2"></i>Ajouter salle </div>
 
                                         </Link>
-                                        <Link className='hostNavBar-link' to={'/mesSalles'}>
+                                        <Link className='hostNavBar-link' to={'/mes_salles'}>
                                             <div> <i className="fas fa-shopping-basket mr-2"></i>Mes salles </div>
 
                                         </Link>

@@ -11,7 +11,7 @@ import HostPage from './host_page/host.js'
 import HostInformation from './host_page/hostInformation.js'
 import NewHostSalle from './host_page/new-salle-host.js'
 import SallePage from './salle_page/sallePage.js'
-
+import HostSalleList from './host_page/host-salle-list'
 class Router extends Component {
     constructor(props) {
         super(props);
@@ -25,8 +25,9 @@ class Router extends Component {
             <Route exact path='/salle_fete' component={SalleFete}/>
             <Route exact path='/host_page' component={HostPage}/>
             <Route exact path='/profile' component={HostInformation}/>
-
             <Route exact path='/new_Salle' component={NewHostSalle}/>
+            <Route exact path='/mes_salles' component={HostSalleList}/>
+
 
             <Route exact path='/' component={HomePage} />
             <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>

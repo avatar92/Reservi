@@ -7,7 +7,8 @@ const informationPersonelle = [
 const hostReducer = (state = informationPersonelle, action) => {
     switch (action.type) {
         case ('EDIT_PERSONAL_INFORMATION'):
-            state.map(el => el = action.value);
+         return   state.map(el => el = action.value);
+         console.log('state',state)
         default:
             return state;
     }

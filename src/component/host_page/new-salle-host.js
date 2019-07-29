@@ -7,6 +7,7 @@ class NewHostSalle extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            idUser:this.props.user[0]._id,
             showSalleFete: false,
             showSalleSportEsthetique: false,
             category: '',
@@ -14,12 +15,13 @@ class NewHostSalle extends Component {
             description: '',
             adresse: '',
             ville: '',
-            listImage:null,
+            listImage:["https://www.mariageatoutprix.com/wp-content/uploads/2017/11/23599942_10214198803075136_880252041_o.jpg",
+            "https://www.mariageatoutprix.com/wp-content/uploads/2017/11/23599942_10214198803075136_880252041_o.jpg",
+            "https://www.mariageatoutprix.com/wp-content/uploads/2017/11/23599942_10214198803075136_880252041_o.jpg","https://www.mariageatoutprix.com/wp-content/uploads/2017/11/23599942_10214198803075136_880252041_o.jpg"],
             telFixe: '',
             telMobile: '',
             capacite: '',
             prixSalle: '',
-            nbrOffreSupp: 0,
             nomOffre: '',
             prixOffre: '',
             descriptionOffre: ''
@@ -46,7 +48,7 @@ class NewHostSalle extends Component {
         // axios.post('lien',fd)
     }
     render() {
-        console.log(this.state.ville)
+        console.log(this.state.idUser)
         return (
             <div className="newsalle-host-main">
                 <HostNavBar />
@@ -110,10 +112,10 @@ class NewHostSalle extends Component {
                                 <option>Zaghouan</option>
                             </select>
                         </div>
-                        <div className='newsalle-host-space'>
+                        {/* <div className='newsalle-host-space'>
                             <div>Image</div>
                             <input className="input-border-style" type="file" accept="image/*" multiple required onChange={this.imageHandler}/>
-                        </div>
+                        </div> */}
                         <div className='row newsalle-host-space'>
                             <div className='col-sm-6'>
                                 <div>
@@ -142,7 +144,7 @@ class NewHostSalle extends Component {
                                     <div>
                                         Prix salle
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix"  onChange={(e) => { this.setState({ prix: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Prix"  onChange={(e) => { this.setState({ prixSalle: e.target.value }) }} />
 
                                 </div>
                             </div>
@@ -169,9 +171,9 @@ class NewHostSalle extends Component {
                         </div>
 
                         <div className='newsalle-host-submit-div'>
-                            <button className='btn newsalle-host-submit-btn' type='submit'
-                             onClick={() => this.createSalle(
-                                this.props.user[0].userInformation._id,
+                            <div className='btn newsalle-host-submit-btn' type='submit'
+                             onClick={() => this.props.createSalle(
+                                this.state.idUser,
                                 this.state.category,
                                 this.state.titre,
                                 this.state.description,
@@ -191,7 +193,7 @@ class NewHostSalle extends Component {
 
                                 )}>
                                 Ajouter
-                            </button>
+                            </div>
                         </div>
                     </form>
 
@@ -206,28 +208,29 @@ const mapStateToProps = (state) => {
         user:state.hostReducer
     }
 }
-const mapDispatchToProps =dispatch => {
+const mapDispatchToProps = dispatch => {
     return{
         createSalle: (idUser,category,titre,description,adresse,ville,image0,image1,image2,image3,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
             if(category=== 'Salle des fêtes'){
                 dispatch({
                     type:'ADD_NEW_SALLE_FETE',
                     value: {
-                        image0,
-                        image1,
-                        image2,
-                        image3,
-                        titre,
-                        ville,
-                        idUser,
-                        description,
-                        adresse,
-                        telFix,
-                        telMobile,
-                        capacite,
-                        prixSalle,
-                        category,
-                        
+                        _id:Math.random(),
+                        img:image0,
+                        img1:image1,
+                        img2:image2,
+                        img3:image3,
+                        salleName:titre,
+                        location:ville,
+                        idUser:idUser,
+                        description:description,
+                        adresse:adresse,
+                        telfix:telFix,
+                        telmobile:telMobile,
+                        capacite:capacite,
+                        prixSalle:prixSalle,
+                        category:category,
+    
                     }
                 })
             }
@@ -235,38 +238,39 @@ const mapDispatchToProps =dispatch => {
                 dispatch({
                     type:'ADD_NEW_SALLE_SPORT',
                     value: {
-                        image0,
-                        image1,
-                        image2,
-                        image3,
-                        titre,
-                        ville,
-                        idUser,
-                        description,
-                        adresse,
-                        telFix,
-                        telMobile,
+                        _id:Math.random(),
+                        img:image0,
+                        img1:image1,
+                        img2:image2,
+                        img3:image3,
+                        salleName:titre,
+                        location:ville,
+                        idUser:idUser,
+                        description:description,
+                        adresse:adresse,
+                        telfix:telFix,
+                        telmobile:telMobile,
                         offre:{nomOffre,prixOffre,descriptionOffre}
                     }
                 })
             }else if(category==="Salle d'esthétique"){
-                dispatch({
-                    type:'ADD_NEW_SALLE_ESTHETIQUE',
-                    value: {
-                        image0,
-                        image1,
-                        image2,
-                        image3,
-                        titre,
-                        ville,
-                        idUser,
-                        description,
-                        adresse,
-                        telFix,
-                        telMobile,
-                        offre:{nomOffre,prixOffre,descriptionOffre}
-                    }
-                })
+                // dispatch({
+                //     type:'ADD_NEW_SALLE_ESTHETIQUE',
+                //     value: {
+                //         image0,
+                //         image1,
+                //         image2,
+                //         image3,
+                //         titre,
+                //         ville,
+                //         idUser,
+                //         description,
+                //         adresse,
+                //         telFix,
+                //         telMobile,
+                //         offre:{nomOffre,prixOffre,descriptionOffre}
+                //     }
+                // })
             }
         }
     }
