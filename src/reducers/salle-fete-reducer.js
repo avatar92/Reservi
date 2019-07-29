@@ -225,11 +225,13 @@ const salleFeteReducer = (state = allSalle, action) => {
                     return (el.salleName.toLocaleLowerCase().indexOf(action.searchTerm) > -1 || el.location.toLocaleLowerCase().indexOf(action.searchTerm) > -1)
                 }
             });
-        case ('ADD_NEW_SALLE_FETE'):
-            return [...state, action.value],console.log("newsalle de fete",state);
-
         case "REMOVE_SALLE_FETE":
             return state.filter(el => el._id !== action._id)
+
+        case ('ADD_NEW_SALLE_FETE'):
+            return [...state, action.value];
+        case 'REMOVE_HOST_SALLE_FETE':
+            return state.filter(el => el._id !== action.idSalle)
         default:
             return state;
     }

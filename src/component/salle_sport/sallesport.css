@@ -660,6 +660,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
     max-width: 1016.5px; 
+    height: 1250px;
     
 }
 
@@ -678,7 +679,6 @@
   
   display: flex;
   justify-content: flex-end;
-  
 
 }
 

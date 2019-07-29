@@ -44,7 +44,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",        
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -76,7 +76,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",       
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -92,7 +92,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",       
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -108,7 +108,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",        
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -124,7 +124,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",        
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -140,7 +140,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",        
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
@@ -156,7 +156,7 @@ const init = [
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
-        category: "Salle d'esthétique",        
+        category: "Salle d'esthétique",
         offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
 ]
@@ -173,6 +173,8 @@ const salleEsthetiqueReducer = (state = init, action) => {
             return state.filter(el => el._id !== action._id)
         case ('ADD_NEW_SALLE_ESTHETIQUE'):
             return [...state, action.value];
+        case 'REMOVE_HOST_SALLE_ESTHETIQUE':
+            return state.filter(el => el._id !== action.idSalle)
         default:
             return state;
     }

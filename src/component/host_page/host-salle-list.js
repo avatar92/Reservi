@@ -19,7 +19,7 @@ class HostSalleList extends Component {
                 <div className='host-salle-list-main container'>
                     <div className='row' style={{ marginTop: '100px' }}>
                         {
-                            allHostSalle.map((el, index) => <ItemSalleList key={index} id={this.props.user[0]._id} name={el.salleName} img={el.img} categorie={el.category}/>)
+                            allHostSalle.map((el, index) => <ItemSalleList key={index} id={this.props.user[0]._id} name={el.salleName} img={el.img} categorie={el.category} idSalle={el._id}/>)
                         }
                     </div>
                 </div>

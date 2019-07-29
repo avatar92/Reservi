@@ -105,7 +105,7 @@ const init = [
         img3: 'https://www.nreionline.com/sites/nreionline.com/files/styles/article_featured_standard/public/planet-fitness.jpg?itok=6Aaak363',
         salleName: 'salle adel',
         location: 'bennane',
-        idUser:7,
+        idUser: 7,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
@@ -176,6 +176,8 @@ const salleSportReducer = (state = init, action) => {
             return state.filter(el => el._id !== action._id)
         case ('ADD_NEW_SALLE_SPORT'):
             return [...state, action.value];
+        case 'REMOVE_HOST_SALLE_SPORT':
+            return state.filter(el => el._id !== action.idSalle)
         default:
             return state;
     }
