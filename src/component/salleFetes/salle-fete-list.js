@@ -41,7 +41,7 @@ class ListSalleFete extends Component {
         const indexOfFirstData=indexOfLastData-dataDisplayedPerPage;
         const currentDatas=this.props.salleFete.slice(indexOfFirstData,indexOfLastData); 
         const renderData=currentDatas.map(el=><div key={el._id} className='col-sm-6 col-md-4'>                    
-        <SalleItem  salleName={el.salleName} img={el.img} location={el.location}/>
+        <SalleItem  _id={el._id} salleName={el.salleName} img={el.img} location={el.location}/>
         </div>)
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(this.props.salleFete.length / dataDisplayedPerPage); i++) {

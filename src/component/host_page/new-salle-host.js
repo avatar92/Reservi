@@ -22,9 +22,76 @@ class NewHostSalle extends Component {
             nbrOffreSupp: 0,
             nomOffre: '',
             prixOffre: '',
-            descriptionOffre: ''
+            descriptionOffre: '',
+            imageSource:'',
+            imageSource1:'',
+            imageSource2:'',
+            imageSource3:'',
         }
     }
+    handleImage=(e)=>{
+        var reader = new FileReader();
+        reader.onload =(event)=>{
+            var img = new Image();
+            img.onload = function(){
+                document.getElementById('imageCanvas').width = img.width;
+                document.getElementById('imageCanvas').height = img.height;
+                document.getElementById('imageCanvas').getContext('2d').drawImage(img,0,0);
+            }
+            img.src = event.target.result;
+            console.log(img.src)
+            this.setState({imageSource:img.src})
+        }
+        reader.readAsDataURL(e.target.files[0]);     
+    }
+    handleImage1=(e)=>{
+        var reader = new FileReader();
+        reader.onload =(event)=>{
+            var img = new Image();
+            img.onload = function(){
+                document.getElementById('imageCanvas1').width = img.width;
+                document.getElementById('imageCanvas1').height = img.height;
+                document.getElementById('imageCanvas1').getContext('2d').drawImage(img,0,0);
+            }
+            img.src = event.target.result;
+            console.log(img.src)
+            this.setState({imageSource1:img.src})
+        }
+        reader.readAsDataURL(e.target.files[0]);     
+    }
+    handleImage2=(e)=>{
+        var reader = new FileReader();
+        reader.onload =(event)=>{
+            var img = new Image();
+            img.onload = function(){
+                document.getElementById('imageCanvas2').width = img.width;
+                document.getElementById('imageCanvas2').height = img.height;
+                document.getElementById('imageCanvas2').getContext('2d').drawImage(img,0,0);
+            }
+            img.src = event.target.result;
+            console.log(img.src)
+            this.setState({imageSource2:img.src})
+        }
+        reader.readAsDataURL(e.target.files[0]);     
+    }
+    handleImage3=(e)=>{
+        var reader = new FileReader();
+        reader.onload =(event)=>{
+            var img = new Image();
+            img.onload = function(){
+                document.getElementById('imageCanvas3').width = img.width;
+                document.getElementById('imageCanvas3').height = img.height;
+                document.getElementById('imageCanvas3').getContext('2d').drawImage(img,0,0);
+            }
+            img.src = event.target.result;
+            console.log(img.src)
+            this.setState({imageSource3:img.src})
+        }
+        reader.readAsDataURL(e.target.files[0]);     
+    }
+
+
+
     handleCategory(e) {
         this.setState({ category: e.target.value })
         if (e.target.value === 'Salle des fêtes') {
@@ -110,10 +177,37 @@ class NewHostSalle extends Component {
                                 <option>Zaghouan</option>
                             </select>
                         </div>
-                        <div className='newsalle-host-space'>
-                            <div>Image</div>
-                            <input className="input-border-style" type="file" accept="image/*" multiple required onChange={this.imageHandler}/>
+                        {/**************************************** */}
+                        <div className='4photo'>
+                            <div>        
+                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
+                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
+                                <canvas id="imageCanvas" className='canvasNotshown'></canvas>
+                             
+                                {console.log('myImageCode',this.state.imageSource)}        
+                            </div>
+                            <div>        
+                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
+                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
+                                <canvas id="imageCanvas1" className='canvasNotshown'></canvas>
+                             
+                                {console.log('myImageCode',this.state.imageSource1)}        
+                            </div>
+                            <div>        
+                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
+                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
+                                <canvas id="imageCanvas2" className='canvasNotshown'></canvas>
+                             
+                                {console.log('myImageCode',this.state.imageSource1)}        
+                            </div>
+                            <div>        
+                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
+                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
+                                <canvas id="imageCanvas3" className='canvasNotshown'></canvas>
+                                {console.log('myImageCode',this.state.imageSource1)}        
+                            </div>
                         </div>
+                        {/**************************************** */}
                         <div className='row newsalle-host-space'>
                             <div className='col-sm-6'>
                                 <div>
@@ -171,18 +265,19 @@ class NewHostSalle extends Component {
                         <div className='newsalle-host-submit-div'>
                             <button className='btn newsalle-host-submit-btn' 
                              onClick={(event) =>
-                                { 
+                                {
+                                 
                                 this.props.createSalle(
+                                this.state.imageSource,
+                                this.state.imageSource1,
+                                this.state.imageSource2,
+                                this.state.imageSource3,
                                 this.props.user[0]._id,
                                 this.state.category,
                                 this.state.titre,
                                 this.state.description,
                                 this.state.adresse,
                                 this.state.ville,
-                                this.state.listImage[0],
-                                this.state.listImage[1],
-                                this.state.listImage[2],
-                                this.state.listImage[3],
                                 this.state.telFixe,
                                 this.state.telMobile,
                                 this.state.capacite,
@@ -212,18 +307,18 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps =dispatch => {
     return{
-        createSalle: (idUser,category,titre,description,adresse,ville,image0,image1,image2,image3,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
+        createSalle: (img,img1,img2,img3,idUser,category,titre,description,adresse,ville,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
             if(category=== 'Salle des fêtes'){
                 dispatch({
                     type:'ADD_NEW_SALLE_FETE',
                     value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
                         _id:Math.random(),
-                        image0,
-                        image1,
-                        image2,
-                        image3,
-                        titre,
-                        ville,
+                        salleName:titre,
+                        location:ville,
                         idUser,
                         description,
                         adresse,
@@ -240,11 +335,11 @@ const mapDispatchToProps =dispatch => {
                 dispatch({
                     type:'ADD_NEW_SALLE_SPORT',
                     value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
                         _id:Math.random(),
-                        image0,
-                        image1,
-                        image2,
-                        image3,
                         titre,
                         ville,
                         idUser,
@@ -259,11 +354,11 @@ const mapDispatchToProps =dispatch => {
                 dispatch({
                     type:'ADD_NEW_SALLE_ESTHETIQUE',
                     value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
                         _id:Math.random(),
-                        image0,
-                        image1,
-                        image2,
-                        image3,
                         titre,
                         ville,
                         idUser,
