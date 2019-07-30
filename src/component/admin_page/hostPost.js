@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './hostPost.css';
 import HostPostCard from './hostPostCard.js';
 import {connect} from 'react-redux';
+import axios from 'axios'
 class HostPost extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,18 @@ class HostPost extends Component {
         }
         this.totalPage=1;
     }
+    componentDidMount=()=>{
+            axios.get('/get-salleEsthetique')
+                .then((res)=>{
+                    this.props.updateSalleEsthetiqueReducer(res.data)
+                    return axios.get('/get-salleSport')
+                    })              
+                .then((res)=>{
+                    this.props.updateSalleSportReducer(res.data)
+                    return axios.get('/get-salleFete')
+                    })
+                .then((res)=>this.props.updateSalleFeteReducer(res.data))
+        }
     addPageNumber=()=>{
         if (this.state.currentPage<this.totalPage)
         {this.setState({
@@ -88,6 +101,31 @@ const mapStateToProps=(state)=>
         salleFeteReducer:state.salleFeteReducer
     }
 }
-
+const mapDispatchToProps=(dispatch)=>
+{
+    return {
+        updateSalleEsthetiqueReducer:init=>
+        {
+            dispatch({
+                type:'UPDATE_SALLE_ESTHETIQUE',
+                init
+            })
+        },
+        updateSalleFeteReducer:allSalle=>
+        {
+            dispatch({
+                type:'UPDATE_SALLE_FETE',
+                allSalle
+            })
+        },
+        updateSalleSportReducer:init=>
+        {
+            dispatch({
+                type:'UPDATE_SALLE_SPORT',
+                init
+            })
+        }
+    }
+}
  
-export default connect(mapStateToProps,null)(HostPost);
+export default connect(mapStateToProps,mapDispatchToProps)(HostPost);

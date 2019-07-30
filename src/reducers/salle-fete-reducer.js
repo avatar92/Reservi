@@ -230,6 +230,8 @@ const salleFeteReducer = (state = allSalle, action) => {
                 
         case ('ADD_NEW_SALLE_FETE'):
             return [...state, action.value];
+        case 'UPDATE_SALLE_FETE': 
+            return state=action.allSalle
 
         default:
             return state;
