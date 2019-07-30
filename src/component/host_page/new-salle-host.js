@@ -51,28 +51,36 @@ class NewHostSalle extends Component {
             this.setState({ showSalleSportEsthetique: true })
         }
     }
-
     render() {
         const allHostSalle = this.props.salleFete.concat(this.props.salleSport, this.props.salleEsthetique)
-        console.log( 'idddddddddddd',Number(this.props._id))
-        const modifiedElm = allHostSalle.filter(el => el._id === Number(this.props._id) )
+        console.log('idddddddddddd', typeof (Number(this.props._id)))
+        const modifiedElm = allHostSalle.filter(el => el._id === Number(this.props._id))
         console.log(modifiedElm)
-       
+
         return (
             <div className="newsalle-host-main">
                 <HostNavBar />
-                <div className="newsalle-host">
+                <div className="newsalle-host" >
                     <div className="newsalle-host-title">
                         Ajouter un nouveau contenu
                     </div>
                     <div>
-                        {/* {(this.props._id && this.modifiedElm.category ==='Salle des fêtes') ? 'selected': ''} */}
-                        <select className="form-control newsalle-host-dropdown" onChange={(e) => this.handleCategory(e)}>
-                            <option hidden>Catégorie</option>
-                            <option>Salle des fêtes</option>
-                            <option >Salle de sport</option>
-                            <option>Salle d'esthétique</option>
-                        </select>
+                        {this.props.disabled
+                            ?
+                            <select className="form-control newsalle-host-dropdown" disabled defaultValue={this.props._id ? modifiedElm[0].category : ''} onChange={(e) => this.handleCategory(e)}>
+                                <option hidden>Catégorie</option>
+                                <option>Salle des fêtes</option>
+                                <option>Salle de sport</option>
+                                <option>Salle d'esthétique</option>
+                            </select>
+                            :
+                            <select className="form-control newsalle-host-dropdown" defaultValue={this.props._id ? modifiedElm[0].category : ''} onChange={(e) => this.handleCategory(e)}>
+                                <option hidden>Catégorie</option>
+                                <option>Salle des fêtes</option>
+                                <option>Salle de sport</option>
+                                <option>Salle d'esthétique</option>
+                            </select>
+                        }
                     </div>
                     <form>
                         <div className='newsalle-host-space'>
@@ -94,7 +102,7 @@ class NewHostSalle extends Component {
                         </div>
                         <div className="newsalle-host-section newsalle-host-space" >
                             <div>Ville*</div>
-                            <select className="form-control newsalle-host-dropdown" id="ville" required onChange={(e) => { this.setState({ ville: e.target.value }) }}>
+                            <select className="form-control newsalle-host-dropdown" defaultValue={this.props._id ? modifiedElm[0].location : ''} onChange={(e) => { this.setState({ ville: e.target.value }) }} >
                                 <option hidden>Gouvernorat</option>
                                 <option>Ariana</option>
                                 <option>Béja</option>
@@ -150,7 +158,7 @@ class NewHostSalle extends Component {
                                 <input className="input-border-style" type="text" placeholder="Mobile" required onChange={(e) => { this.setState({ telMobile: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].telmobile : ''} />
                             </div>
                         </div>
-                        <div className='newsalle-host-salleFete newsalle-host-space' style={this.state.showSalleFete ? { display: 'block' } : { display: 'none' }}>
+                        <div className='newsalle-host-salleFete newsalle-host-space' style={((this.props._id && modifiedElm[0].category === 'Salle des fêtes') || this.state.showSalleFete) ? { display: 'block' } : { display: 'none' }}>
                             <div className='row'>
                                 <div className='col-sm-6'>
                                     <div>
@@ -167,7 +175,7 @@ class NewHostSalle extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='newsalle-host-sport-esthetique newsalle-host-space' style={this.state.showSalleSportEsthetique ? { display: 'block' } : { display: 'none' }}>
+                        <div className='newsalle-host-sport-esthetique newsalle-host-space' style={((this.props._id && modifiedElm[0].category !== 'Salle des fêtes') || this.state.showSalleSportEsthetique) ? { display: 'block' } : { display: 'none' }}>
                             <div className="row">
                                 <div className="col-sm-6">
                                     <div>
@@ -195,31 +203,61 @@ class NewHostSalle extends Component {
                         </div>
 
                         <div className='newsalle-host-submit-div'>
-                            <div className='btn newsalle-host-submit-btn' type='submit'
-                                onClick={() =>
-                                    this.props.createSalle(
-                                        this.state.imageSource,
-                                        this.state.imageSource,
-                                        this.state.imageSource,
-                                        this.state.imageSource,
-                                        this.props.user[0]._id,
-                                        this.state.category,
-                                        this.state.titre,
-                                        this.state.description,
-                                        this.state.adresse,
-                                        this.state.ville,
-                                        this.state.telFixe,
-                                        this.state.telMobile,
-                                        this.state.capacite,
-                                        this.state.prixSalle,
-                                        this.state.nomOffre,
-                                        this.state.prixOffre,
-                                        this.state.descriptionOffre
-                                    )
+                            {this.props._id ?
+                                <div className='btn newsalle-host-submit-btn' type='submit'
+                                    onClick={() =>
+                                        this.props.modifSalle(
+                                            this.props._id,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img1,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img2,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img3,
+                                            this.props.user[0]._id,
+                                            modifiedElm[0].category,
+                                            this.state.titre !== '' ? this.state.titre : modifiedElm[0].salleName,
+                                            this.state.description !== '' ? this.state.description : modifiedElm[0].description,
+                                            this.state.adresse !== '' ? this.state.adresse : modifiedElm[0].adresse,
+                                            this.state.ville !== '' ? this.state.ville : modifiedElm[0].location,
+                                            this.state.telFixe !== '' ? this.state.telFixe : modifiedElm[0].telfix,
+                                            this.state.telMobile !== '' ? this.state.telMobile : modifiedElm[0].telmobile,
+                                            this.state.capacite !== '' ? this.state.capacite : (modifiedElm[0].capacite === undefined ? '' : modifiedElm[0].capacite),
+                                            this.state.prixSalle !== '' ? this.state.prixSalle : (modifiedElm[0].prixSalle === undefined ? '' : modifiedElm[0].prixSalle),
+                                            this.state.nomOffre !== '' ? this.state.nomOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.nomOffre),
+                                            this.state.prixOffre !== '' ? this.state.prixOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.prixOffre),
+                                            this.state.descriptionOffre !== '' ? this.state.descriptionOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.descriptionOffre, this.state.category)
+                                        )
 
-                                }>
-                                Ajouter
-                            </div>
+                                    }>
+                                    Modifier
+                                </div>
+                                :
+                                <div className='btn newsalle-host-submit-btn' type='submit'
+                                    onClick={() =>
+                                        this.props.createSalle(
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.props.user[0]._id,
+                                            this.state.category,
+                                            this.state.titre,
+                                            this.state.description,
+                                            this.state.adresse,
+                                            this.state.ville,
+                                            this.state.telFixe,
+                                            this.state.telMobile,
+                                            this.state.capacite,
+                                            this.state.prixSalle,
+                                            this.state.nomOffre,
+                                            this.state.prixOffre,
+                                            this.state.descriptionOffre
+                                        )
+
+                                    }>
+                                    Ajouter
+                            </div>}
+
+
                         </div>
                     </form>
 
@@ -241,6 +279,7 @@ const mapDispatchToProps = dispatch => {
     return {
         createSalle: (img, img1, img2, img3, idUser, category, salleName, description, adresse, location, telfix, telmobile, capacite, prixSalle, nomOffre, prixOffre, descriptionOffre) => {
             if (category === 'Salle des fêtes') {
+                console.log('ajout fete')
                 dispatch({
                     type: 'ADD_NEW_SALLE_FETE',
                     value: {
@@ -248,7 +287,7 @@ const mapDispatchToProps = dispatch => {
                         img1,
                         img2,
                         img3,
-                        _id: Math.random(),
+                        _id: Math.random() * 1000,
                         salleName,
                         location,
                         idUser,
@@ -261,8 +300,9 @@ const mapDispatchToProps = dispatch => {
                         category
                     }
                 })
-            }
-            else if (category === "Salle de sport") {
+            } else if (category === "Salle de sport") {
+                console.log('ajout sport')
+
                 dispatch({
                     type: 'ADD_NEW_SALLE_SPORT',
                     value: {
@@ -270,7 +310,7 @@ const mapDispatchToProps = dispatch => {
                         img1,
                         img2,
                         img3,
-                        _id: Math.random(),
+                        _id: Math.random() * 1000,
                         salleName,
                         location,
                         idUser,
@@ -278,10 +318,13 @@ const mapDispatchToProps = dispatch => {
                         adresse,
                         telfix,
                         telmobile,
+                        category,
                         offre: { nomOffre, prixOffre, descriptionOffre }
                     }
                 })
             } else if (category === "Salle d'esthétique") {
+                console.log('ajout esthetik')
+
                 dispatch({
                     type: 'ADD_NEW_SALLE_ESTHETIQUE',
                     value: {
@@ -289,7 +332,7 @@ const mapDispatchToProps = dispatch => {
                         img1,
                         img2,
                         img3,
-                        _id: Math.random(),
+                        _id: Math.random() * 1000,
                         salleName,
                         location,
                         idUser,
@@ -297,12 +340,88 @@ const mapDispatchToProps = dispatch => {
                         adresse,
                         telfix,
                         telmobile,
+                        category,
                         offre: { nomOffre, prixOffre, descriptionOffre }
                     }
                 })
             }
+
+        },
+        modifSalle: (modifiedID, img, img1, img2, img3, idUser, category, salleName, description, adresse, location, telfix, telmobile, capacite, prixSalle, nomOffre, prixOffre, descriptionOffre, modifiedCategory) => {
+            console.log(nomOffre, prixOffre, descriptionOffre)
+            if (category === 'Salle des fêtes') {
+
+                console.log('modif fete')
+
+                dispatch({
+                    type: 'MODIF_SALLE_FETE',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
+                        capacite,
+                        prixSalle,
+                        category
+                    }
+                })
+            } else if (category === 'Salle de sport') {
+                console.log('modof sport', modifiedID)
+
+                dispatch({
+                    type: 'MODIF_SALLE_SPORT',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
+                        category,
+                        offre: { nomOffre, prixOffre, descriptionOffre }
+                    }
+                })
+
+            } else if (category === "Salle d'esthétique") {
+                console.log('modif esht', modifiedID)
+
+                dispatch({
+                    type: 'MODIF_SALLE_ESTHETIQUE',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
+                        category,
+                        offre: { nomOffre, prixOffre, descriptionOffre },
+                    }
+                })
+            }
+
         }
+
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(NewHostSalle);
