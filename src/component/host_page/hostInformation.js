@@ -100,11 +100,11 @@ const mapDispatchToProps = dispatch => {
                     dispatch({
                         type: 'EDIT_PERSONAL_INFORMATION',
                         value: {
-                            id,
-                            fullName,
-                            email,
-                            userName,
-                            password,
+                            _id:id,
+                            fullName:fullName,
+                            email:email,
+                            userName:userName,
+                            password:password,
                         }
                     })
                 } else {
@@ -117,11 +117,11 @@ const mapDispatchToProps = dispatch => {
                         dispatch({
                             type: 'EDIT_PERSONAL_INFORMATION',
                             value: {
-                                id,
-                                fullName,
-                                email,
-                                userName,
-                                newPassword,
+                                _id:id,
+                                fullName:fullName,
+                                email:email,
+                                userName:userName,
+                                password:newPassword,
                             }
                         })
                     } else {

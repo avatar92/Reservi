@@ -7,13 +7,13 @@ const init = [
         img3: 'https://www.nreionline.com/sites/nreionline.com/files/styles/article_featured_standard/public/planet-fitness.jpg?itok=6Aaak363',
         salleName: 'salle asma',
         location: 'sousse',
-        idUser: 4,
+        idUser: 1,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
 
     },
     {
@@ -24,13 +24,13 @@ const init = [
         img3: 'https://cdn.cnn.com/cnnnext/dam/assets/170526142440-worlds-best-hotel-gyms-the-siam-full-169.jpg',
         salleName: 'salle adel',
         location: 'bennane',
-        idUser: 4,
+        idUser: 2,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
 
     },
     {
@@ -41,13 +41,13 @@ const init = [
         img3: 'https://cdn.gearpatrol.com/wp-content/uploads/2018/04/Most-Luxurious-Gyms-gear-patrol-TMPL.jpg',
         salleName: 'salle amine',
         location: 'bennane',
-        idUser: 4,
+        idUser: 3,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 23,
@@ -63,7 +63,7 @@ const init = [
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 24,
@@ -73,13 +73,13 @@ const init = [
         img3: 'https://cdn.gearpatrol.com/wp-content/uploads/2018/04/Most-Luxurious-Gyms-gear-patrol-TMPL.jpg',
         salleName: 'salle ahmed',
         location: 'sfax',
-        idUser: 4,
+        idUser: 5,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 25,
@@ -89,13 +89,13 @@ const init = [
         img3: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjonisweet%2Ffiles%2F2019%2F03%2Fbest-hotel-gyms-The-Vines-1200x801.jpg',
         salleName: 'salle asma',
         location: 'sousse',
-        idUser: 4,
+        idUser: 6,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 26,
@@ -105,13 +105,13 @@ const init = [
         img3: 'https://www.nreionline.com/sites/nreionline.com/files/styles/article_featured_standard/public/planet-fitness.jpg?itok=6Aaak363',
         salleName: 'salle adel',
         location: 'bennane',
-        idUser: 4,
+        idUser: 7,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 27,
@@ -121,13 +121,13 @@ const init = [
         img3: 'https://cdn.cnn.com/cnnnext/dam/assets/170526142440-worlds-best-hotel-gyms-the-siam-full-169.jpg',
         salleName: 'salle amine',
         location: 'bennane',
-        idUser: 4,
+        idUser: 8,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 28,
@@ -137,13 +137,13 @@ const init = [
         img3: 'https://cdn.gearpatrol.com/wp-content/uploads/2018/04/Most-Luxurious-Gyms-gear-patrol-TMPL.jpg',
         salleName: 'salle magroun',
         location: 'sousse',
-        idUser: 4,
+        idUser: 9,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     },
     {
         _id: 29,
@@ -153,13 +153,13 @@ const init = [
         img3: 'https://cdn.gearpatrol.com/wp-content/uploads/2018/04/Most-Luxurious-Gyms-gear-patrol-TMPL.jpg',
         salleName: 'salle salim',
         location: 'sfax',
-        idUser: 4,
+        idUser: 10,
         description: 'Salle de sport',
         adresse: 'rue farhat hached',
         telfix: '00222222',
         telmobile: '55555555',
         category: 'Salle de sport',
-        offre: { nom: 'offre1', prix: '50', description: 'description offre' }
+        offre: { nomOffre: 'offre1', prixOffre: '50', descriptionOffre: 'description offre' }
     }
 ]
 
@@ -178,6 +178,10 @@ const salleSportReducer = (state = init, action) => {
             return [...state, action.value];
         case 'UPDATE_SALLE_SPORT': 
             return state=action.init
+        case 'REMOVE_HOST_SALLE_SPORT':
+            return state.filter(el => el._id !== action.idSalle);
+        case 'MODIF_SALLE_SPORT':
+            return state.map(el => el._id !== action.value._id ? el : action.value);
         default:
             return state;
     }

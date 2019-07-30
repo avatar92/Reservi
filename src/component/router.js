@@ -12,7 +12,7 @@ import SallePage from './salle_page/sallePage.js'
 import HostInformation from './host_page/hostInformation.js'
 import NewHostSalle from './host_page/new-salle-host.js'
 import AboutUs from './About_us/AboutUs.js';
-
+import HostSalleList from './host_page/host-salle-list.js'
 
 
 class Router extends Component {
@@ -28,8 +28,10 @@ class Router extends Component {
             <Route exact path='/salle_fete' component={SalleFete}/>
             <Route exact path='/host_page' component={HostPage}/>
             <Route exact path='/profile' component={HostInformation}/>
-
             <Route exact path='/new_Salle' component={NewHostSalle}/>
+            <Route exact path='/mes_salles' component={HostSalleList}/>
+            <Route exact path='/modify_salle/:_id' render={(props)=><NewHostSalle _id={props.match.params._id} disabled={'disabled'}/>}/>
+
 
             <Route exact path='/' component={HomePage} />
             <Route exact path='/salle_ésthétique' component={SalleEsthetique}/>

@@ -14,7 +14,7 @@ class HostPage extends Component {
                 <div style={{minHeight:'100px'}}></div>
                 <HostNavBar/>
                 <CardSection/>
-               
+                <div style={{minHeight:'100px'}}></div>               
                 <Footer/>
                 
             </div>

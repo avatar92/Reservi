@@ -225,14 +225,16 @@ const salleFeteReducer = (state = allSalle, action) => {
                     return (el.salleName.toLocaleLowerCase().indexOf(action.searchTerm) > -1 || el.location.toLocaleLowerCase().indexOf(action.searchTerm) > -1)
                 }
             });
-        case "REMOVE_SALLE_FETE": 
-            return state.filter(el=>el._id!==action._id)
-                
+        case "REMOVE_SALLE_FETE":
+            return state.filter(el => el._id !== action._id);
         case ('ADD_NEW_SALLE_FETE'):
             return [...state, action.value];
         case 'UPDATE_SALLE_FETE': 
             return state=action.allSalle
-
+        case 'REMOVE_HOST_SALLE_FETE':
+            return state.filter(el => el._id !== action.idSalle);
+        case 'MODIF_SALLE_FETE':
+                return state.map(el => el._id !== action.value._id ? el :action.value);
         default:
             return state;
     }

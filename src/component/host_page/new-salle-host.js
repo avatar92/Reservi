@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import HostNavBar from './hostNavBar2.js';
 import './new-salle-host.css';
 import Footer from '../footer.js';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+
 class NewHostSalle extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            idUser: this.props.user[0]._id,
             showSalleFete: false,
             showSalleSportEsthetique: false,
             category: '',
@@ -14,84 +16,31 @@ class NewHostSalle extends Component {
             description: '',
             adresse: '',
             ville: '',
-            listImage:null,
             telFixe: '',
             telMobile: '',
             capacite: '',
             prixSalle: '',
-            nbrOffreSupp: 0,
             nomOffre: '',
             prixOffre: '',
             descriptionOffre: '',
-            imageSource:'',
-            imageSource1:'',
-            imageSource2:'',
-            imageSource3:'',
+            imageSource: ''
         }
     }
-    handleImage=(e)=>{
+    handleImage = (e) => {
         var reader = new FileReader();
-        reader.onload =(event)=>{
+        reader.onload = (event) => {
             var img = new Image();
-            img.onload = function(){
+            img.onload = function () {
                 document.getElementById('imageCanvas').width = img.width;
                 document.getElementById('imageCanvas').height = img.height;
-                document.getElementById('imageCanvas').getContext('2d').drawImage(img,0,0);
+                document.getElementById('imageCanvas').getContext('2d').drawImage(img, 0, 0);
             }
             img.src = event.target.result;
             console.log(img.src)
-            this.setState({imageSource:img.src})
+            this.setState({ imageSource: img.src })
         }
-        reader.readAsDataURL(e.target.files[0]);     
+        reader.readAsDataURL(e.target.files[0]);
     }
-    handleImage1=(e)=>{
-        var reader = new FileReader();
-        reader.onload =(event)=>{
-            var img = new Image();
-            img.onload = function(){
-                document.getElementById('imageCanvas1').width = img.width;
-                document.getElementById('imageCanvas1').height = img.height;
-                document.getElementById('imageCanvas1').getContext('2d').drawImage(img,0,0);
-            }
-            img.src = event.target.result;
-            console.log(img.src)
-            this.setState({imageSource1:img.src})
-        }
-        reader.readAsDataURL(e.target.files[0]);     
-    }
-    handleImage2=(e)=>{
-        var reader = new FileReader();
-        reader.onload =(event)=>{
-            var img = new Image();
-            img.onload = function(){
-                document.getElementById('imageCanvas2').width = img.width;
-                document.getElementById('imageCanvas2').height = img.height;
-                document.getElementById('imageCanvas2').getContext('2d').drawImage(img,0,0);
-            }
-            img.src = event.target.result;
-            console.log(img.src)
-            this.setState({imageSource2:img.src})
-        }
-        reader.readAsDataURL(e.target.files[0]);     
-    }
-    handleImage3=(e)=>{
-        var reader = new FileReader();
-        reader.onload =(event)=>{
-            var img = new Image();
-            img.onload = function(){
-                document.getElementById('imageCanvas3').width = img.width;
-                document.getElementById('imageCanvas3').height = img.height;
-                document.getElementById('imageCanvas3').getContext('2d').drawImage(img,0,0);
-            }
-            img.src = event.target.result;
-            console.log(img.src)
-            this.setState({imageSource3:img.src})
-        }
-        reader.readAsDataURL(e.target.files[0]);     
-    }
-
-
-
     handleCategory(e) {
         this.setState({ category: e.target.value })
         if (e.target.value === 'Salle des fêtes') {
@@ -102,54 +51,58 @@ class NewHostSalle extends Component {
             this.setState({ showSalleSportEsthetique: true })
         }
     }
-    imageHandler = (e) => {
-        this.setState({listImage:e.target.files})
-    }
-    imageUploadHandler = () => {
-        const fd = new FormData()
-        fd.append('imagefile',this.state.listImage,this.state.listImage.name)
-        console.log(fd)
-
-        // axios.post('lien',fd)
-    }
     render() {
-        console.log('myProps',this.props)
+        const allHostSalle = this.props.salleFete.concat(this.props.salleSport, this.props.salleEsthetique)
+        console.log('idddddddddddd', typeof (Number(this.props._id)))
+        const modifiedElm = allHostSalle.filter(el => el._id === Number(this.props._id))
+        console.log(modifiedElm)
+
         return (
             <div className="newsalle-host-main">
                 <HostNavBar />
-                <div className="newsalle-host">
+                <div className="newsalle-host" >
                     <div className="newsalle-host-title">
                         Ajouter un nouveau contenu
                     </div>
                     <div>
-                        <select className="form-control newsalle-host-dropdown" onChange={(e) => this.handleCategory(e)}>
-                            <option hidden>Catégorie</option>
-                            <option>Salle des fêtes</option>
-                            <option>Salle de sport</option>
-                            <option>Salle d'esthétique</option>
-                        </select>
+                        {this.props.disabled
+                            ?
+                            <select className="form-control newsalle-host-dropdown" disabled defaultValue={this.props._id ? modifiedElm[0].category : ''} onChange={(e) => this.handleCategory(e)}>
+                                <option hidden>Catégorie</option>
+                                <option>Salle des fêtes</option>
+                                <option>Salle de sport</option>
+                                <option>Salle d'esthétique</option>
+                            </select>
+                            :
+                            <select className="form-control newsalle-host-dropdown" defaultValue={this.props._id ? modifiedElm[0].category : ''} onChange={(e) => this.handleCategory(e)}>
+                                <option hidden>Catégorie</option>
+                                <option>Salle des fêtes</option>
+                                <option>Salle de sport</option>
+                                <option>Salle d'esthétique</option>
+                            </select>
+                        }
                     </div>
                     <form>
                         <div className='newsalle-host-space'>
                             <div>Titre*</div>
                             <div>
-                                <input className="input-border-style" type="text" placeholder="Titre" required onChange={(e) => { this.setState({ titre: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Titre" required onChange={(e) => { this.setState({ titre: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].salleName : ''} />
                             </div>
                         </div>
 
                         <div className='newsalle-host-space'>
                             <div>Description*</div>
                             <div>
-                                <textarea className="textarea-border-style" placeholder="Description" required onChange={(e) => { this.setState({ description: e.target.value }) }}></textarea>
+                                <textarea className="textarea-border-style" placeholder="Description" required onChange={(e) => { this.setState({ description: e.target.value }) }}>{this.props._id ? modifiedElm[0].description : ''}</textarea>
                             </div>
                         </div>
                         <div className='newsalle-host-space'>
                             <div>Adresse*</div>
-                            <input className="input-border-style" type="text" placeholder="Adresse" required onChange={(e) => { this.setState({ adresse: e.target.value }) }} />
+                            <input className="input-border-style" type="text" placeholder="Adresse" required onChange={(e) => { this.setState({ adresse: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].adresse : ''} />
                         </div>
                         <div className="newsalle-host-section newsalle-host-space" >
                             <div>Ville*</div>
-                            <select className="form-control newsalle-host-dropdown" id="ville" required onChange={(e) => { this.setState({ ville: e.target.value }) }}>
+                            <select className="form-control newsalle-host-dropdown" defaultValue={this.props._id ? modifiedElm[0].location : ''} onChange={(e) => { this.setState({ ville: e.target.value }) }} >
                                 <option hidden>Gouvernorat</option>
                                 <option>Ariana</option>
                                 <option>Béja</option>
@@ -178,199 +131,297 @@ class NewHostSalle extends Component {
                             </select>
                         </div>
                         {/**************************************** */}
-                        <div className='4photo'>
-                            <div>        
-                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
-                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
-                                <canvas id="imageCanvas" className='canvasNotshown'></canvas>
-                             
-                                {console.log('myImageCode',this.state.imageSource)}        
-                            </div>
-                            <div>        
-                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
-                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
-                                <canvas id="imageCanvas1" className='canvasNotshown'></canvas>
-                             
-                                {console.log('myImageCode',this.state.imageSource1)}        
-                            </div>
-                            <div>        
-                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
-                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
-                                <canvas id="imageCanvas2" className='canvasNotshown'></canvas>
-                             
-                                {console.log('myImageCode',this.state.imageSource1)}        
-                            </div>
-                            <div>        
-                                <input  type="file" id='imagetoupload' style={{"display":"none"}} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage}/>
-                                <label for="imagetoupload" style={{"border":"1px solid","width":"100%"}}>Click me to upload image</label>
-                                <canvas id="imageCanvas3" className='canvasNotshown'></canvas>
-                                {console.log('myImageCode',this.state.imageSource1)}        
+                        <div className='newsalle-host-space'>
+                            <div>Image*</div>
+                            <div className='4photo '>
+                                <div>
+                                    <input type="file" id='imagetoupload' style={{ "display": "none" }} className='imageInput' accept="image/png, image/jpeg" onChange={this.handleImage} />
+                                    <label for="imagetoupload" style={{ "borderStyle": "none none solid none", borderWidth: '1px', "width": "100%", fontSize: '18px' }}>Click me to upload image</label>
+                                    <canvas id="imageCanvas" className='canvasNotshown'></canvas>
+                                </div>
                             </div>
                         </div>
+
                         {/**************************************** */}
                         <div className='row newsalle-host-space'>
                             <div className='col-sm-6'>
                                 <div>
                                     Téléphone Fixe*
                                 </div>
-                                <input className="input-border-style" type="text" placeholder="Fixe" required onChange={(e) => { this.setState({ telFix: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Fixe" required onChange={(e) => { this.setState({ telFix: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].telfix : ''} />
 
                             </div>
                             <div className='col-sm-6'>
                                 <div>
                                     Téléphone mobile*
                                 </div>
-                                <input className="input-border-style" type="text" placeholder="Mobile" required onChange={(e) => { this.setState({ telMobile: e.target.value }) }} />
+                                <input className="input-border-style" type="text" placeholder="Mobile" required onChange={(e) => { this.setState({ telMobile: e.target.value }) }} defaultValue={this.props._id ? modifiedElm[0].telmobile : ''} />
                             </div>
                         </div>
-                        <div className='newsalle-host-salleFete newsalle-host-space' style={this.state.showSalleFete ? { display: 'block' } : { display: 'none' }}>
+                        <div className='newsalle-host-salleFete newsalle-host-space' style={((this.props._id && modifiedElm[0].category === 'Salle des fêtes') || this.state.showSalleFete) ? { display: 'block' } : { display: 'none' }}>
                             <div className='row'>
                                 <div className='col-sm-6'>
                                     <div>
                                         Capacité
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Capacité"  onChange={(e) => { this.setState({ capacite: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Capacité" onChange={(e) => { this.setState({ capacite: e.target.value }) }} defaultValue={(this.props._id && modifiedElm[0].category === 'Salle des fêtes') ? modifiedElm[0].capacite : ''} />
 
                                 </div>
                                 <div className='col-sm-6'>
                                     <div>
                                         Prix salle
                                     </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix"  onChange={(e) => { this.setState({ prix: e.target.value }) }} />
-
+                                    <input className="input-border-style" type="text" placeholder="Prix" onChange={(e) => { this.setState({ prixSalle: e.target.value }) }} defaultValue={(this.props._id && modifiedElm[0].category === 'Salle des fêtes') ? modifiedElm[0].prixSalle : ''} />
                                 </div>
                             </div>
                         </div>
-                        <div className='newsalle-host-sport-esthetique newsalle-host-space' style={this.state.showSalleSportEsthetique ? { display: 'block' } : { display: 'none' }}>
+                        <div className='newsalle-host-sport-esthetique newsalle-host-space' style={((this.props._id && modifiedElm[0].category !== 'Salle des fêtes') || this.state.showSalleSportEsthetique) ? { display: 'block' } : { display: 'none' }}>
                             <div className="row">
                                 <div className="col-sm-6">
                                     <div>
                                         Nom offre
                                 </div>
-                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" onChange={(e) => { this.setState({ nomOffre: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Nom d'offre" onChange={(e) => { this.setState({ nomOffre: e.target.value }) }}
+                                        defaultValue={(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.nomOffre : ''} />
                                 </div>
                                 <div className="col-sm-6">
                                     <div>
                                         Prix offre
                                 </div>
-                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" onChange={(e) => { this.setState({ prixOffre: e.target.value }) }} />
+                                    <input className="input-border-style" type="text" placeholder="Prix d'offre" onChange={(e) => { this.setState({ prixOffre: e.target.value }) }}
+                                        defaultValue={(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.prixOffre : ''}
+                                    />
                                 </div>
                             </div>
                             <div>
                                 <div>Description d'offre</div>
-                                <textarea className="textarea-border-style" placeholder="Description d'offre" onChange={(e) => { this.setState({ descriptionOffre: e.target.value }) }}></textarea>
+                                <textarea className="textarea-border-style" placeholder="Description d'offre" onChange={(e) => { this.setState({ descriptionOffre: e.target.value }) }}
+                                >
+                                    {(this.props._id && (modifiedElm[0].category === 'Salle de sport' || modifiedElm[0].category === "Salle d'esthétique")) ? modifiedElm[0].offre.descriptionOffre : ''}
+                                </textarea>
                             </div>
                         </div>
 
                         <div className='newsalle-host-submit-div'>
-                            <button className='btn newsalle-host-submit-btn' 
-                             onClick={(event) =>
-                                {
-                                 
-                                this.props.createSalle(
-                                this.state.imageSource,
-                                this.state.imageSource1,
-                                this.state.imageSource2,
-                                this.state.imageSource3,
-                                this.props.user[0]._id,
-                                this.state.category,
-                                this.state.titre,
-                                this.state.description,
-                                this.state.adresse,
-                                this.state.ville,
-                                this.state.telFixe,
-                                this.state.telMobile,
-                                this.state.capacite,
-                                this.state.prixSalle,
-                                this.state.nomOffre,
-                                this.state.prixOffre,
-                                this.state.descriptionOffre
-                                )
-                                event.preventDefault()    
-                                }
-                                }>
-                                Ajouter
-                            </button>
+                            {this.props._id ?
+                                <div className='btn newsalle-host-submit-btn' type='submit'
+                                    onClick={() =>
+                                        this.props.modifSalle(
+                                            this.props._id,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img1,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img2,
+                                            this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img3,
+                                            this.props.user[0]._id,
+                                            modifiedElm[0].category,
+                                            this.state.titre !== '' ? this.state.titre : modifiedElm[0].salleName,
+                                            this.state.description !== '' ? this.state.description : modifiedElm[0].description,
+                                            this.state.adresse !== '' ? this.state.adresse : modifiedElm[0].adresse,
+                                            this.state.ville !== '' ? this.state.ville : modifiedElm[0].location,
+                                            this.state.telFixe !== '' ? this.state.telFixe : modifiedElm[0].telfix,
+                                            this.state.telMobile !== '' ? this.state.telMobile : modifiedElm[0].telmobile,
+                                            this.state.capacite !== '' ? this.state.capacite : (modifiedElm[0].capacite === undefined ? '' : modifiedElm[0].capacite),
+                                            this.state.prixSalle !== '' ? this.state.prixSalle : (modifiedElm[0].prixSalle === undefined ? '' : modifiedElm[0].prixSalle),
+                                            this.state.nomOffre !== '' ? this.state.nomOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.nomOffre),
+                                            this.state.prixOffre !== '' ? this.state.prixOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.prixOffre),
+                                            this.state.descriptionOffre !== '' ? this.state.descriptionOffre : (modifiedElm[0].offre === undefined ? '' : modifiedElm[0].offre.descriptionOffre, this.state.category)
+                                        )
+
+                                    }>
+                                    Modifier
+                                </div>
+                                :
+                                <div className='btn newsalle-host-submit-btn' type='submit'
+                                    onClick={() =>
+                                        this.props.createSalle(
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.state.imageSource,
+                                            this.props.user[0]._id,
+                                            this.state.category,
+                                            this.state.titre,
+                                            this.state.description,
+                                            this.state.adresse,
+                                            this.state.ville,
+                                            this.state.telFixe,
+                                            this.state.telMobile,
+                                            this.state.capacite,
+                                            this.state.prixSalle,
+                                            this.state.nomOffre,
+                                            this.state.prixOffre,
+                                            this.state.descriptionOffre
+                                        )
+
+                                    }>
+                                    Ajouter
+                            </div>}
+
+
                         </div>
                     </form>
 
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         );
     }
 }
 const mapStateToProps = (state) => {
-    return{
-        user:state.hostReducer
+    return {
+        user: state.hostReducer,
+        salleFete: state.salleFeteReducer,
+        salleSport: state.salleSportReducer,
+        salleEsthetique: state.salleEsthetiqueReducer
     }
 }
-const mapDispatchToProps =dispatch => {
-    return{
-        createSalle: (img,img1,img2,img3,idUser,category,titre,description,adresse,ville,telFix,telMobile,capacite,prixSalle,nomOffre,prixOffre,descriptionOffre) => {
-            if(category=== 'Salle des fêtes'){
+const mapDispatchToProps = dispatch => {
+    return {
+        createSalle: (img, img1, img2, img3, idUser, category, salleName, description, adresse, location, telfix, telmobile, capacite, prixSalle, nomOffre, prixOffre, descriptionOffre) => {
+            if (category === 'Salle des fêtes') {
+                console.log('ajout fete')
                 dispatch({
-                    type:'ADD_NEW_SALLE_FETE',
+                    type: 'ADD_NEW_SALLE_FETE',
                     value: {
                         img,
                         img1,
                         img2,
                         img3,
-                        _id:Math.random(),
-                        salleName:titre,
-                        location:ville,
+                        _id: Math.random() * 1000,
+                        salleName,
+                        location,
                         idUser,
                         description,
                         adresse,
-                        telFix,
-                        telMobile,
+                        telfix,
+                        telmobile,
                         capacite,
                         prixSalle,
+                        category
+                    }
+                })
+            } else if (category === "Salle de sport") {
+                console.log('ajout sport')
+
+                dispatch({
+                    type: 'ADD_NEW_SALLE_SPORT',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Math.random() * 1000,
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
                         category,
-                        
+                        offre: { nomOffre, prixOffre, descriptionOffre }
                     }
                 })
-            }
-            else if(category === "Salle de sport"){
+            } else if (category === "Salle d'esthétique") {
+                console.log('ajout esthetik')
+
                 dispatch({
-                    type:'ADD_NEW_SALLE_SPORT',
+                    type: 'ADD_NEW_SALLE_ESTHETIQUE',
                     value: {
                         img,
                         img1,
                         img2,
                         img3,
-                        _id:Math.random(),
-                        titre,
-                        ville,
+                        _id: Math.random() * 1000,
+                        salleName,
+                        location,
                         idUser,
                         description,
                         adresse,
-                        telFix,
-                        telMobile,
-                        offre:{nomOffre,prixOffre,descriptionOffre}
+                        telfix,
+                        telmobile,
+                        category,
+                        offre: { nomOffre, prixOffre, descriptionOffre }
                     }
                 })
-            }else if(category==="Salle d'esthétique"){
+            }
+
+        },
+        modifSalle: (modifiedID, img, img1, img2, img3, idUser, category, salleName, description, adresse, location, telfix, telmobile, capacite, prixSalle, nomOffre, prixOffre, descriptionOffre, modifiedCategory) => {
+            console.log(nomOffre, prixOffre, descriptionOffre)
+            if (category === 'Salle des fêtes') {
+
+                console.log('modif fete')
+
                 dispatch({
-                    type:'ADD_NEW_SALLE_ESTHETIQUE',
+                    type: 'MODIF_SALLE_FETE',
                     value: {
                         img,
                         img1,
                         img2,
                         img3,
-                        _id:Math.random(),
-                        titre,
-                        ville,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
                         idUser,
                         description,
                         adresse,
-                        telFix,
-                        telMobile,
-                        offre:{nomOffre,prixOffre,descriptionOffre}
+                        telfix,
+                        telmobile,
+                        capacite,
+                        prixSalle,
+                        category
+                    }
+                })
+            } else if (category === 'Salle de sport') {
+                console.log('modof sport', modifiedID)
+
+                dispatch({
+                    type: 'MODIF_SALLE_SPORT',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
+                        category,
+                        offre: { nomOffre, prixOffre, descriptionOffre }
+                    }
+                })
+
+            } else if (category === "Salle d'esthétique") {
+                console.log('modif esht', modifiedID)
+
+                dispatch({
+                    type: 'MODIF_SALLE_ESTHETIQUE',
+                    value: {
+                        img,
+                        img1,
+                        img2,
+                        img3,
+                        _id: Number(modifiedID),
+                        salleName,
+                        location,
+                        idUser,
+                        description,
+                        adresse,
+                        telfix,
+                        telmobile,
+                        category,
+                        offre: { nomOffre, prixOffre, descriptionOffre },
                     }
                 })
             }
+
         }
+
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(NewHostSalle);
+export default connect(mapStateToProps, mapDispatchToProps)(NewHostSalle);
