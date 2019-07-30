@@ -63,6 +63,34 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
             else res.send(data)
         })
     })
+    app.delete('/delete-salleEsthetique/:id',(req,res)=>{
+        let id=ObjectID(req.params.id)
+        db.collection('salleEsthetique').findOneAndDelete({_id:id},(err,data)=>{
+            if (err) res.send('can not delete salle Esthetique')
+            else res.send(data)
+        })
+    })
+    app.delete('/delete-salleFete/:id',(req,res)=>{
+        let id=ObjectID(req.params.id)
+        db.collection('salleFete').findOneAndDelete({_id:id},(err,data)=>{
+            if (err) res.send('can not delete salle Fete')
+            else res.send(data)
+        })
+    })
+    app.delete('/delete-salleSport/:id',(req,res)=>{
+        let id=ObjectID(req.params.id)
+        db.collection('salleSport').findOneAndDelete({_id:id},(err,data)=>{
+            if (err) res.send('can not delete salle Esthetique')
+            else res.send(data)
+        })
+    })
+    app.post('/add-salleEsthetique',(req,res)=>{
+        let newSalleEsthetique=req.body
+        db.collection('salleEsthetique').insertOne(newSalleEsthetique,(err,data)=>{
+            if(err) res.send('cant not add salle Esthetique')
+            else res.send(data)
+        })
+    })
 })
 
 

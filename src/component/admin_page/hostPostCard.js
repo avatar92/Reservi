@@ -2,16 +2,45 @@ import React, { Component } from 'react';
 import './hostPostCard.css';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import axios from 'axios'
 
 class HostPostCard extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
-    render() { 
+    removeCardEsthetique=()=>
+    {  const {_id} = this.props
+    axios.delete(`/delete-salleEsthetique/${_id}`)   
+    .then(()=>{this.props.RemoveSalle(_id) 
+           console.log('hi')} )
+           
+    .catch((err)=>alert(err)) 
+    }
+    removeCardSport=()=>
+    {  const {_id} = this.props
+    axios.delete(`/delete-salleSport/${_id}`)   
+    .then(()=>{this.props.RemoveSalle(_id) 
+           console.log('hi')} )
+           
+    .catch((err)=>alert(err)) 
+    }
+    removeCardFete=()=>
+    {  const {_id} = this.props
+    axios.delete(`/delete-salleFete/${_id}`)   
+    .then(()=>{this.props.RemoveSalle(_id) 
+           console.log('hi')} )
+           
+    .catch((err)=>alert(err)) 
+    }
+
+    render() {
+        console.log('MyPropsCard',this.props) 
         return ( 
             <article className="card card--1 adminFetchedCard">
-                <div className='disabledWithoutHover'><button className='btn btn-danger removeBtn' onClick={()=>this.props.RemoveSalle(this.props._id)}>Remove</button></div>
+                <div className='disabledWithoutHover'><button className='btn btn-danger removeBtn' onClick={()=>{this.removeCardEsthetique(this.props._id)
+                                                                                                                this.removeCardFete(this.props._id)
+                                                                                                                this.removeCardSport(this.props._id)}}>Remove</button></div>
                 <div className="card__info-hover">
                 </div>
                 <div className="card__img"></div>
