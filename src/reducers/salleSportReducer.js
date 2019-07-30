@@ -176,10 +176,15 @@ const salleSportReducer = (state = init, action) => {
             return state.filter(el => el._id !== action._id)
         case ('ADD_NEW_SALLE_SPORT'):
             return [...state, action.value];
+<<<<<<< HEAD
         case 'REMOVE_HOST_SALLE_SPORT':
             return state.filter(el => el._id !== action.idSalle);
         case 'MODIF_SALLE_SPORT':
             return state.map(el => el._id !== action.value._id ? el : action.value);
+=======
+        case 'UPDATE_SALLE_SPORT': 
+            return state=action.init
+>>>>>>> 38ac6aeb1a3128480907cc90d2a264b77bd87154
         default:
             return state;
     }

@@ -21,7 +21,7 @@ MongoClient.connect(MongoUrl,{useNewUrlParser:true},(err,client)=>{
 //     })
 // })
 // //get contact
-// app.get('/get-contact',(req,res)=>{
+// app.get('/get-post',(req,res)=>{
 
 // db.collection('contacts').find().toArray((err,data)=>{
 //      if(err) res.send('can not get contact')
@@ -45,7 +45,24 @@ MongoClient.connect(MongoUrl,{useNewUrlParser:true},(err,client)=>{
 //     else res.send (data)
 // })
 // })
-
+app.get('/get-salleEsthetique',(req,res)=>{
+db.collection('salleEsthetique').find().toArray((err,data)=>{
+    if(err) res.send('can not get salle esthetique')
+    else res.send(data)
+})   
+})
+app.get('/get-salleSport',(req,res)=>{
+    db.collection('salleSport').find().toArray((err,data)=>{
+        if(err) res.send('can not get salle esthetique')
+        else res.send(data)
+    })   
+    })
+    app.get('/get-salleFete',(req,res)=>{
+        db.collection('salleFete').find().toArray((err,data)=>{
+            if(err) res.send('can not get salle esthetique')
+            else res.send(data)
+        })   
+        })
 })
 
 
