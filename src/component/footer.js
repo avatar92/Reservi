@@ -42,7 +42,7 @@ class Footer extends Component {
                             <button type="submit"  onClick={(e)=>{this.sendmessage(this.state.emailInput,this.state.messageInput)
                                                                 document.getElementById('emailInput').value=''
                                                                 document.getElementById('messageInput').value=''
-                                                                alert('your message is sent we will reply soon')
+                                                                // alert('your message is sent we will reply soon')
                                                                 e.preventDefault()}}>Send</button>
                         </form>
 
