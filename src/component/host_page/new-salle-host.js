@@ -3,6 +3,7 @@ import HostNavBar from './hostNavBar2.js';
 import './new-salle-host.css';
 import Footer from '../footer.js';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class NewHostSalle extends Component {
     constructor(props) {
@@ -25,6 +26,25 @@ class NewHostSalle extends Component {
             descriptionOffre: '',
             imageSource: ''
         }
+
+    }
+    addSalle = () => {
+        axios.post('/add-salle-fete-host', { ...this.state })
+            .then( 
+                () =>
+                {
+                    this.props.createSalle({ ...this.state })
+                    return axios.post('/add-salle-sport-host', { ...this.state })
+                }
+            )
+            .then(
+                () =>
+                {
+                    this.props.createSalle({ ...this.state })                    
+                    return axios.post('/add-salle-esthetique-host', { ...this.state })
+                }
+            )
+            .catch((err) => alert(err))
     }
     handleImage = (e) => {
         var reader = new FileReader();
@@ -212,7 +232,7 @@ class NewHostSalle extends Component {
                                             this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img1,
                                             this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img2,
                                             this.state.imageSource !== '' ? this.state.imageSource : modifiedElm[0].img3,
-                                            this.props.user[0]._id,
+                                            this.state.idUser,
                                             modifiedElm[0].category,
                                             this.state.titre !== '' ? this.state.titre : modifiedElm[0].salleName,
                                             this.state.description !== '' ? this.state.description : modifiedElm[0].description,
@@ -238,7 +258,7 @@ class NewHostSalle extends Component {
                                             this.state.imageSource,
                                             this.state.imageSource,
                                             this.state.imageSource,
-                                            this.props.user[0]._id,
+                                            this.state.idUser,
                                             this.state.category,
                                             this.state.titre,
                                             this.state.description,

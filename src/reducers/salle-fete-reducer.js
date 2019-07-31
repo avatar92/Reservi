@@ -230,16 +230,13 @@ const salleFeteReducer = (state = allSalle, action) => {
 
         case ('ADD_NEW_SALLE_FETE'):
             return [...state, action.value];
-<<<<<<< HEAD
         case 'REMOVE_HOST_SALLE_FETE':
             return state.filter(el => el._id !== action.idSalle);
         case 'MODIF_SALLE_FETE':
                 return state.map(el => el._id !== action.value._id ? el :action.value);
-=======
         case 'UPDATE_SALLE_FETE': 
             return state=action.allSalle
 
->>>>>>> 38ac6aeb1a3128480907cc90d2a264b77bd87154
         default:
             return state;
     }

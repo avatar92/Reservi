@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HostNavBar from './hostNavBar2';
 import './hostInformation.css';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class HostInformation extends Component {
     constructor(props) {
@@ -12,10 +13,19 @@ class HostInformation extends Component {
             email: this.props.user[0].email,
             password: this.props.user[0].password,
             newPassword: '',
-            confirmNewPassword: ''
+            confirmNewPassword: '',
+            existpasswordsID:''
         }
     }
+    componentDidMount = () => {
+        axios.get('/get-user-passwordId')
+        .then((res) => {
+            this.setState({existpasswordsID:res.data})
+        })
+
+    }
     render() {
+        console.log(this.state.existpasswordsID)
         console.log('message', this.state.fullName, this.state.userName, this.state.email, this.state.password, this.state.newPassword, this.state.confirmNewPassword)
         return (
             <div>

@@ -8,7 +8,7 @@ class SignIn extends Component {
     render() {
         return (
             <div>
-                <button type="button" class="btn specialcolor-btn" data-toggle="modal" data-target="#my">Sign in</button>
+                <button type="button" className="btn specialcolor-btn" data-toggle="modal" data-target="#my">Sign in</button>
                 <div className="modal fade" id="my" tabIndex={-1} role="dialog" aria-labelledby="myModalLabel">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
