@@ -45,6 +45,7 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
     //     else res.send (data)
     // })
     // })
+    /************************************getting data from each collection */
     app.get('/get-salleEsthetique', (req, res) => {
         db.collection('salleEsthetique').find().toArray((err, data) => {
             if (err) res.send('can not get salle esthetique')
@@ -63,6 +64,7 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
             else res.send(data)
         })
     })
+    /*************************************************deleting data from each collection */
     app.delete('/delete-salleEsthetique/:id',(req,res)=>{
         let id=ObjectID(req.params.id)
         db.collection('salleEsthetique').findOneAndDelete({_id:id},(err,data)=>{
@@ -84,10 +86,39 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
             else res.send(data)
         })
     })
+    ///************************************test */
     app.post('/add-salleEsthetique',(req,res)=>{
         let newSalleEsthetique=req.body
         db.collection('salleEsthetique').insertOne(newSalleEsthetique,(err,data)=>{
             if(err) res.send('cant not add salle Esthetique')
+            else res.send(data)
+        })
+    })
+    /**********************************handling message */
+    app.post('/add-message',(req,res)=>{
+        let message=req.body
+        db.collection('message').insertOne(message,(err,data)=>{
+            if(err) res.send('cant not message')
+            else res.send(data)
+        })
+    })
+    app.get('/get-message', (req, res) => {
+        db.collection('message').find().toArray((err, data) => {
+            if (err) res.send('can not get salle message')
+            else res.send(data)
+        })
+    })
+    /**********************************handling previousmessage */
+    app.get('/get-lastpreviousmessage', (req, res) => {
+        db.collection('previousmessage').find().toArray((err, data) => {
+            if (err) res.send('can not get salle previousmessage')
+            else res.send(data[data.length-1])
+        })
+    })
+    app.post('/add-previousmessage',(req,res)=>{
+        let previousmessage=req.body
+        db.collection('previousmessage').insertOne(previousmessage,(err,data)=>{
+            if(err) res.send('cant not get previousmessage')
             else res.send(data)
         })
     })

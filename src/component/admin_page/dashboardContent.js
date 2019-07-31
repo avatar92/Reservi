@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './dashboardContent.css'
 import {connect} from 'react-redux'
+import axios from 'axios'
 class DashboardContent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            totalItem:this.props.salleEsthetiqueReducer.concat(this.props.salleSportReducer.concat(this.props.salleFeteReducer)).length
+            
         }
     }
-    render() { 
+    componentDidMount = () => {
+        axios.get('/get-salleEsthetique')
+            .then((res) => {
+                this.props.updateSalleEsthetiqueReducer(res.data)
+                return axios.get('/get-salleSport')
+            })
+            .then((res) => {
+                this.props.updateSalleSportReducer(res.data)
+                return axios.get('/get-salleFete')
+            })
+            .then((res) => this.props.updateSalleFeteReducer(res.data))
+    }
+    render() {
+        const totalItem=this.props.salleEsthetiqueReducer.concat(this.props.salleSportReducer.concat(this.props.salleFeteReducer)).length 
         return (
             <div className='dashboardContainer container-fluid'> 
                 <div className='row'>
@@ -42,7 +56,7 @@ class DashboardContent extends Component {
                             <p className='svg'>
                                <i class="fa fa-plus-square"></i>
                             </p>
-                            <h2>{this.state.totalItem}</h2>
+                            <h2>{totalItem}</h2>
                         </div>
                     </div>
                 </div>
@@ -57,4 +71,26 @@ const mapStateToProps=(state)=>{
         salleFeteReducer:state.salleFeteReducer
     }
 } 
-export default connect(mapStateToProps,null)(DashboardContent);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateSalleEsthetiqueReducer: init => {
+            dispatch({
+                type: 'UPDATE_SALLE_ESTHETIQUE',
+                init
+            })
+        },
+        updateSalleFeteReducer: allSalle => {
+            dispatch({
+                type: 'UPDATE_SALLE_FETE',
+                allSalle
+            })
+        },
+        updateSalleSportReducer: init => {
+            dispatch({
+                type: 'UPDATE_SALLE_SPORT',
+                init
+            })
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(DashboardContent);
