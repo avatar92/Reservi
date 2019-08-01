@@ -16,9 +16,9 @@ class NavBar extends Component {
     closeNav = () => {
         document.getElementById("myNav").style.height = "0%";
     }
-    scrollToContacts = () => {
-        document.getElementById('devsContainer').scrollIntoView();
-    }
+    // scrollToContacts = () => {
+    //     document.getElementById('devsContainer').scrollIntoView();
+    // }
     scrollToFooter = () => {
         document.getElementById('footerContainer').scrollIntoView();
     }
@@ -35,7 +35,7 @@ class NavBar extends Component {
                     <span className='reservi1'>Reservi.TN</span>
                         <i className="fa fa-times closebtn" onClick={this.closeNav}></i>
                         <div className="overlay-content">
-                            <Link to={window.location.href.slice(21)} onClick={this.scrollToContacts}>About us</Link>
+                            <Link to='/about_us'>About us</Link>
                             <Link className='colorWhite' to={window.location.href.slice(21)} onClick={this.scrollToFooter}>Contact us</Link>
                             <hr/>
                             <SignIn />
@@ -62,7 +62,7 @@ class NavBar extends Component {
                             </div>
                         </li>
                         <li>
-                            <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToContacts}>About Us</Link>
+                            <Link to='/about_us' className="specialcolor">About Us</Link>
                         </li>
                         <li>
                             <Link to={window.location.href.slice(21)} className="specialcolor" onClick={this.scrollToFooter}>Contact Us</Link>

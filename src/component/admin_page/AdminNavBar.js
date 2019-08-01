@@ -6,6 +6,7 @@ import NotificationMessageDropDown from './notificationMessagedropdown.js'
 import NotificationMessagePopup from './notificationMessagePopup.js'
 import NotificationPopup from './notificationPopup.js'
 import {connect} from 'react-redux'
+import axios from 'axios'
 class AdminNavBar extends Component {
     constructor(props) {
         super(props);
@@ -13,10 +14,26 @@ class AdminNavBar extends Component {
             isOpen:false ,
             isSideopen:true, 
             isNotificationOpen:false,
-            isNotificationMessageOpen:false,  
-            previousMessage:0,
-            totalMessage:this.props.messageReducer.length
+            isNotificationMessageOpen:false,
+            previousMessage:0  
+            
         }
+        
+    }
+    componentDidMount = () => {
+        axios.get('/get-message')
+            .then((res) => {
+                this.props.updateMessageReducer(res.data)
+                return axios.get('/get-lastpreviousmessage')
+            })
+            .then((res)=>{this.props.updatePreviousMessageReducer(res.data.x)
+                  console.log('myReSdata',res.data.x)})
+    }
+    incrementPreviousMessage=(x)=>
+    {
+      axios.post('/add-previousmessage',{x})
+       .then(()=>this.props.incrementPreviousMessageReducer(x))
+       .catch((err)=>alert(err)) 
     }
     openSideNav=()=>{
         if (this.state.isSideopen===true)
@@ -36,7 +53,9 @@ class AdminNavBar extends Component {
                        isNotificationMessageOpen:!this.state.isNotificationMessageOpen
                    })
        }
-    render() { 
+    render() {
+        const previousMessage=this.props.previousmessageReducer;
+        const totalMessage=this.props.messageReducer.length
         return ( 
             <div className='adminResponsiveTopBar'>
                 <div className='admin_page'>Admin Page</div>
@@ -48,7 +67,8 @@ class AdminNavBar extends Component {
                             </span>
                             <div className='navbarRight_less768'>
                                 <div className="navigationLinks_less768">
-                                        <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{this.setState({previousMessage:this.state.totalMessage})
+                                        <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{this.incrementPreviousMessage(totalMessage)
+                                                                                                console.log('hello')
                                                                                                 this.openMessageNotification()
                                                                                                 }}></i>
                                         <i class="fa fa-bell notifcationAdmin" onClick={this.openNotification}></i>
@@ -74,7 +94,9 @@ class AdminNavBar extends Component {
                             </span>
                             <div className='navbarRight '>
                             <div className="navigationLinks ">
-                                    <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{this.setState({previousMessage:this.state.totalMessage})
+                                    <i class="fa fa-paper-plane notifcationAdmin" onClick={()=>{
+                                                                                                this.incrementPreviousMessage(totalMessage)
+                                                                                                console.log('hello')
                                                                                                 this.openMessageNotification()
                                                                                                 }}></i>
                                     <i class="fa fa-bell notifcationAdmin" onClick={this.openNotification}></i>
@@ -91,7 +113,7 @@ class AdminNavBar extends Component {
                 {/* NotificationMessageDropDown*/}
                 <NotificationMessageDropDown isNotificationMessageOpen={this.state.isNotificationMessageOpen}/>
                 {/* NotificationMessagePopup*/}
-                <NotificationMessagePopup totalmessage={this.state.totalMessage} previousMessage={this.state.previousMessage}/>
+                <NotificationMessagePopup totalmessage={totalMessage} previousMessage={previousMessage}/>
                 {/* NotificationPopup*/}
                 <NotificationPopup />
             </div>
@@ -100,8 +122,30 @@ class AdminNavBar extends Component {
 }
 const mapStateToProps=(state)=>{
     return{
-        messageReducer:state.messageReducer
+        messageReducer:state.messageReducer,
+        previousmessageReducer:state.previousmessageReducer
     }
 }
-
-export default connect(mapStateToProps,null)(AdminNavBar);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateMessageReducer: messageTab => {
+            dispatch({
+                type: 'UPDATE_MESSAGE',
+                messageTab
+            })
+        },
+        incrementPreviousMessageReducer:previousMessage=>{
+            dispatch({
+                type:'INCREMENT_PREVIOUS_MESSAGE',
+                previousMessage
+            })
+        },
+        updatePreviousMessageReducer: previousMessage => {
+            dispatch({
+                type: 'UPDATE_PREVIOUS_MESSAGE',
+                previousMessage
+            })
+        },
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(AdminNavBar);

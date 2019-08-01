@@ -13,23 +13,25 @@ class Introduction extends Component {
             password: '',
             email: '',
             errormsg: '',
-            existEmail:""
+            existEmail:'',
+            successmsg:''
         };
     }
-    componentDidMount = () => {
+   
+    shouldComponentUpdate(nextState){
         axios.get('/get-users-email')
         .then((res) => {
             this.setState({existEmail:res.data})
         })
-
+        return true
     }
     addUser = (fullname,username,email,password) => {
+
         axios.post('/add-user', { fullname,username,email,password })
             .then(() => this.props.createCompte(fullname,username,email,password))
             .catch((err) => alert(err))
     }
     render() {
-        console.log("existEmail", this.state.existEmail)
         return (
 
             <section id="home">
@@ -53,9 +55,9 @@ class Introduction extends Component {
                                 <hr />
                                 {this.state.errormsg !== ''
                                     ?
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <div className="alert alert-warning alert-dismissible fade show" role="alert">
                                         {this.state.errormsg}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() =>this.setState({errormsg:''})}>
+                                        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() =>this.setState({errormsg:''})}>
                                             <span aria-hidden="true">&times;</span>
                                             
                                         </button>
@@ -63,6 +65,19 @@ class Introduction extends Component {
                                     :
                                     ''
                                 }
+                                 {this.state.successmsg !== ''
+                                    ?
+                                    <div className="alert alert-success alert-dismissible fade show" role="alert">
+                                        {this.state.successmsg}
+                                        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() =>this.setState({successmsg:''})}>
+                                            <span aria-hidden="true">&times;</span>
+                                            
+                                        </button>
+                                    </div>
+                                    :
+                                    ''
+                                }
+                            
                                 <div className="form-group">
                                     <input type="text" className="form-control" placeholder="Nom complet" required="required" onChange={(e) => this.setState({ fullName: e.target.value })} />
                                 </div>
@@ -89,7 +104,10 @@ class Introduction extends Component {
                                                 this.setState({ errormsg: 'Vous mot de passe doit avoir au moins 8 caractères' })
 
                                             } else {
+                                                this.setState({ successmsg: 'Votre compte sur RESERVI a bien été créé ! connectez vous' })
                                                 this.addUser(this.state.fullName,this.state.userName,this.state.email,this.state.password)
+
+
                                             }
                                         }}>
                                         Valider
@@ -112,22 +130,22 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         createCompte: (fullName, userName, email, password) => {
-
-            bcrypt.genSalt(10, function (err, salt) {
-                bcrypt.hash(password, salt, function (err, hash) {
-                    if (err) throw err;
-                    password = hash
-                    dispatch({
-                        type: 'ADD_NEW_USER',
-                        value: {
-                            fullName,
-                            email,
-                            userName,
-                            password
-                        }
-                    })
-                });
-            });
+            dispatch({
+                type: 'ADD_NEW_USER',
+                value: {
+                    fullName,
+                    email,
+                    userName,
+                    password
+                }
+            })
+            // bcrypt.genSalt(10, function (err, salt) {
+            //     bcrypt.hash(password, salt, function (err, hash) {
+            //         if (err) throw err;
+            //         password = hash
+                  
+            //     });
+            // });
             
 
         }

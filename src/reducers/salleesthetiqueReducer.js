@@ -170,15 +170,15 @@ const salleEsthetiqueReducer = (state = init, action) => {
                 else return (el.salleName === action.field || el.location === action.field)
             })
         case "REMOVE_SALLE_ESTHETIQUE":
-            return state.filter(el => el._id !== action._id);
+            return state.filter((el,index) => index !== action._id);
         case ('ADD_NEW_SALLE_ESTHETIQUE'):
             return [...state, action.value];
+        case 'UPDATE_SALLE_ESTHETIQUE': 
+            return state=action.init
         case 'REMOVE_HOST_SALLE_ESTHETIQUE':
             return state.filter(el => el._id !== action.idSalle);
         case 'MODIF_SALLE_ESTHETIQUE':
             return state.map(el => el._id !== action.value._id ? el : action.value);
-        case 'UPDATE_SALLE_ESTHETIQUE': 
-            return state=action.init
         default:
             return state;
     }

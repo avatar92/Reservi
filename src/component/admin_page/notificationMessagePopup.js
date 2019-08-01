@@ -8,7 +8,7 @@ class NotificationMessagePopup extends Component {
         }
     }
     render() { 
-        console.log(this.props.previousMessage)
+        console.log('MessageProps',this.props)
         return ( 
             <div>
             {this.props.totalmessage===this.props.previousMessage ?'': <div className='MessagePopupContainer'> 
